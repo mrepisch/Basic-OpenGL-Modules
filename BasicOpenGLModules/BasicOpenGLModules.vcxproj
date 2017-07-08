@@ -20,13 +20,20 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Display.h" />
-    <ClInclude Include="src\Mesh.h" />
+    <ClInclude Include="src\render\GLClassicMeshRender.h" />
+    <ClInclude Include="src\render\IMeshRender.h" />
+    <ClInclude Include="src\render\Mesh.h" />
+    <ClInclude Include="src\util\PLYParser.h" />
+    <ClInclude Include="src\util\Util.h" />
     <ClInclude Include="src\util\Vector3D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Display.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\Mesh.cpp" />
+    <ClCompile Include="src\render\GLClassicMeshRender.cpp" />
+    <ClCompile Include="src\render\Mesh.cpp" />
+    <ClCompile Include="src\util\PLYParser.cpp" />
+    <ClCompile Include="src\util\Util.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{59B85862-17F8-4D0D-AFFD-0AFFAA4C262F}</ProjectGuid>

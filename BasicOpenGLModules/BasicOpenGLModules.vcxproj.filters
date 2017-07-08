@@ -19,15 +19,33 @@
     <Filter Include="Quelldateien\util">
       <UniqueIdentifier>{ecf6876b-afb3-4899-8797-a083959d0660}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headerdateien\render">
+      <UniqueIdentifier>{40b4ee1b-86b2-4163-873f-2b32e097cec9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\render">
+      <UniqueIdentifier>{907fb798-b686-4537-966f-12f422521323}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Display.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="src\Mesh.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="src\util\Vector3D.h">
+      <Filter>Headerdateien\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\render\IMeshRender.h">
+      <Filter>Headerdateien\render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\render\GLClassicMeshRender.h">
+      <Filter>Headerdateien\render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\render\Mesh.h">
+      <Filter>Headerdateien\render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\PLYParser.h">
+      <Filter>Headerdateien\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\Util.h">
       <Filter>Headerdateien\util</Filter>
     </ClInclude>
   </ItemGroup>
@@ -38,8 +56,17 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="src\Mesh.cpp">
-      <Filter>Quelldateien</Filter>
+    <ClCompile Include="src\render\GLClassicMeshRender.cpp">
+      <Filter>Quelldateien\render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render\Mesh.cpp">
+      <Filter>Quelldateien\render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\PLYParser.cpp">
+      <Filter>Quelldateien\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\Util.cpp">
+      <Filter>Quelldateien\util</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -76,6 +76,16 @@ public:
 			m_y = t_other.m_y;
 			m_z = t_other.m_z;
 		}
+		return *this;
+	}
+
+	T* getAsArray( void )
+	{
+		T r_array = new T[3];
+		r_array[0] = m_x;
+		r_array[1] = m_y;
+		r_array[2] = m_z;
+		return r_array;
 	}
 
 private:
@@ -84,3 +94,6 @@ private:
 	T m_z;
 };
 
+typedef Vector3D<float> VectorF;
+typedef Vector3D<int> VectorI;
+typedef Vector3D<double> VectorD;
