@@ -1,10 +1,11 @@
 #pragma once
 
-enum VectorIndex {
-	e_x = 0,
-	e_y = 1,
-	e_z = 2
+enum EnVectorIndex {
+	e_x,
+	e_y,
+	e_z
 };
+
 
 template <typename T>
 class Vector3D
@@ -30,22 +31,34 @@ public:
 	T getY() const { return m_y; }
 	T getZ() const { return m_z; }
 
-	T operator[](VectorIndex p_index)
+	
+	void setX(float p_x) { m_x = p_x; }
+	void setY(float p_y) { m_y = p_y; }
+	void setZ(float p_z) { m_z = p_z; }
+	void set(float p_x, float p_y, float p_z)
 	{
-		T r_value = 0;
-		if (p_index = 0)
+		m_x = p_x;
+		m_y = p_y;
+		m_z = p_z;
+	}
+
+	void set(EnVectorIndex t_index, float t_value)
+	{
+		switch (t_index)
 		{
-			r_value = m_x;
-		}
-		else if (p_index == 1)
-		{
-			r_value = m_y;
-		}
-		else if (p_index == 2)
-		{
-			r_value = m_z;
+		case e_x:
+			m_x = t_value;
+			break;
+		case e_y:
+			m_y = t_value;
+			break;
+		case e_z:
+			m_z = t_value;
+			break;
 		}
 	}
+
+
 
 	Vector3D(const Vector3D& t_other)
 	{
