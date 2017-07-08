@@ -3,7 +3,7 @@
 enum VectorIndex {
 	e_x = 0,
 	e_y = 1,
-	e_z = 2;
+	e_z = 2
 };
 
 template <typename T>
