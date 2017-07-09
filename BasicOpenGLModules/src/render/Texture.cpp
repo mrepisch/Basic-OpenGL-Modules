@@ -1,6 +1,8 @@
 
 #include "Texture.h"
 
+using namespace render;
+
 Texture::Texture(const char* p_filename)
 {
 	m_texture = SDL_LoadBMP(p_filename);

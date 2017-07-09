@@ -18,7 +18,7 @@ private:
 	
 	std::string m_windowTitle;
 	
-	GLClassicMeshRender* m_renderer;
+	render::GLClassicMeshRender* m_renderer;
 	int m_width;
 	int m_height;
 	bool m_isClosed;

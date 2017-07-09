@@ -1,6 +1,7 @@
 #include "Mesh.h"
 #include <iostream>
 
+using namespace render;
 
 Mesh::Mesh()
 {

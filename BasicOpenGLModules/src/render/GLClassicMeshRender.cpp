@@ -1,6 +1,8 @@
 // Internal includes
 #include "GLClassicMeshRender.h"
 
+using namespace render;
+
 GLClassicMeshRender::GLClassicMeshRender(Mesh* p_mesh)
 {
 	if (p_mesh != nullptr)

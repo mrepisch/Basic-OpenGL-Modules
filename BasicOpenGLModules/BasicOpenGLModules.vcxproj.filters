@@ -25,6 +25,12 @@
     <Filter Include="Quelldateien\render">
       <UniqueIdentifier>{907fb798-b686-4537-966f-12f422521323}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headerdateien\game">
+      <UniqueIdentifier>{dec34fac-03dc-4d37-9882-0b6699fdce1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\game">
+      <UniqueIdentifier>{ffac8681-e846-4c6f-9cd7-ad973182e80a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Display.h">

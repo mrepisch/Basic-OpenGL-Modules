@@ -1,6 +1,6 @@
 #include "Camera.h"
 
-
+using namespace util;
 
 Camera::Camera(int p_screenWidth, int p_screenHight, float p_depth)
 {

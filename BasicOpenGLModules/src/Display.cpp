@@ -5,6 +5,9 @@
 #include "Display.h"
 #include "util\PLYParser.h"
 
+using namespace util;
+using namespace render;
+
 Display::Display(int p_with, int p_height, const std::string& p_title)
 {
 

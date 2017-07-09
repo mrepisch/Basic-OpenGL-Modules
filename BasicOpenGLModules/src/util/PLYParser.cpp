@@ -4,6 +4,9 @@
 #include "PLYParser.h"
 #include "Util.h"
 
+using namespace util;
+using namespace render;
+
 Mesh* PLYParser::readMeshFromFile(const std::string& p_filename)
 {
 	std::ifstream l_infile(p_filename);

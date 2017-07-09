@@ -1,9 +1,12 @@
 
-
-#include "Util.h"
+// External includes
 #include <iostream>
 #include <sstream>
 
+// Internal includes
+#include "Util.h"
+
+using namespace util;
 
 StringVec Util::SplitWithWiteSpace( std::string& t_toSplit)
 {

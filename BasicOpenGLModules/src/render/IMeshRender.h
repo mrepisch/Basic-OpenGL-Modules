@@ -1,18 +1,20 @@
 #pragma once
-/**
- * This interface is uses to define the interface from the Mesh to the uses rendering technology.
- * @author
- */
-
-class IMeshRender
+namespace render 
 {
 	/**
-	 * Function to setup the mesh if needed
+	 * This interface is uses to define the interface from the Mesh to the uses rendering technology.
+	 * @author
 	 */
-	virtual void init( ) = 0;
+	class IMeshRender
+	{
+		/**
+		 * Function to setup the mesh if needed
+		 */
+		virtual void init() = 0;
 
-	/**
-	 * Function to be called in the main loop
-	 */
-	virtual void render() = 0;
-};
+		/**
+		 * Function to be called in the main loop
+		 */
+		virtual void render() = 0;
+	};
+}

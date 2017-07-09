@@ -3,11 +3,13 @@
 #include <string>
 #include "../render/Mesh.h"
 
-
-class PLYParser
+namespace util
 {
-public:
-	Mesh* readMeshFromFile(const std::string& p_filename);
+	class PLYParser
+	{
+	public:
+		render::Mesh* readMeshFromFile(const std::string& p_filename);
 
 
-};
+	};
+}
