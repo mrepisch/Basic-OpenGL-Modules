@@ -31,6 +31,12 @@
     <Filter Include="Quelldateien\game">
       <UniqueIdentifier>{ffac8681-e846-4c6f-9cd7-ad973182e80a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headerdateien\component">
+      <UniqueIdentifier>{0c2efdd5-5ef9-414b-94d3-5b0fbe718b87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\component">
+      <UniqueIdentifier>{52d6e648-5067-4034-b611-c150a35c3103}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Display.h">
@@ -60,6 +66,18 @@
     <ClInclude Include="src\render\Texture.h">
       <Filter>Headerdateien\render</Filter>
     </ClInclude>
+    <ClInclude Include="src\component\Component.h">
+      <Filter>Headerdateien\component</Filter>
+    </ClInclude>
+    <ClInclude Include="src\component\System.h">
+      <Filter>Headerdateien\component</Filter>
+    </ClInclude>
+    <ClInclude Include="src\component\EntityCollection.h">
+      <Filter>Headerdateien\component</Filter>
+    </ClInclude>
+    <ClInclude Include="src\component\Entity.h">
+      <Filter>Headerdateien\component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Display.cpp">
@@ -85,6 +103,15 @@
     </ClCompile>
     <ClCompile Include="src\render\Texture.cpp">
       <Filter>Quelldateien\render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\component\System.cpp">
+      <Filter>Quelldateien\component</Filter>
+    </ClCompile>
+    <ClCompile Include="src\component\EntityCollection.cpp">
+      <Filter>Quelldateien\component</Filter>
+    </ClCompile>
+    <ClCompile Include="src\component\Entity.cpp">
+      <Filter>Quelldateien\component</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

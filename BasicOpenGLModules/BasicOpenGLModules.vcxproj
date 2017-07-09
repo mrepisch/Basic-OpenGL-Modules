@@ -20,6 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Camera.h" />
+    <ClInclude Include="src\component\EntityCollection.h" />
+    <ClInclude Include="src\component\Entity.h" />
+    <ClInclude Include="src\component\Component.h" />
+    <ClInclude Include="src\component\System.h" />
     <ClInclude Include="src\Display.h" />
     <ClInclude Include="src\render\GLClassicMeshRender.h" />
     <ClInclude Include="src\render\IMeshRender.h" />
@@ -31,6 +35,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Camera.cpp" />
+    <ClCompile Include="src\component\EntityCollection.cpp" />
+    <ClCompile Include="src\component\Entity.cpp" />
+    <ClCompile Include="src\component\System.cpp" />
     <ClCompile Include="src\Display.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\render\GLClassicMeshRender.cpp" />
