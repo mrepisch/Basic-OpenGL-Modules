@@ -1,7 +1,11 @@
 #pragma once
 
-#include "util\Vector3D.h"
+// External includes
 #include <list>
+
+// Internal includes
+#include "util\Vector3D.h"
+#include "Texture.h"
 
 /**
  * This class represents one single Vertex
@@ -92,6 +96,20 @@ public:
 	 * @author Sascha Blank
 	 */
 	Mesh( void );
+
+	/**
+	 * Constructor with a texture.
+	 * @author sascha blank
+	 * @param p_texture, the texture the mash is using
+	 */
+	Mesh(Texture* p_texture);
+
+	/**
+	 * Constructor with the texture file path
+	 * @author sascha blank
+	 * @param p_textureFilePath, the path to the texture.
+	 */
+	Mesh(const char* p_textureFilePath);
 	
 	/**
 	 * Virtual destructor
@@ -112,10 +130,24 @@ public:
 	 * @return const std::list<Face*>&, list with all faces of the mesh
 	 */
 	const std::list<Face*>& getFaces(void) const;
+
+	/**
+	 * Getter on the Texture pointer.
+	 * @author sascha blank
+	 * @return const Texture* 
+	 */
+	GLuint getTextureID(void);
+
+	void setTexture(Texture* p_texture);
+
 	
 private:
 
 	//List with all faces of the mesh
 	std::list<Face*>m_faces;
+
+	// Texture to use
+	Texture* m_texture;
+
 };
 

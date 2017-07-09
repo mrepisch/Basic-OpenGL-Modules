@@ -21,6 +21,7 @@ Display::Display(int p_with, int p_height, const std::string& p_title)
 	m_window = SDL_CreateWindow(m_windowTitle.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_width, m_height, SDL_WINDOW_OPENGL);
 	m_glContext = SDL_GL_CreateContext(m_window);
 
+	glEnable(GL_TEXTURE_2D);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
@@ -38,8 +39,11 @@ Display::Display(int p_with, int p_height, const std::string& p_title)
 	}
 	m_isClosed = false;
 	PLYParser a_parser;
-	m_renderer = new GLClassicMeshRender(a_parser.readMeshFromFile("C:\\Users\\episch\\Documents\\plane.ply"));
+	Mesh* a_mesh = a_parser.readMeshFromFile("C:\\Users\\episch\\Documents\\test.ply");
+	a_mesh->setTexture(new Texture("C:\\Users\\episch\\Documents\\OpenGLProject\\test.bmp"));
+	m_renderer = new GLClassicMeshRender(a_mesh);
 	m_camera = new Camera(m_width, m_height, 100.0f);
+	m_camera->setPosition( VectorF(0.0f, 0.0f, 0.0f));
 }
 
 
@@ -57,11 +61,13 @@ void Display::update()
 
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	
 	m_camera->update();
 
 	m_renderer->render();
+
 	SDL_GL_SwapWindow(m_window);
-	m_camera->move(VectorF(-0.01f, -0.01f, 0.0f));
+	
 	SDL_Event l_event;
 	while (SDL_PollEvent(&l_event))
 	{

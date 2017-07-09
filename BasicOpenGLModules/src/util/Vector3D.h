@@ -117,6 +117,8 @@ public:
 		return r_result;
 	}
 
+
+
 private:
 	T m_x;
 	T m_y;

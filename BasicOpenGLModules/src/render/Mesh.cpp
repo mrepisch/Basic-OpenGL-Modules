@@ -4,7 +4,17 @@
 
 Mesh::Mesh()
 {
-	
+	m_texture = nullptr;
+}
+
+Mesh::Mesh(Texture* p_texture)
+{
+	m_texture = p_texture;
+}
+
+Mesh::Mesh(const char* p_textureFilePath)
+{
+	m_texture = new Texture(p_textureFilePath);
 }
 
 
@@ -31,5 +41,16 @@ void Mesh::addFace(Face* p_face)
 const std::list<Face*>& Mesh::getFaces( void) const
 {
 	return m_faces;
+}
+
+
+GLuint Mesh::getTextureID()
+{
+	return m_texture->getTextureID();
+}
+
+void Mesh::setTexture(Texture* p_texture)
+{
+	m_texture = p_texture;
 }
 

@@ -10,17 +10,16 @@ Camera::Camera(int p_screenWidth, int p_screenHight, float p_depth)
 
 Camera::~Camera()
 {
+	// empty body
 }
 
 
 void Camera::update()
 {
 
-	glFrustum(-1.0, 1.0f, -1.0, 1.0, 0.1, 100.0);
-
+	glFrustum(-1.0, 1.0f, -1.0, 1.0, 0.1, 1000.0);
 	glLoadIdentity();
 	glTranslatef(m_position.getX(), m_position.getY(), m_position.getZ());
-
 }
 
 void Camera::setPosition(const VectorF& p_pos)
@@ -36,5 +35,5 @@ const VectorF& Camera::getPosition()
 
 void Camera::move(const VectorF& t_offset)
 {
-	m_position = m_position + t_offset;
+	m_position = m_position + VectorF( t_offset.getX()*-1, t_offset.getY() * -1, t_offset.getZ() * -1);
 }

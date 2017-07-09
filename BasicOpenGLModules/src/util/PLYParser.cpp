@@ -20,12 +20,12 @@ Mesh* PLYParser::readMeshFromFile(const std::string& p_filename)
 	Vertex* l_vertecis = nullptr;
 	while (std::getline(l_infile, l_line))
 	{
-		if (l_line.compare("element vertex 4") == 0)
+		if (l_line.find("element vertex ") != -1)
 		{
 			StringVec l_split = Util::SplitWithWiteSpace(l_line);
 			l_vertexCount = std::atoi(l_split[l_split.size() - 1].c_str());
 		}
-		if(l_line.compare("element face 2") == 0)
+		if(l_line.find("element face ") != -1)
 		{
 			StringVec l_split = Util::SplitWithWiteSpace(l_line);
 			l_facesCount = std::atoi(l_split[l_split.size() - 1].c_str());
@@ -40,6 +40,10 @@ Mesh* PLYParser::readMeshFromFile(const std::string& p_filename)
 			StringVec l_split = Util::SplitWithWiteSpace(l_line);
 			l_vertecis[l_vertecisReadCounter] = *(new Vertex());
 			l_vertecis[l_vertecisReadCounter].position.set(std::stof(l_split[0].c_str()), std::stof(l_split[1].c_str()), std::stof(l_split[2].c_str()));
+			if (l_split.size() >= 7)
+			{
+				l_vertecis[l_vertecisReadCounter].textureCords.set(std::stof(l_split[6].c_str()), std::stof(l_split[7].c_str()), 0.0f);
+			}
 			++l_vertecisReadCounter;
 		}
 		else if (l_readVertecis && l_vertecisReadCounter >= l_vertexCount)
