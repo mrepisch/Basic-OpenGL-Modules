@@ -48,6 +48,9 @@
     <ClInclude Include="src\util\Util.h">
       <Filter>Headerdateien\util</Filter>
     </ClInclude>
+    <ClInclude Include="src\Camera.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Display.cpp">
@@ -67,6 +70,9 @@
     </ClCompile>
     <ClCompile Include="src\util\Util.cpp">
       <Filter>Quelldateien\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Camera.cpp">
+      <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

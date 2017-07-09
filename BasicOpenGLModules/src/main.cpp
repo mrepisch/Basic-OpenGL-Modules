@@ -13,10 +13,7 @@ int main(int argc, char **argv)
 
 	while (!l_mainWindow.getIsClosed())
 	{
-
-
 		l_mainWindow.update();
-
 	}
 	return 0;
 }

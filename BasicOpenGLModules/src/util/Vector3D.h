@@ -1,11 +1,15 @@
 #pragma once
 
+
 enum EnVectorIndex {
 	e_x,
 	e_y,
 	e_z
 };
 
+/**
+ * Class which represents a 3D Vector.
+ */
 
 template <typename T>
 class Vector3D
@@ -13,13 +17,23 @@ class Vector3D
 
 public:
 
+	/**
+	 * Constructor
+	 */
 	Vector3D()
-	{
+	{ 
 		m_x = 0;
 		m_y = 0;
 		m_z = 0;
 	}
 
+	/**
+	 * Constructor
+	 * @author sascha blank
+	 * @param p_x, the x axis
+	 * @param p_y, the y axis
+	 * @param p_z, the z axis
+	 */
 	Vector3D(T p_x, T p_y, T p_z)
 	{
 		m_x = p_x;
@@ -57,9 +71,6 @@ public:
 			break;
 		}
 	}
-
-
-
 	Vector3D(const Vector3D& t_other)
 	{
 		if (this != &t_other)
@@ -86,6 +97,24 @@ public:
 		r_array[1] = m_y;
 		r_array[2] = m_z;
 		return r_array;
+	}
+
+	Vector3D operator+(const Vector3D<T>& t_rhv)
+	{
+		Vector3D<T>r_result;
+		r_result.m_x = m_x + t_rhv.m_x;
+		r_result.m_y = m_y + t_rhv.m_y;
+		r_result.m_z = m_z + t_rhv.m_z;
+		return r_result;
+	}
+
+	Vector3D operator-(const Vector3D<T>& t_rhv) 
+	{
+		Vector3D<T>r_result;
+		r_result.m_x = m_x - t_rhv.m_x;
+		r_result.m_y = m_y - t_rhv.m_y;
+		r_result.m_z = m_z - t_rhv.m_z;
+		return r_result;
 	}
 
 private:

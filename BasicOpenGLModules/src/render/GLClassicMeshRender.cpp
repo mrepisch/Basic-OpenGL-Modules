@@ -1,3 +1,4 @@
+// Internal includes
 #include "GLClassicMeshRender.h"
 
 GLClassicMeshRender::GLClassicMeshRender(Mesh* p_mesh)
@@ -15,7 +16,7 @@ GLClassicMeshRender::GLClassicMeshRender(Mesh* p_mesh)
 
 void GLClassicMeshRender::init(void)
 {
-
+	// empty body
 }
 
 
@@ -23,7 +24,9 @@ void GLClassicMeshRender::render(void)
 {
 	if (m_mesh != nullptr)
 	{
+		glTranslatef(0.0f, 0.0f, -0.01f);
 		glBegin(GL_TRIANGLES);
+
 		auto l_meshes = m_mesh->getFaces();
 		for (auto l_iter = l_meshes.cbegin(); l_iter != l_meshes.cend(); ++l_iter)
 		{
