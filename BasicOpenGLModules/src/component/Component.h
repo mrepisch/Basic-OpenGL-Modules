@@ -18,7 +18,7 @@ namespace component
 	class Component
 	{
 	public:
-		Component() {};
+		Component(EnComponents p_component) { m_componentType = p_component; };
 
 		EnComponents getComponentType() { return m_componentType; }
 			

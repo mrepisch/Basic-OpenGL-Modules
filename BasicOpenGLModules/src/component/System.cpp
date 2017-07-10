@@ -6,12 +6,12 @@ using namespace component;
 
 System::System(EnSystem p_system)
 {
-	m_systemID = p_system;
+	m_systemType = p_system;
 	m_entityCollection = &EntityCollection::Instance();
 }
 
 
-EnSystem System::getSystemID() const
+EnSystem System::getSystemType() const
 {
-	return m_systemID;
+	return m_systemType;
 }

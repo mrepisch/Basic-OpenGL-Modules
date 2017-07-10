@@ -51,18 +51,33 @@ bool Entity::getHasComponent(EnComponents p_component)
 	return r_hasComponent;
 }
 
-void Entity::update( void )
+void Entity::addComponent(Component* p_component)
 {
-
+	if (p_component != nullptr)
+	{
+		m_components.push_back(p_component);
+	}
 }
-
-void Entity::render(void)
-{
-
-}
-
 
 long Entity::getEntityID()
 {
 	return m_entityID;
+}
+
+Component* Entity::getComponent(EnComponents p_component)
+{
+	Component* r_component;
+	for (auto l_iter = m_components.begin(); l_iter != m_components.end(); l_iter++)
+	{
+		if ((*l_iter)->getComponentType() == p_component)
+		{
+			break;
+		}
+	}
+	return r_component;
+}
+
+void Entity::ResetEntityCounter()
+{
+	S_ENTITYCOUNTER = 0;
 }

@@ -16,7 +16,6 @@ namespace util
 	template <typename T>
 	class Vector3D
 	{
-
 	public:
 
 		/**

@@ -16,7 +16,11 @@ EntityCollection::EntityCollection()
 
 EntityCollection::~EntityCollection()
 {
-
+	for (auto l_iter = m_entitys.begin(); l_iter != m_entitys.end(); l_iter++)
+	{
+		delete (*l_iter);
+	}
+	m_entitys.clear();
 }
 
 

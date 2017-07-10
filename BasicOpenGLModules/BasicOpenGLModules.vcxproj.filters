@@ -78,6 +78,9 @@
     <ClInclude Include="src\component\Entity.h">
       <Filter>Headerdateien\component</Filter>
     </ClInclude>
+    <ClInclude Include="src\component\TranslationComponent.h">
+      <Filter>Headerdateien\component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Display.cpp">
@@ -111,6 +114,9 @@
       <Filter>Quelldateien\component</Filter>
     </ClCompile>
     <ClCompile Include="src\component\Entity.cpp">
+      <Filter>Quelldateien\component</Filter>
+    </ClCompile>
+    <ClCompile Include="src\component\TranslationComponent.cpp">
       <Filter>Quelldateien\component</Filter>
     </ClCompile>
   </ItemGroup>
