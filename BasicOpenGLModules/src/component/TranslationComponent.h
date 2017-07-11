@@ -2,8 +2,8 @@
 
 // Internal includes
 #include "Component.h"
-#include "../util/Vector3D.h"
 
+#include <util\Vector3D.h>
 namespace component
 {
 	class TranslationComponent : public Component

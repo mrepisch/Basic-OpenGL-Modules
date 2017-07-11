@@ -58,7 +58,7 @@ namespace component
 		std::list<Entity*>m_entitys;
 
 		// Private Constructor SINGELTON PATTERN
-		EntityCollection() {}
+		EntityCollection();
 
 		// Private copy constructor
 		EntityCollection(const EntityCollection& t_other) {}

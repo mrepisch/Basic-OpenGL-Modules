@@ -23,8 +23,11 @@
     <ClInclude Include="src\component\EntityCollection.h" />
     <ClInclude Include="src\component\Entity.h" />
     <ClInclude Include="src\component\Component.h" />
+    <ClInclude Include="src\component\Event.h" />
+    <ClInclude Include="src\component\MessageDispatcher.h" />
     <ClInclude Include="src\component\TranslationComponent.h" />
     <ClInclude Include="src\component\System.h" />
+    <ClInclude Include="src\component\TranslationSystem.h" />
     <ClInclude Include="src\Display.h" />
     <ClInclude Include="src\render\GLClassicMeshRender.h" />
     <ClInclude Include="src\render\IMeshRender.h" />
@@ -38,8 +41,11 @@
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\component\EntityCollection.cpp" />
     <ClCompile Include="src\component\Entity.cpp" />
+    <ClCompile Include="src\component\Event.cpp" />
+    <ClCompile Include="src\component\MessageDispatcher.cpp" />
     <ClCompile Include="src\component\TranslationComponent.cpp" />
     <ClCompile Include="src\component\System.cpp" />
+    <ClCompile Include="src\component\TranslationSystem.cpp" />
     <ClCompile Include="src\Display.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\render\GLClassicMeshRender.cpp" />

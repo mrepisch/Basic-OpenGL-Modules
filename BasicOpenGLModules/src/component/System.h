@@ -2,6 +2,7 @@
 
 // Internal includes
 #include "EntityCollection.h"
+#include "Event.h"
 
 namespace component
 {
@@ -9,7 +10,8 @@ namespace component
 	{
 		e_undefinedSystem = 0,
 		e_renderSystem,
-		e_cameraSystem
+		e_cameraSystem,
+		e_translationSystem
 	};
 
 	/**
@@ -43,6 +45,13 @@ namespace component
 		 * @author sascha blank
 		 */
 		virtual void update() = 0;
+
+		/**
+		 * Function to received messages which are send by the MessagesDispatcher.
+		 * @author sascha blank
+		 * @param Event*, pointer on the event object
+		 */
+		virtual void receiveMessage(Event* p_event) = 0;
 
 	protected:
 

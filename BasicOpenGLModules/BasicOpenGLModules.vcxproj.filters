@@ -81,6 +81,15 @@
     <ClInclude Include="src\component\TranslationComponent.h">
       <Filter>Headerdateien\component</Filter>
     </ClInclude>
+    <ClInclude Include="src\component\TranslationSystem.h">
+      <Filter>Headerdateien\component</Filter>
+    </ClInclude>
+    <ClInclude Include="src\component\MessageDispatcher.h">
+      <Filter>Headerdateien\component</Filter>
+    </ClInclude>
+    <ClInclude Include="src\component\Event.h">
+      <Filter>Headerdateien\component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Display.cpp">
@@ -117,6 +126,15 @@
       <Filter>Quelldateien\component</Filter>
     </ClCompile>
     <ClCompile Include="src\component\TranslationComponent.cpp">
+      <Filter>Quelldateien\component</Filter>
+    </ClCompile>
+    <ClCompile Include="src\component\TranslationSystem.cpp">
+      <Filter>Quelldateien\component</Filter>
+    </ClCompile>
+    <ClCompile Include="src\component\MessageDispatcher.cpp">
+      <Filter>Quelldateien\component</Filter>
+    </ClCompile>
+    <ClCompile Include="src\component\Event.cpp">
       <Filter>Quelldateien\component</Filter>
     </ClCompile>
   </ItemGroup>

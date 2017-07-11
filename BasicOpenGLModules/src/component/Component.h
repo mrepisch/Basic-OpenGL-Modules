@@ -6,7 +6,7 @@ namespace component
 	{
 		e_undefinedComponent = 0,
 		e_renderComponent,
-		e_positionComponent,
+		e_translationComponent,
 		e_cameraComponent
 	};
 

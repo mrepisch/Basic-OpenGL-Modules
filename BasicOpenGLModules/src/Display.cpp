@@ -46,7 +46,7 @@ Display::Display(int p_with, int p_height, const std::string& p_title)
 	a_mesh->setTexture(new Texture("C:\\Users\\episch\\Documents\\OpenGLProject\\test.bmp"));
 	m_renderer = new GLClassicMeshRender(a_mesh);
 	m_camera = new Camera(m_width, m_height, 100.0f);
-	m_camera->setPosition( VectorF(0.0f, 0.0f, 0.0f));
+	
 }
 
 
@@ -70,7 +70,7 @@ void Display::update()
 	m_renderer->render();
 
 	SDL_GL_SwapWindow(m_window);
-	
+	//m_camera->move(util::VectorF(0.001f, 0.0f, 0.0f));
 	SDL_Event l_event;
 	while (SDL_PollEvent(&l_event))
 	{
