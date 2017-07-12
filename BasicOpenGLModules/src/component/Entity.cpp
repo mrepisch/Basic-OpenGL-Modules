@@ -66,11 +66,12 @@ long Entity::getEntityID()
 
 Component* Entity::getComponent(EnComponents p_component)
 {
-	Component* r_component;
+	Component* r_component = nullptr;
 	for (auto l_iter = m_components.begin(); l_iter != m_components.end(); l_iter++)
 	{
 		if ((*l_iter)->getComponentType() == p_component)
 		{
+			r_component = ( *l_iter );
 			break;
 		}
 	}

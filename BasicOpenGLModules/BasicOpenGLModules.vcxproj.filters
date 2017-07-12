@@ -45,12 +45,6 @@
     <ClInclude Include="src\util\Vector3D.h">
       <Filter>Headerdateien\util</Filter>
     </ClInclude>
-    <ClInclude Include="src\render\IMeshRender.h">
-      <Filter>Headerdateien\render</Filter>
-    </ClInclude>
-    <ClInclude Include="src\render\GLClassicMeshRender.h">
-      <Filter>Headerdateien\render</Filter>
-    </ClInclude>
     <ClInclude Include="src\render\Mesh.h">
       <Filter>Headerdateien\render</Filter>
     </ClInclude>
@@ -84,10 +78,19 @@
     <ClInclude Include="src\component\TranslationSystem.h">
       <Filter>Headerdateien\component</Filter>
     </ClInclude>
-    <ClInclude Include="src\component\MessageDispatcher.h">
+    <ClInclude Include="src\component\Event.h">
       <Filter>Headerdateien\component</Filter>
     </ClInclude>
-    <ClInclude Include="src\component\Event.h">
+    <ClInclude Include="src\render\RenderComponent.h">
+      <Filter>Headerdateien\render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\render\RenderSystem.h">
+      <Filter>Headerdateien\render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\component\SystemCollection.h">
+      <Filter>Headerdateien\component</Filter>
+    </ClInclude>
+    <ClInclude Include="src\component\EventDispatcher.h">
       <Filter>Headerdateien\component</Filter>
     </ClInclude>
   </ItemGroup>
@@ -97,9 +100,6 @@
     </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="src\render\GLClassicMeshRender.cpp">
-      <Filter>Quelldateien\render</Filter>
     </ClCompile>
     <ClCompile Include="src\render\Mesh.cpp">
       <Filter>Quelldateien\render</Filter>
@@ -131,10 +131,19 @@
     <ClCompile Include="src\component\TranslationSystem.cpp">
       <Filter>Quelldateien\component</Filter>
     </ClCompile>
-    <ClCompile Include="src\component\MessageDispatcher.cpp">
+    <ClCompile Include="src\component\Event.cpp">
       <Filter>Quelldateien\component</Filter>
     </ClCompile>
-    <ClCompile Include="src\component\Event.cpp">
+    <ClCompile Include="src\render\RenderComponent.cpp">
+      <Filter>Quelldateien\render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render\RenderSystem.cpp">
+      <Filter>Quelldateien\render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\component\SystemCollection.cpp">
+      <Filter>Quelldateien\component</Filter>
+    </ClCompile>
+    <ClCompile Include="src\component\EventDispatcher.cpp">
       <Filter>Quelldateien\component</Filter>
     </ClCompile>
   </ItemGroup>

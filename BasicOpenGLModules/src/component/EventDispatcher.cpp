@@ -1,28 +1,28 @@
 
 // Internal include
-#include "MessageDispatcher.h"
+#include "EventDispatcher.h"
 #include "System.h"
 #include "Event.h"
 using namespace component;
 
 
-MessageDispatcher& MessageDispatcher::Instance()
+EventDispatcher& EventDispatcher::Instance()
 {
-	static MessageDispatcher r_instance;
+	static EventDispatcher r_instance;
 	return r_instance;
 }
 
-MessageDispatcher::MessageDispatcher()
+EventDispatcher::EventDispatcher()
 {
 
 }
 
-void MessageDispatcher::addEvent(Event* p_event)
+void EventDispatcher::addEvent(Event* p_event)
 {
 	m_eventStack.push_back(p_event);
 }
 
-void MessageDispatcher::addSystem(EnEventType p_eventType, System* p_system)
+void EventDispatcher::addSystem(EnEventType p_eventType, System* p_system)
 {
 	if (p_system != nullptr)
 	{
@@ -30,7 +30,7 @@ void MessageDispatcher::addSystem(EnEventType p_eventType, System* p_system)
 	}
 }
 
-void MessageDispatcher::update()
+void EventDispatcher::update()
 {
 	for (auto l_stackIter = m_eventStack.begin(); l_stackIter != m_eventStack.end(); l_stackIter++)
 	{

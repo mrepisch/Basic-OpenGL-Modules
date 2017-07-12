@@ -58,7 +58,5 @@ namespace component
 		// The Sytem type definition
 		EnSystem m_systemType;
 
-		// The entity collection
-		EntityCollection* m_entityCollection;
 	};
 }

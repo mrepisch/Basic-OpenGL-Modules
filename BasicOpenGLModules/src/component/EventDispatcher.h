@@ -9,10 +9,10 @@
 
 namespace component
 {
-	class MessageDispatcher
+	class EventDispatcher
 	{
 	public:
-		static MessageDispatcher& Instance();
+		static EventDispatcher& Instance();
 
 		void addEvent(Event* p_event);
 
@@ -21,7 +21,7 @@ namespace component
 		void update();
 
 	private:
-		MessageDispatcher();
+		EventDispatcher();
 
 		std::map<EnEventType, System*>m_systemMap;
 		std::map<EnEventType, System*>::iterator m_systemMapIterator;

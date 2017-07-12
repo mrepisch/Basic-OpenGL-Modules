@@ -1,16 +1,20 @@
 
-
-#include "glew\GL\glew.h"
+// External includes
 #include <iostream>
+#include <glew\GL\glew.h>
+
+// Internal includes
 #include "Display.h"
-#include "util\PLYParser.h"
+#include "component\EventDispatcher.h"
+#include "component\SystemCollection.h"
+#include "component\EntityCollection.h"
 
 using namespace util;
-using namespace render;
+using namespace component;
 
 Display::Display(int p_with, int p_height, const std::string& p_title)
 {
-
+	
 	m_height = p_height;
 	m_width = p_with;
 	m_windowTitle = p_title;
@@ -41,48 +45,82 @@ Display::Display(int p_with, int p_height, const std::string& p_title)
 		std::cout << "PROBLEM WITH GLEW INIT" << std::endl;
 	}
 	m_isClosed = false;
-	PLYParser a_parser;
-	Mesh* a_mesh = a_parser.readMeshFromFile("C:\\Users\\episch\\Documents\\test.ply");
-	a_mesh->setTexture(new Texture("C:\\Users\\episch\\Documents\\OpenGLProject\\test.bmp"));
-	m_renderer = new GLClassicMeshRender(a_mesh);
+	
 	m_camera = new Camera(m_width, m_height, 100.0f);
+	
 	
 }
 
 
 Display::~Display()
 {
-	delete m_renderer;
 	SDL_GL_DeleteContext(m_glContext);
 	SDL_DestroyWindow(m_window);
 	SDL_Quit();
 }
 
 
+Uint32 Display::getTimeLeft()
+{
+	Uint32 l_now;
+	l_now = SDL_GetTicks();
+	if (m_nextTime <= l_now)
+	{
+		return 0;
+	}
+	return m_nextTime - l_now;
+}
+
+
 void Display::update()
 {
-
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
-	m_camera->update();
-
-	m_renderer->render();
-
-	SDL_GL_SwapWindow(m_window);
-	//m_camera->move(util::VectorF(0.001f, 0.0f, 0.0f));
-	SDL_Event l_event;
-	while (SDL_PollEvent(&l_event))
+	m_nextTime = SDL_GetTicks() + m_fps;
+	while (!m_isClosed)
 	{
-		if( l_event.type == SDL_QUIT)
+		glClearColor( 0.0f, 0.0f, 0.0f, 1.0f );
+		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+
+		m_camera->update();
+		SystemCollection::Instance().update();
+
+		SDL_GL_SwapWindow( m_window );
+		SDL_Event l_event;
+		SDL_PollEvent( &l_event );
+		if (l_event.type == SDL_QUIT)
 		{
 			m_isClosed = true;
-		}
+		}		
+		SDL_Delay( getTimeLeft() );
+		m_nextTime += m_fps;
 	}
+}
+
+
+void Display::setFPS( int p_fps )
+{
+	m_fps = p_fps;
 }
 
 
 bool Display::getIsClosed()
 {
 	return m_isClosed;
+}
+
+
+void Display::addSystem( component::System* p_system, component::EnEventType p_eventType )
+{
+	if (p_system != nullptr)
+	{
+		EventDispatcher::Instance().addSystem( p_eventType, p_system );
+		SystemCollection::Instance().addSystem( p_system );
+	}
+}
+
+void Display::addEntity( Entity* p_entity )
+{
+	if (p_entity != nullptr)
+	{
+		EntityCollection::Instance().addEntity( p_entity );
+	}
 }
