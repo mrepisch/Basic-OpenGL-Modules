@@ -22,22 +22,23 @@ void EventDispatcher::addEvent(Event* p_event)
 	m_eventStack.push_back(p_event);
 }
 
-void EventDispatcher::addSystem(EnEventType p_eventType, System* p_system)
+void EventDispatcher::addSystem(System* p_system)
 {
 	if (p_system != nullptr)
 	{
-		m_systemMap.insert(std::make_pair(p_eventType, p_system));
+		m_systems.push_back( p_system);
 	}
 }
 
 void EventDispatcher::update()
 {
-	for (auto l_stackIter = m_eventStack.begin(); l_stackIter != m_eventStack.end(); l_stackIter++)
+	for (int i = 0; i < m_eventStack.size(); ++i)
 	{
-		EnEventType l_eventType = (*l_stackIter)->getEventType();
-		if (m_systemMap.find(l_eventType) != m_systemMap.end())
+		for (auto l_systemIter = m_systems.begin(); l_systemIter != m_systems.end(); l_systemIter++)
 		{
-			m_systemMap[l_eventType]->receiveMessage((*l_stackIter));
+			( *l_systemIter )->receiveEvent( m_eventStack[i] );
 		}
 	}
+	m_eventStack.clear();
+	
 }

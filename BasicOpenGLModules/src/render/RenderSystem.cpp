@@ -43,7 +43,6 @@ void RenderSystem::update()
 				glBindTexture( GL_TEXTURE_2D, a_renderComponent->m_mesh->getTextureID() );
 				glBegin( GL_TRIANGLES );
 				auto l_meshes = a_renderComponent->m_mesh->getFaces();
-
 				for (auto l_iter = l_meshes.cbegin(); l_iter != l_meshes.cend(); ++l_iter)
 				{
 					glColor3f( 1.0f, 1.0f, 1.0f );
@@ -60,7 +59,4 @@ void RenderSystem::update()
 	}
 }
 
-void RenderSystem::receiveMessage( Event* p_event )
-{
-
-}
+void RenderSystem::receiveEvent( component::Event* p_event ) {}

@@ -45,10 +45,6 @@ Display::Display(int p_with, int p_height, const std::string& p_title)
 		std::cout << "PROBLEM WITH GLEW INIT" << std::endl;
 	}
 	m_isClosed = false;
-	
-	m_camera = new Camera(m_width, m_height, 100.0f);
-	
-	
 }
 
 
@@ -60,38 +56,21 @@ Display::~Display()
 }
 
 
-Uint32 Display::getTimeLeft()
-{
-	Uint32 l_now;
-	l_now = SDL_GetTicks();
-	if (m_nextTime <= l_now)
-	{
-		return 0;
-	}
-	return m_nextTime - l_now;
-}
-
 
 void Display::update()
 {
-	m_nextTime = SDL_GetTicks() + m_fps;
+
 	while (!m_isClosed)
 	{
+		SDL_GL_SetSwapInterval( 1 );
 		glClearColor( 0.0f, 0.0f, 0.0f, 1.0f );
 		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
-		m_camera->update();
+		EventDispatcher::Instance().update();
 		SystemCollection::Instance().update();
 
 		SDL_GL_SwapWindow( m_window );
-		SDL_Event l_event;
-		SDL_PollEvent( &l_event );
-		if (l_event.type == SDL_QUIT)
-		{
-			m_isClosed = true;
-		}		
-		SDL_Delay( getTimeLeft() );
-		m_nextTime += m_fps;
+		
 	}
 }
 
@@ -108,11 +87,11 @@ bool Display::getIsClosed()
 }
 
 
-void Display::addSystem( component::System* p_system, component::EnEventType p_eventType )
+void Display::addSystem( component::System* p_system)
 {
 	if (p_system != nullptr)
 	{
-		EventDispatcher::Instance().addSystem( p_eventType, p_system );
+		EventDispatcher::Instance().addSystem( p_system );
 		SystemCollection::Instance().addSystem( p_system );
 	}
 }
@@ -123,4 +102,10 @@ void Display::addEntity( Entity* p_entity )
 	{
 		EntityCollection::Instance().addEntity( p_entity );
 	}
+}
+
+
+void Display::closeWindow()
+{
+	m_isClosed = true;
 }

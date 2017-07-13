@@ -2,8 +2,9 @@
 
 // External includes
 #include <map>
-#include <list>
+#include <vector>
 #include "System.h"
+
 // forward decleration
 
 
@@ -16,16 +17,14 @@ namespace component
 
 		void addEvent(Event* p_event);
 
-		void addSystem(EnEventType p_eventType, System* p_system);
+		void addSystem(System* p_system);
 
 		void update();
 
 	private:
 		EventDispatcher();
+		std::vector<System*>m_systems;
 
-		std::map<EnEventType, System*>m_systemMap;
-		std::map<EnEventType, System*>::iterator m_systemMapIterator;
-
-		std::list<Event*>m_eventStack;
+		std::vector<Event*>m_eventStack;
 	};
 }

@@ -15,7 +15,14 @@ TranslationSystem::TranslationSystem() :System(e_translationSystem)
 
 }
 
+
 void TranslationSystem::update()
 {
 	
+}
+
+
+void TranslationSystem::receiveEvent( Event* p_event )
+{
+
 }

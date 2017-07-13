@@ -30,6 +30,9 @@
     <ClInclude Include="src\component\System.h" />
     <ClInclude Include="src\component\TranslationSystem.h" />
     <ClInclude Include="src\Display.h" />
+    <ClInclude Include="src\game\CameraEvent.h" />
+    <ClInclude Include="src\game\CameraSystem.h" />
+    <ClInclude Include="src\game\InputSystem.h" />
     <ClInclude Include="src\render\Mesh.h" />
     <ClInclude Include="src\render\RenderComponent.h" />
     <ClInclude Include="src\render\RenderSystem.h" />
@@ -49,6 +52,9 @@
     <ClCompile Include="src\component\System.cpp" />
     <ClCompile Include="src\component\TranslationSystem.cpp" />
     <ClCompile Include="src\Display.cpp" />
+    <ClCompile Include="src\game\CameraEvent.cpp" />
+    <ClCompile Include="src\game\CameraSystem.cpp" />
+    <ClCompile Include="src\game\InputSystem.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\render\Mesh.cpp" />
     <ClCompile Include="src\render\RenderComponent.cpp" />

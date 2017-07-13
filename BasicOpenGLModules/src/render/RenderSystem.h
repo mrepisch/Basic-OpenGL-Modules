@@ -30,6 +30,6 @@ namespace render
 		 * Function to receive and process Events form the event system
 		 * @author sascha blank
 		 */
-		void receiveMessage( component::Event* p_event );
+		void receiveEvent( component::Event* p_event );
 	};
 }

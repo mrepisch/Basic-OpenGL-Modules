@@ -5,7 +5,7 @@ using namespace util;
 Camera::Camera(int p_screenWidth, int p_screenHight, float p_depth)
 {
 	m_position.set(0.0f, 0.0f, 0.0f);
-	m_rotation.set(0.0f, -90.0f, 0.0f);
+	m_rotation.set(0.0f, 0.0f, 0.0f);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glFrustum(-1.0, 1.0f, -1.0, 1.0, 0.1, 1000.0);

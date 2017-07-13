@@ -6,7 +6,8 @@ namespace component
 	{
 		e_undefinedEvent = 0,
 		e_translationEvent,
-		e_renderEvent
+		e_renderEvent,
+		e_cameraEvent
 	};
 
 	class Event

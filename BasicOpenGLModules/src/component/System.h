@@ -11,7 +11,8 @@ namespace component
 		e_undefinedSystem = 0,
 		e_renderSystem,
 		e_cameraSystem,
-		e_translationSystem
+		e_translationSystem,
+		e_inputSystem
 	};
 
 	/**
@@ -51,7 +52,7 @@ namespace component
 		 * @author sascha blank
 		 * @param Event*, pointer on the event object
 		 */
-		virtual void receiveMessage(Event* p_event) = 0;
+		virtual void receiveEvent(Event* p_event) = 0;
 
 	protected:
 

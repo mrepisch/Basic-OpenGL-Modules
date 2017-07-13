@@ -93,6 +93,15 @@
     <ClInclude Include="src\component\EventDispatcher.h">
       <Filter>Headerdateien\component</Filter>
     </ClInclude>
+    <ClInclude Include="src\game\InputSystem.h">
+      <Filter>Headerdateien\game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\CameraSystem.h">
+      <Filter>Headerdateien\game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\CameraEvent.h">
+      <Filter>Headerdateien\game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Display.cpp">
@@ -145,6 +154,15 @@
     </ClCompile>
     <ClCompile Include="src\component\EventDispatcher.cpp">
       <Filter>Quelldateien\component</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\InputSystem.cpp">
+      <Filter>Quelldateien\game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\CameraSystem.cpp">
+      <Filter>Quelldateien\game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\CameraEvent.cpp">
+      <Filter>Quelldateien\game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

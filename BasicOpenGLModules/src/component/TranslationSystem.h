@@ -2,6 +2,7 @@
 
 // Internal includes
 #include "System.h"
+#include "System.h"
 
 namespace component
 {
@@ -12,6 +13,8 @@ namespace component
 		TranslationSystem();
 
 		void update();
+
+		void receiveEvent( Event* p_event );
 	private:
 
 	};

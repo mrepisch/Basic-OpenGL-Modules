@@ -23,13 +23,14 @@ public:
 
 	void setFPS( int p_fps );
 
-	void addSystem( component::System* p_system, component::EnEventType p_eventType );
+	void addSystem( component::System* p_system);
 
 	void addEntity( component::Entity* p_entity );
 
+	void closeWindow();
+
 private:
 	
-	Uint32 getTimeLeft( void );
 
 	std::string m_windowTitle;
 	
@@ -43,9 +44,8 @@ private:
 
 	SDL_GLContext m_glContext;
 
-	Camera* m_camera;
-
-	Uint32 m_nextTime;
+	int m_nextTime;
+	
 
 	int m_fps;
 };
