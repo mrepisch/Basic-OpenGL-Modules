@@ -29,8 +29,6 @@ Display::Display(int p_with, int p_height, const std::string& p_title)
 	m_glContext = SDL_GL_CreateContext(m_window);
 
 	glEnable(GL_TEXTURE_2D);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
 
 	glShadeModel(GL_SMOOTH);
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);

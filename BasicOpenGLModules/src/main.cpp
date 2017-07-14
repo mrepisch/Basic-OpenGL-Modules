@@ -9,6 +9,8 @@
 #include "game\InputSystem.h"
 #include "game\CameraSystem.h"
 
+
+
 using namespace render;
 using namespace component;
 using namespace util;
@@ -35,7 +37,7 @@ int main(int argc, char **argv)
 	a_mesh->setTexture( new Texture( "C:\\Users\\episch\\Documents\\OpenGLProject\\test.bmp" ) );
 	RenderComponent* a_renderComponent = new RenderComponent(a_mesh);
 	TranslationComponent* a_translation = new TranslationComponent();
-	a_translation->m_position.set( 0.0f, 0.0f,-4.0f );
+	a_translation->m_position.set( 0.0f, 0.0f,0.0f );
 	a_translation->m_rotation.set( 0.0f,0.0f,0.0f );
 	l_entity->addComponent( a_translation );
 	l_entity->addComponent( a_renderComponent );

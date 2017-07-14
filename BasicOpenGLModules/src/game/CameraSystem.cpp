@@ -8,7 +8,7 @@ using namespace game;
 
 CameraSystem::CameraSystem() : System( e_cameraSystem )
 {
-	m_camera = new Camera( 800, 600, 150.0f );
+	m_camera = new Camera( 800, 600, 100.0f );
 }
 
 
@@ -32,6 +32,7 @@ void CameraSystem::receiveEvent( Event* p_event )
 		if (l_cameraEvent != nullptr)
 		{
 			m_camera->move( l_cameraEvent->getOffset() );
+			m_camera->rotate( l_cameraEvent->getRotation() );
 		}
 	}
 }

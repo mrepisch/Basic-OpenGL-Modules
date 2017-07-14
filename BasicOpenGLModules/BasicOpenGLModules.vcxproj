@@ -32,6 +32,7 @@
     <ClInclude Include="src\Display.h" />
     <ClInclude Include="src\game\CameraEvent.h" />
     <ClInclude Include="src\game\CameraSystem.h" />
+    <ClInclude Include="src\game\KeyInput.h" />
     <ClInclude Include="src\game\InputSystem.h" />
     <ClInclude Include="src\render\Mesh.h" />
     <ClInclude Include="src\render\RenderComponent.h" />
@@ -54,6 +55,7 @@
     <ClCompile Include="src\Display.cpp" />
     <ClCompile Include="src\game\CameraEvent.cpp" />
     <ClCompile Include="src\game\CameraSystem.cpp" />
+    <ClCompile Include="src\game\KeyInput.cpp" />
     <ClCompile Include="src\game\InputSystem.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\render\Mesh.cpp" />

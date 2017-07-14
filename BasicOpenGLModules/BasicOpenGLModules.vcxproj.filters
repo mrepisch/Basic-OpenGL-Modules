@@ -102,6 +102,9 @@
     <ClInclude Include="src\game\CameraEvent.h">
       <Filter>Headerdateien\game</Filter>
     </ClInclude>
+    <ClInclude Include="src\game\KeyInput.h">
+      <Filter>Headerdateien\game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Display.cpp">
@@ -162,6 +165,9 @@
       <Filter>Quelldateien\game</Filter>
     </ClCompile>
     <ClCompile Include="src\game\CameraEvent.cpp">
+      <Filter>Quelldateien\game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\KeyInput.cpp">
       <Filter>Quelldateien\game</Filter>
     </ClCompile>
   </ItemGroup>
