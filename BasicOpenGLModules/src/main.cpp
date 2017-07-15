@@ -10,7 +10,6 @@
 #include "game\CameraSystem.h"
 
 
-
 using namespace render;
 using namespace component;
 using namespace util;
@@ -32,7 +31,7 @@ int main(int argc, char **argv)
 
 	PLYParser a_parser;
 	Entity* l_entity = new Entity("testobject");
-	
+
 	Mesh* a_mesh = a_parser.readMeshFromFile( "C:\\Users\\episch\\Documents\\test.ply" );
 	a_mesh->setTexture( new Texture( "C:\\Users\\episch\\Documents\\OpenGLProject\\test.bmp" ) );
 	RenderComponent* a_renderComponent = new RenderComponent(a_mesh);

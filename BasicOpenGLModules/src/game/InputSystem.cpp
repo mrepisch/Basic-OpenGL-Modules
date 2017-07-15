@@ -49,7 +49,7 @@ void InputSystem::update()
 				case SDLK_e:
 				{
 					CameraEvent* l_cameraEvent = new CameraEvent();
-					l_cameraEvent->setRotation( VectorF( 0.0f, -0.5f, 0.0f ) );
+					l_cameraEvent->setRotation( VectorF( 0.0f, -2.0f, 0.0f ) );
 					EventDispatcher::Instance().addEvent( l_cameraEvent );
 					break;
 				}
@@ -63,7 +63,7 @@ void InputSystem::update()
 				case SDLK_q:
 				{
 					CameraEvent* l_cameraEvent = new CameraEvent();
-					l_cameraEvent->setRotation( VectorF( 0.0f, 0.5f, 0.0f ) );
+					l_cameraEvent->setRotation( VectorF( 0.0f, 2.0f, 0.0f ) );
 					EventDispatcher::Instance().addEvent( l_cameraEvent );
 					break;
 				}

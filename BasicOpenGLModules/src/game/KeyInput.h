@@ -3,9 +3,9 @@
 // External includes
 #include <SDL2\SDL.h>
 #include <vector>
-
 namespace game
 {
+	
 	/**
 	 * Base class for processing SDL Key Events.
 	 * In order to use this class you have to implement the processEvent function.
