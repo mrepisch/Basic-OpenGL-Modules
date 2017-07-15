@@ -6,16 +6,33 @@
 
 namespace component
 {
+	/**
+	 * This system handels all manipulation of a TranslationComponent.
+	 * That means the position, rotation and the scale of a Entity
+	 * @author sascha blank
+	 */
 	class TranslationSystem : public System
 	{
 	public:
 
-		TranslationSystem();
+		/**
+		 * Default constructor
+		 * @author sascha blank
+		 */
+		TranslationSystem( void );
 
+		/**
+		 * Update function which is called in every cycle in the mainloop
+		 * @author sascha blank
+		 */
 		void update();
 
+		/**
+		 * Function to receive events for processing it.
+		 * @author sascha blank
+		 * @param Event*, pointer on the event to process
+		 */
 		void receiveEvent( Event* p_event );
 	private:
-
 	};
 }

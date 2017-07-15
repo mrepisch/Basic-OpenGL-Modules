@@ -27,16 +27,13 @@ Display::Display(int p_with, int p_height, const std::string& p_title)
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	m_window = SDL_CreateWindow(m_windowTitle.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_width, m_height, SDL_WINDOW_OPENGL);
 	m_glContext = SDL_GL_CreateContext(m_window);
-
 	glEnable(GL_TEXTURE_2D);
-
 	glShadeModel(GL_SMOOTH);
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClearDepth(1.0f);                         // Depth Buffer Setup
 	glEnable(GL_DEPTH_TEST);                        // Enables Depth Testing
 	glDepthFunc(GL_LEQUAL);
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-
 	GLenum l_status = glewInit();
 	if (l_status != GLEW_OK)
 	{
@@ -54,20 +51,35 @@ Display::~Display()
 }
 
 
-
 void Display::update()
 {
 
 	while (!m_isClosed)
 	{
-		SDL_GL_SetSwapInterval( 1 );
+		/*SDL_GL_SetSwapInterval( 1 );
 		glClearColor( 0.0f, 0.0f, 0.0f, 1.0f );
 		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-
 		EventDispatcher::Instance().update();
 		SystemCollection::Instance().update();
+		SDL_GL_SwapWindow( m_window );*/
+		EventDispatcher::Instance().update();
+		glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
+		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
+		SystemCollection::Instance().update();
 		SDL_GL_SwapWindow( m_window );
+
+		//glUseProgram( theProgram );
+
+		//glBindBuffer( GL_ARRAY_BUFFER, positionBufferObject );
+		//glEnableVertexAttribArray( 0 );
+		//glVertexAttribPointer( 0, 4, GL_FLOAT, GL_FALSE, 0, 0 );
+
+		//glDrawArrays( GL_TRIANGLES, 0, 3 );
+
+		//glDisableVertexAttribArray( 0 );
+		//glUseProgram( 0 );
+
 		
 	}
 }
@@ -93,6 +105,7 @@ void Display::addSystem( component::System* p_system)
 		SystemCollection::Instance().addSystem( p_system );
 	}
 }
+
 
 void Display::addEntity( Entity* p_entity )
 {

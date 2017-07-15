@@ -49,11 +49,18 @@ namespace game
 		bool getIsKeyDown( void );
 
 		/**
+		 * Function which returns if a SDL_Key is in the keylist
+		 * @author sascha blank
+		 * @return bool, true if the key is in the list, false otherwise
+		 */
+		bool hasKeyEvent( int p_SDL_Key );
+
+		/**
 		 * Abstract Function since this is just a base class.
 		 * Implement this function to process the keyevents.
 		 * @author sascha blank
 		 */
-		virtual void processInput( void ) = 0;
+		virtual void processEvent( const SDL_Event& t_event ) = 0;
 
 	protected:
 		// vector with the keys

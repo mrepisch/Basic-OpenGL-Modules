@@ -8,6 +8,7 @@
 #include "util\PLYParser.h"
 #include "game\InputSystem.h"
 #include "game\CameraSystem.h"
+#include "BasicKeyInput.h"
 
 
 using namespace render;
@@ -23,6 +24,9 @@ int main(int argc, char **argv)
 	InputSystem* l_inputSystem = new InputSystem(&l_mainWindow);
 	l_mainWindow.addSystem( l_inputSystem );
 
+	BasicKeyInput* l_keyInput = new BasicKeyInput();
+	l_inputSystem->addKeyEvent( l_keyInput );
+
 	CameraSystem* l_cameraSystem = new CameraSystem();
 	l_mainWindow.addSystem( l_cameraSystem );
 
@@ -33,11 +37,12 @@ int main(int argc, char **argv)
 	Entity* l_entity = new Entity("testobject");
 
 	Mesh* a_mesh = a_parser.readMeshFromFile( "C:\\Users\\episch\\Documents\\test.ply" );
-	a_mesh->setTexture( new Texture( "C:\\Users\\episch\\Documents\\OpenGLProject\\test.bmp" ) );
+	//a_mesh->setTexture( new Texture( "C:\\Users\\episch\\Documents\\OpenGLProject\\test.bmp" ) );
+	a_mesh->generateBuffer();
 	RenderComponent* a_renderComponent = new RenderComponent(a_mesh);
 	TranslationComponent* a_translation = new TranslationComponent();
 	a_translation->m_position.set( 0.0f, 0.0f,0.0f );
-	a_translation->m_rotation.set( 0.0f,0.0f,0.0f );
+	//a_translation->m_rotation.set( 0.0f,0.0f,0.0f );
 	l_entity->addComponent( a_translation );
 	l_entity->addComponent( a_renderComponent );
 	l_mainWindow.addEntity( l_entity );

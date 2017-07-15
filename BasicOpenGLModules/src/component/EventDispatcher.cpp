@@ -12,9 +12,15 @@ EventDispatcher& EventDispatcher::Instance()
 	return r_instance;
 }
 
-EventDispatcher::EventDispatcher()
+EventDispatcher::EventDispatcher( void)
 {
+	// empty body
+}
 
+
+EventDispatcher::~EventDispatcher( void )
+{
+	m_eventStack.clear();
 }
 
 void EventDispatcher::addEvent(Event* p_event)

@@ -13,7 +13,7 @@ CameraEvent::CameraEvent() : Event( e_cameraEvent)
 
 CameraEvent::~CameraEvent()
 {
-
+	
 }
 
 

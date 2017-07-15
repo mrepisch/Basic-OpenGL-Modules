@@ -10,7 +10,7 @@
 #include "EntityCollection.h"
 using namespace component;
 
-TranslationSystem::TranslationSystem() :System(e_translationSystem)
+TranslationSystem::TranslationSystem() : System(e_translationSystem)
 {
 
 }

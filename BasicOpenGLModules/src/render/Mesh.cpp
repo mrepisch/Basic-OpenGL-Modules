@@ -6,11 +6,13 @@ using namespace render;
 Mesh::Mesh()
 {
 	m_texture = nullptr;
+	m_vertexBuffer = nullptr;
 }
 
 Mesh::Mesh(Texture* p_texture)
 {
 	m_texture = p_texture;
+	delete m_vertexBuffer;
 }
 
 Mesh::Mesh(const char* p_textureFilePath)
@@ -39,7 +41,7 @@ void Mesh::addFace(Face* p_face)
 
 
 
-const std::list<Face*>& Mesh::getFaces( void) const
+const std::vector<Face*>& Mesh::getFaces( void) const
 {
 	return m_faces;
 }
@@ -55,3 +57,62 @@ void Mesh::setTexture(Texture* p_texture)
 	m_texture = p_texture;
 }
 
+
+GLuint Mesh::getVertexBufferID( void )
+{
+	return m_bufferID;
+}
+
+
+void Mesh::generateBuffer( void )
+{
+	size_t l_vertexSize = m_faces.size() * 3 * 5 ; 
+	m_vertexBuffer = new float[ l_vertexSize ];
+	int l_faceCounter = 0;
+	for (int i = 0; i < l_vertexSize; i += 15) 
+	{
+		Vertex* l_vertex = &m_faces[ l_faceCounter ]->vertcies[ 0 ];
+		m_vertexBuffer[ i ] = l_vertex->position.getX();
+		m_vertexBuffer[ i + 1 ] = l_vertex->position.getY();
+		m_vertexBuffer[ i + 2 ] = l_vertex->position.getY();
+		m_vertexBuffer[ i + 3 ] = l_vertex->textureCords.getX();
+		m_vertexBuffer[ i + 4 ] = l_vertex->textureCords.getY();
+
+		l_vertex = &m_faces[ l_faceCounter ]->vertcies[ 1 ];
+		m_vertexBuffer[ i + 5 ] = l_vertex->position.getX();
+		m_vertexBuffer[ i + 6 ] = l_vertex->position.getY();
+		m_vertexBuffer[ i + 7 ] = l_vertex->position.getY();
+		m_vertexBuffer[ i + 8 ] = l_vertex->textureCords.getX();
+		m_vertexBuffer[ i + 9 ] = l_vertex->textureCords.getY();
+
+		l_vertex = &m_faces[ l_faceCounter ]->vertcies[ 2 ];
+		m_vertexBuffer[ i + 10 ] = l_vertex->position.getX();
+		m_vertexBuffer[ i + 11 ] = l_vertex->position.getY();
+		m_vertexBuffer[ i + 12 ] = l_vertex->position.getY();
+		m_vertexBuffer[ i + 13 ] = l_vertex->textureCords.getX();
+		m_vertexBuffer[ i + 14 ] = l_vertex->textureCords.getY();
+
+		++l_faceCounter;
+	}
+
+	for (int i = 0; i < l_vertexSize; ++i)
+	{
+		std::cout << m_vertexBuffer[ i ] << std::endl;
+	}
+	glGenBuffers( 1, &m_bufferID );
+	glBindBuffer( GL_ARRAY_BUFFER, m_bufferID );
+	glBufferData( GL_ARRAY_BUFFER, sizeof( float ) * l_vertexSize , m_vertexBuffer, GL_STATIC_DRAW );
+	glBindBuffer( GL_ARRAY_BUFFER, 0 );
+}
+
+
+size_t Mesh::getVertexCount( void )
+{
+	return m_faces.size() * 3;
+}
+
+
+bool Mesh::hasTexture( void )
+{
+	return ( m_texture != nullptr );
+}

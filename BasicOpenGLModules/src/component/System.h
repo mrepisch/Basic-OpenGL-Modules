@@ -56,8 +56,13 @@ namespace component
 
 	protected:
 
+		/**
+		 * Private copyconstructor
+		 * @author sascha blank
+		 */
+		System( const System& t_other ) {}
+
 		// The Sytem type definition
 		EnSystem m_systemType;
-
 	};
 }

@@ -22,7 +22,7 @@ InputSystem::InputSystem( Display* p_display ) : System( e_inputSystem )
 
 InputSystem::~InputSystem()
 {
-
+	m_keyInputs.clear();
 }
 
 
@@ -35,56 +35,24 @@ void InputSystem::update()
 		{
 			m_display->closeWindow();
 		}
-		else if (l_event.type == SDL_KEYDOWN)
+		for (int i = 0; i < m_keyInputs.size(); ++i)
 		{
-			switch (l_event.key.keysym.sym)
+			if (l_event.type == SDL_KEYDOWN && m_keyInputs[i]->getIsKeyDown())
 			{
-				case SDLK_w:
+				if (m_keyInputs[ i ]->hasKeyEvent( l_event.key.keysym.sym ))
 				{
-					CameraEvent* l_cameraEvent = new CameraEvent();
-					l_cameraEvent->setOffset( VectorF( 0.0f, 0.0f, 0.5f ) );
-					EventDispatcher::Instance().addEvent( l_cameraEvent );
-					break;
+					m_keyInputs[ i ]->processEvent( l_event );
 				}
-				case SDLK_e:
+			}
+			else if (l_event.type == SDL_KEYUP && !m_keyInputs[ i ]->getIsKeyDown())
+			{
+				if (m_keyInputs[ i ]->hasKeyEvent( l_event.key.keysym.sym ))
 				{
-					CameraEvent* l_cameraEvent = new CameraEvent();
-					l_cameraEvent->setRotation( VectorF( 0.0f, -2.0f, 0.0f ) );
-					EventDispatcher::Instance().addEvent( l_cameraEvent );
-					break;
+					m_keyInputs[ i ]->processEvent( l_event );
 				}
-				case SDLK_s:
-				{
-					CameraEvent* l_cameraEvent = new CameraEvent();
-					l_cameraEvent->setOffset( VectorF( 0.0f, 0.0f, -0.5f ) );
-					EventDispatcher::Instance().addEvent( l_cameraEvent );
-					break;
-				}
-				case SDLK_q:
-				{
-					CameraEvent* l_cameraEvent = new CameraEvent();
-					l_cameraEvent->setRotation( VectorF( 0.0f, 2.0f, 0.0f ) );
-					EventDispatcher::Instance().addEvent( l_cameraEvent );
-					break;
-				}
-				case SDLK_a:
-				{
-					CameraEvent* l_cameraEvent = new CameraEvent();
-					l_cameraEvent->setOffset( VectorF( -0.5f, 0.0f, 0.0f ) );
-					EventDispatcher::Instance().addEvent( l_cameraEvent );
-					break;
-				}
-				case SDLK_d:
-				{
-					CameraEvent* l_cameraEvent = new CameraEvent();
-					l_cameraEvent->setOffset( VectorF( 0.5f, 0.0f, 0.0f ) );
-					EventDispatcher::Instance().addEvent( l_cameraEvent );
-					break;
-				}
-				default:
-					break;
 			}
 		}
+		
 	}
 }
 
@@ -92,4 +60,13 @@ void InputSystem::update()
 void InputSystem::receiveEvent( Event* p_event )
 {
 
+}
+
+
+void InputSystem::addKeyEvent( KeyInput* p_keyInput )
+{
+	if (p_keyInput != nullptr)
+	{
+		m_keyInputs.push_back( p_keyInput );
+	}
 }

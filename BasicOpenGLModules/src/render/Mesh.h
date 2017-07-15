@@ -1,7 +1,7 @@
 #pragma once
 
 // External includes
-#include <list>
+#include <vector>
 
 // Internal includes
 #include "util\Vector3D.h"
@@ -131,7 +131,7 @@ namespace render {
 		 * @author sascha Blank
 		 * @return const std::list<Face*>&, list with all faces of the mesh
 		 */
-		const std::list<Face*>& getFaces(void) const;
+		const std::vector<Face*>& getFaces(void) const;
 
 		/**
 		 * Getter on the Texture pointer.
@@ -140,16 +140,28 @@ namespace render {
 		 */
 		GLuint getTextureID(void);
 
+		void generateBuffer( void );
+
 		void setTexture(Texture* p_texture);
+
+		GLuint getVertexBufferID( void );
+
+		size_t getVertexCount( void );
+
+		bool hasTexture( void );
 
 
 	private:
 
 		//List with all faces of the mesh
-		std::list<Face*>m_faces;
+		std::vector<Face*>m_faces;
 
 		// Texture to use
 		Texture* m_texture;
+
+		float* m_vertexBuffer;
+
+		GLuint m_bufferID;
 
 	};
 
