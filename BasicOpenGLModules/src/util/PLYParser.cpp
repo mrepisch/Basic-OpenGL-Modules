@@ -20,7 +20,6 @@ Mesh* PLYParser::readMeshFromFile(const std::string& p_filename)
 	int l_faceReadCounter = 0;
 	Mesh* r_mesh = new Mesh();
 
-	Vertex* l_vertecis = nullptr;
 	while (std::getline(l_infile, l_line))
 	{
 		if (l_line.find("element vertex ") != -1)
@@ -36,17 +35,18 @@ Mesh* PLYParser::readMeshFromFile(const std::string& p_filename)
 		 if (l_line.compare("end_header") == 0)
 		{
 			l_readVertecis = true;
-			l_vertecis = new Vertex[l_vertexCount];
 		}
 		else if (l_readVertecis && l_vertecisReadCounter < l_vertexCount)
 		{
 			StringVec l_split = Util::SplitWithWiteSpace(l_line);
-			l_vertecis[l_vertecisReadCounter] = *(new Vertex());
-			l_vertecis[l_vertecisReadCounter].position.set(std::stof(l_split[0].c_str()), std::stof(l_split[1].c_str()), std::stof(l_split[2].c_str()));
+			Vertex* l_vertex = new Vertex();
+			l_vertex->id = l_vertecisReadCounter;
+			l_vertex->position.set(std::stof(l_split[0].c_str()), std::stof(l_split[1].c_str()), std::stof(l_split[2].c_str()));
 			if (l_split.size() >= 7)
 			{
-				l_vertecis[l_vertecisReadCounter].textureCords.set(std::stof(l_split[6].c_str()), std::stof(l_split[7].c_str()), 0.0f);
+				l_vertex->textureCords.set(std::stof(l_split[6].c_str()), std::stof(l_split[7].c_str()), 0.0f);
 			}
+			r_mesh->addVertex( l_vertex );
 			++l_vertecisReadCounter;
 		}
 		else if (l_readVertecis && l_vertecisReadCounter >= l_vertexCount)
@@ -56,16 +56,14 @@ Mesh* PLYParser::readMeshFromFile(const std::string& p_filename)
 		}
 	    if (l_readFaces && l_faceReadCounter < l_facesCount)
 		{
-			if (l_vertecis != nullptr)
-			{
-				Face* l_face = new Face();
-				StringVec l_split = Util::SplitWithWiteSpace(l_line);
-				l_face->vertcies[0] = l_vertecis[std::atoi(l_split[1].c_str())];
-				l_face->vertcies[1] = l_vertecis[std::atoi(l_split[2].c_str())];
-				l_face->vertcies[2] = l_vertecis[std::atoi(l_split[3].c_str())];
-				r_mesh->addFace(l_face);
-				++l_faceReadCounter;
-			}
+			Face* l_face = new Face();
+			StringVec l_split = Util::SplitWithWiteSpace(l_line);
+			l_face->vertcies[0] = std::atoi(l_split[1].c_str());
+			l_face->vertcies[1] = std::atoi(l_split[2].c_str());
+			l_face->vertcies[2] = std::atoi(l_split[3].c_str());
+			r_mesh->addFace(l_face);
+			++l_faceReadCounter;
+			
 		}
 	}
 	return r_mesh;

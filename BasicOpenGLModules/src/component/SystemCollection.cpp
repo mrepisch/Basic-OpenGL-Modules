@@ -12,10 +12,6 @@ SystemCollection& SystemCollection::Instance()
 
 SystemCollection::~SystemCollection()
 {
-	for (int i = 0; i < m_systems.size(); ++i)
-	{
-		delete m_systems[ i ];
-	}
 	m_systems.clear();
 }
 

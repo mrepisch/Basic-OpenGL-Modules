@@ -54,9 +54,6 @@
     <ClInclude Include="src\util\Util.h">
       <Filter>Headerdateien\util</Filter>
     </ClInclude>
-    <ClInclude Include="src\Camera.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="src\render\Texture.h">
       <Filter>Headerdateien\render</Filter>
     </ClInclude>
@@ -108,6 +105,9 @@
     <ClInclude Include="src\BasicKeyInput.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\game\CameraComponent.h">
+      <Filter>Headerdateien\game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Display.cpp">
@@ -124,9 +124,6 @@
     </ClCompile>
     <ClCompile Include="src\util\Util.cpp">
       <Filter>Quelldateien\util</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Camera.cpp">
-      <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\render\Texture.cpp">
       <Filter>Quelldateien\render</Filter>
@@ -175,6 +172,9 @@
     </ClCompile>
     <ClCompile Include="src\BasicKeyInput.cpp">
       <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\CameraComponent.cpp">
+      <Filter>Quelldateien\game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

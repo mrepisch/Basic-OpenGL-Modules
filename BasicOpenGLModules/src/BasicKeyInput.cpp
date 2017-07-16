@@ -33,7 +33,7 @@ void BasicKeyInput::processEvent( const SDL_Event& t_event )
 	case SDLK_w:
 	{
 		CameraEvent* l_cameraEvent = new CameraEvent();
-		l_cameraEvent->setOffset( VectorF( 0.0f, 0.0f, 0.5f ) );
+		l_cameraEvent->setOffset( VectorF( 0.0f, 0.0f, -0.5f ) );
 		EventDispatcher::Instance().addEvent( l_cameraEvent );
 		break;
 	}
@@ -47,7 +47,7 @@ void BasicKeyInput::processEvent( const SDL_Event& t_event )
 	case SDLK_s:
 	{
 		CameraEvent* l_cameraEvent = new CameraEvent();
-		l_cameraEvent->setOffset( VectorF( 0.0f, 0.0f, -0.5f ) );
+		l_cameraEvent->setOffset( VectorF( 0.0f, 0.0f, 0.5f ) );
 		EventDispatcher::Instance().addEvent( l_cameraEvent );
 		break;
 	}
@@ -61,14 +61,14 @@ void BasicKeyInput::processEvent( const SDL_Event& t_event )
 	case SDLK_a:
 	{
 		CameraEvent* l_cameraEvent = new CameraEvent();
-		l_cameraEvent->setOffset( VectorF( -0.5f, 0.0f, 0.0f ) );
+		l_cameraEvent->setOffset( VectorF( 0.5f, 0.0f, 0.0f ) );
 		EventDispatcher::Instance().addEvent( l_cameraEvent );
 		break;
 	}
 	case SDLK_d:
 	{
 		CameraEvent* l_cameraEvent = new CameraEvent();
-		l_cameraEvent->setOffset( VectorF( 0.5f, 0.0f, 0.0f ) );
+		l_cameraEvent->setOffset( VectorF( -0.5f, 0.0f, 0.0f ) );
 		EventDispatcher::Instance().addEvent( l_cameraEvent );
 		break;
 	}

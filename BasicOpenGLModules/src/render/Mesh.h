@@ -21,6 +21,7 @@ namespace render {
 		util::VectorF position;
 		util::VectorF color;
 		util::VectorF textureCords;
+		int id;
 
 		Vertex()
 		{
@@ -44,6 +45,7 @@ namespace render {
 				position = t_other.position;
 				color = t_other.color;
 				textureCords = t_other.textureCords;
+				id = t_other.id;
 			}
 			return *this;
 		}
@@ -57,7 +59,7 @@ namespace render {
 	class Face
 	{
 	public:
-		Vertex vertcies[3];
+		int vertcies[3];
 
 		Face()
 		{
@@ -126,6 +128,8 @@ namespace render {
 		 */
 		void addFace(Face* p_face);
 
+		void addVertex( Vertex* p_vertex );
+
 		/**
 		 * Function to return all faces of the mesh
 		 * @author sascha Blank
@@ -140,11 +144,17 @@ namespace render {
 		 */
 		GLuint getTextureID(void);
 
+		
+		
 		void generateBuffer( void );
+
+
+
+
 
 		void setTexture(Texture* p_texture);
 
-		GLuint getVertexBufferID( void );
+		GLuint getVAO_ID( void );
 
 		size_t getVertexCount( void );
 
@@ -153,15 +163,23 @@ namespace render {
 
 	private:
 
-		//List with all faces of the mesh
+		std::vector<Vertex*>m_vertecis;
+
 		std::vector<Face*>m_faces;
+
 
 		// Texture to use
 		Texture* m_texture;
 
 		float* m_vertexBuffer;
 
-		GLuint m_bufferID;
+		int* m_indices;
+
+		GLuint m_indicesID;
+
+		GLuint m_vertexBufferID;
+
+		GLuint m_VAO;
 
 	};
 

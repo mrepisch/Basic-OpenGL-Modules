@@ -9,7 +9,7 @@
 #include "component\SystemCollection.h"
 #include "component\EntityCollection.h"
 
-using namespace util;
+
 using namespace component;
 
 Display::Display(int p_with, int p_height, const std::string& p_title)
@@ -56,31 +56,13 @@ void Display::update()
 
 	while (!m_isClosed)
 	{
-		/*SDL_GL_SetSwapInterval( 1 );
-		glClearColor( 0.0f, 0.0f, 0.0f, 1.0f );
-		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-		EventDispatcher::Instance().update();
-		SystemCollection::Instance().update();
-		SDL_GL_SwapWindow( m_window );*/
 		EventDispatcher::Instance().update();
 		glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
 		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
 		SystemCollection::Instance().update();
+
 		SDL_GL_SwapWindow( m_window );
-
-		//glUseProgram( theProgram );
-
-		//glBindBuffer( GL_ARRAY_BUFFER, positionBufferObject );
-		//glEnableVertexAttribArray( 0 );
-		//glVertexAttribPointer( 0, 4, GL_FLOAT, GL_FALSE, 0, 0 );
-
-		//glDrawArrays( GL_TRIANGLES, 0, 3 );
-
-		//glDisableVertexAttribArray( 0 );
-		//glUseProgram( 0 );
-
-		
 	}
 }
 

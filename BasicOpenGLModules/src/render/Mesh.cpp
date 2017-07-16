@@ -12,7 +12,8 @@ Mesh::Mesh()
 Mesh::Mesh(Texture* p_texture)
 {
 	m_texture = p_texture;
-	delete m_vertexBuffer;
+	m_vertexBuffer = nullptr;
+
 }
 
 Mesh::Mesh(const char* p_textureFilePath)
@@ -28,6 +29,12 @@ Mesh::~Mesh()
 		delete (*a_it);
 	}
 	m_faces.clear();
+	m_vertecis.clear();
+	glDeleteVertexArrays( 1, &m_VAO );
+	glDeleteBuffers( 1, &m_vertexBufferID );
+	glDeleteBuffers( 1, &m_indicesID );
+	delete m_vertexBuffer;
+	delete m_texture;
 }
 
 
@@ -58,51 +65,50 @@ void Mesh::setTexture(Texture* p_texture)
 }
 
 
-GLuint Mesh::getVertexBufferID( void )
+GLuint Mesh::getVAO_ID( void )
 {
-	return m_bufferID;
+	return m_VAO;
 }
 
 
 void Mesh::generateBuffer( void )
 {
-	size_t l_vertexSize = m_faces.size() * 3 * 5 ; 
-	m_vertexBuffer = new float[ l_vertexSize ];
-	int l_faceCounter = 0;
-	for (int i = 0; i < l_vertexSize; i += 15) 
+	
+	m_vertexBuffer = new float[ m_vertecis.size() * 3 ];
+	int l_vertexCounter = 0;
+	for (int i = 0; i < m_vertecis.size(); ++i)
 	{
-		Vertex* l_vertex = &m_faces[ l_faceCounter ]->vertcies[ 0 ];
-		m_vertexBuffer[ i ] = l_vertex->position.getX();
-		m_vertexBuffer[ i + 1 ] = l_vertex->position.getY();
-		m_vertexBuffer[ i + 2 ] = l_vertex->position.getY();
-		m_vertexBuffer[ i + 3 ] = l_vertex->textureCords.getX();
-		m_vertexBuffer[ i + 4 ] = l_vertex->textureCords.getY();
-
-		l_vertex = &m_faces[ l_faceCounter ]->vertcies[ 1 ];
-		m_vertexBuffer[ i + 5 ] = l_vertex->position.getX();
-		m_vertexBuffer[ i + 6 ] = l_vertex->position.getY();
-		m_vertexBuffer[ i + 7 ] = l_vertex->position.getY();
-		m_vertexBuffer[ i + 8 ] = l_vertex->textureCords.getX();
-		m_vertexBuffer[ i + 9 ] = l_vertex->textureCords.getY();
-
-		l_vertex = &m_faces[ l_faceCounter ]->vertcies[ 2 ];
-		m_vertexBuffer[ i + 10 ] = l_vertex->position.getX();
-		m_vertexBuffer[ i + 11 ] = l_vertex->position.getY();
-		m_vertexBuffer[ i + 12 ] = l_vertex->position.getY();
-		m_vertexBuffer[ i + 13 ] = l_vertex->textureCords.getX();
-		m_vertexBuffer[ i + 14 ] = l_vertex->textureCords.getY();
-
-		++l_faceCounter;
+		m_vertexBuffer[ l_vertexCounter ] = m_vertecis[ i ]->position.getX();
+		m_vertexBuffer[ l_vertexCounter + 1] = m_vertecis[ i ]->position.getY();
+		m_vertexBuffer[ l_vertexCounter + 2 ] = m_vertecis[ i ]->position.getZ();
+		l_vertexCounter += 3;
 	}
 
-	for (int i = 0; i < l_vertexSize; ++i)
+	m_indices = new int[ m_faces.size() * 3 ];
+	int l_indecisCounter = 0;
+	for (int i = 0; i < m_faces.size(); ++i)
 	{
-		std::cout << m_vertexBuffer[ i ] << std::endl;
+		m_indices[ l_indecisCounter ] = m_faces[ i ]->vertcies[ 0 ];
+		m_indices[ l_indecisCounter + 1 ] = m_faces[ i ]->vertcies[ 1 ];
+		m_indices[ l_indecisCounter + 2 ] = m_faces[ i ]->vertcies[ 2 ];
+		l_indecisCounter += 3;
 	}
-	glGenBuffers( 1, &m_bufferID );
-	glBindBuffer( GL_ARRAY_BUFFER, m_bufferID );
-	glBufferData( GL_ARRAY_BUFFER, sizeof( float ) * l_vertexSize , m_vertexBuffer, GL_STATIC_DRAW );
+	glGenVertexArrays( 1, &m_VAO );
+	glGenBuffers( 1, &m_vertexBufferID );
+	glGenBuffers( 1, &m_indicesID );
+	glBindVertexArray( m_VAO );
+	glBindBuffer( GL_ARRAY_BUFFER, m_vertexBufferID );
+	glBufferData( GL_ARRAY_BUFFER, sizeof( float ) * m_vertecis.size() * 3, m_vertexBuffer, GL_STATIC_DRAW );
+
+	glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, m_indicesID );
+	glBufferData( GL_ELEMENT_ARRAY_BUFFER, sizeof( int ) *m_faces.size() * 3, m_indices, GL_STATIC_DRAW );
+
+	glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof( float ), ( void* )0 );
+	glEnableVertexAttribArray( 0 );
+
 	glBindBuffer( GL_ARRAY_BUFFER, 0 );
+
+	glBindVertexArray( 0 );
 }
 
 
@@ -115,4 +121,13 @@ size_t Mesh::getVertexCount( void )
 bool Mesh::hasTexture( void )
 {
 	return ( m_texture != nullptr );
+}
+
+
+void Mesh::addVertex( Vertex* p_vertex )
+{
+	if (p_vertex != nullptr)
+	{
+		m_vertecis.push_back( p_vertex );
+	}
 }

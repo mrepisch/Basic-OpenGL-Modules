@@ -1,9 +1,12 @@
 #pragma once
 
+// External includes
+#include <glew\GL\glew.h>
+
 // Internal includes
 #include "../component/System.h"
 #include "../component/Event.h"
-#include "../Camera.h"
+#include "CameraComponent.h"
 
 namespace game
 {
@@ -20,7 +23,7 @@ namespace game
 		 * Default Constructor
 		 * @author sascha blank
 		 */
-		CameraSystem( void );
+		CameraSystem( GLuint p_shaderID );
 
 		/**
 		 * Virtual destructor
@@ -42,9 +45,13 @@ namespace game
 		 */
 		void receiveEvent( component::Event* p_event );
 
+		
+
 	private:
 
-		// Camera Pointer.
-		Camera* m_camera;
+		void updateCamera( CameraComponent* p_cameraComp );
+
+		GLuint m_shaderID;
+
 	};
 }

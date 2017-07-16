@@ -5,7 +5,6 @@
 #include <SDL2\SDL.h>
 
 // Internal includes
-#include "Camera.h"
 #include "component\System.h"
 #include "component\Event.h"
 #include "component\Entity.h"
