@@ -15,6 +15,8 @@ The libary also provides base classes for the
 
 ## So far covert:
 * OpenGL Window
+* Textures
+* Basic camera component(needs to be improved)
 * VBO Renderer
 * PLY Parser ( PLY format can be exported by blender)
 * Shaders
