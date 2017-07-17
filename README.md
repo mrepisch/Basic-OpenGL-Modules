@@ -1,4 +1,4 @@
-# BasicOpenGLModules
+# Basic-OpenGL-Modules
 
 This is a small libary with diffrent modules for building games and other media application using OpenGL.
 
