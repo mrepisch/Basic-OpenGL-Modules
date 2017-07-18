@@ -30,7 +30,7 @@ But i will provide the dlls son
 * Use a IDE of your choise 
 * Load everything into your project.
 * Set those paths as additional include paths
-  -.\src\libarys\includes
+  - .\src\libarys\includes
   - .\src
 * (optional) If you using a 32Bit system swap out the libarys for 32 bit
 * use the following linkers in your dependency list
