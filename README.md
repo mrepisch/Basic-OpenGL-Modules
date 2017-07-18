@@ -30,17 +30,17 @@ But i will provide the dlls son
 * Use a IDE of your choise 
 * Load everything into your project.
 * Set those paths as additional include paths
-⋅⋅* .\src\libarys\includes
-⋅⋅* .\src
+  -.\src\libarys\includes
+  - .\src
 * (optional) If you using a 32Bit system swap out the libarys for 32 bit
 * use the following linkers in your dependency list
-⋅⋅* glew32.lib
-⋅⋅* glew32s.lib
-⋅⋅* SDL2.lib
-⋅⋅* SDL2main.lib
-⋅⋅* SDL2_image.lib
-⋅⋅* SDL2_mixer.lib
-⋅⋅* OpenGL32.lib(maybe diffrent under linux)
+  - glew32.lib
+  - glew32s.lib
+  - SDL2.lib
+  - SDL2main.lib
+  - SDL2_image.lib
+  - SDL2_mixer.lib
+  - OpenGL32.lib(maybe diffrent under linux)
 
 
 ## So far covert:
