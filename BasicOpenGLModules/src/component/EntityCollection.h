@@ -17,12 +17,8 @@ namespace component
 	class EntityCollection
 	{
 	public:
-		
-		/**
-		 * Singelton Pattern.
-		 * @return Reference on the Collection
-		 */
-		static EntityCollection& Instance();
+		// Private Constructor SINGELTON PATTERN
+		EntityCollection();
 
 		/**
 		 * Virtual destructor
@@ -57,8 +53,7 @@ namespace component
 		// List of all Entitys
 		std::list<Entity*>m_entitys;
 
-		// Private Constructor SINGELTON PATTERN
-		EntityCollection();
+
 
 		// Private copy constructor
 		EntityCollection(const EntityCollection& t_other) {}

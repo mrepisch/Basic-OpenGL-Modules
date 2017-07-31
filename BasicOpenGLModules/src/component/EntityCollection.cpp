@@ -3,12 +3,6 @@
 
 using namespace component;
 
-EntityCollection& EntityCollection::Instance()
-{
-	static EntityCollection r_collections;
-	return r_collections;
-}
-
 EntityCollection::EntityCollection()
 {
 

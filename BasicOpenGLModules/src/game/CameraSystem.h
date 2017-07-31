@@ -23,7 +23,7 @@ namespace game
 		 * Default Constructor
 		 * @author sascha blank
 		 */
-		CameraSystem( GLuint p_shaderID );
+		CameraSystem( component::EntityCollection* p_collection);
 
 		/**
 		 * Virtual destructor
@@ -49,9 +49,11 @@ namespace game
 
 	private:
 
+		/**
+		 * After the CameraEvent is processed the camera needs to be updated.
+		 * @author sascha blank
+		 * @param CameraComponent*, the component to update
+		 */
 		void updateCamera( CameraComponent* p_cameraComp );
-
-		GLuint m_shaderID;
-
 	};
 }

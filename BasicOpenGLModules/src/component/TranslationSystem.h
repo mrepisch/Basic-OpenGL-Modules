@@ -19,7 +19,7 @@ namespace component
 		 * Default constructor
 		 * @author sascha blank
 		 */
-		TranslationSystem( void );
+		TranslationSystem( EntityCollection* p_collection );
 
 		/**
 		 * Update function which is called in every cycle in the mainloop

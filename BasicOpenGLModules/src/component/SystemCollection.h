@@ -21,11 +21,11 @@ namespace component
 	public:
 		
 		/**
-		 * Function to get a instance of this class
-		 * SINGELTON PATTERN
-		 * @author sascha blank
-		 */
-		static SystemCollection& Instance( void );
+		* Private constructor.
+		* SINGELTON PATTERN
+		* @author sascha blank
+		*/
+		SystemCollection() {}
 
 		/**
 		 * virtual destructor
@@ -47,12 +47,7 @@ namespace component
 
 	private:
 
-		/**
-		 * Private constructor.
-		 * SINGELTON PATTERN
-		 * @author sascha blank
-		 */
-		SystemCollection() {}
+
 
 		/**
 		 * Private copy constructor

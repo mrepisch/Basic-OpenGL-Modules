@@ -44,7 +44,10 @@ Mesh* PLYParser::readMeshFromFile(const std::string& p_filename)
 			l_vertex->position.set(std::stof(l_split[0].c_str()), std::stof(l_split[1].c_str()), std::stof(l_split[2].c_str()));
 			if (l_split.size() >= 7)
 			{
-				l_vertex->textureCords.set(std::stof(l_split[6].c_str()), std::stof(l_split[7].c_str()), 0.0f);
+				l_vertex->textureCords.set(std::stof(l_split[6].c_str() ), std::stof(l_split[7].c_str() ), 0.0f);
+				l_vertex->normal.setX( std::stof( l_split[ 3 ].c_str() ) );
+				l_vertex->normal.setY( std::stof( l_split[ 4 ].c_str() ) );
+				l_vertex->normal.setZ( std::stof( l_split[ 5 ].c_str() ) );
 			}
 			r_mesh->addVertex( l_vertex );
 			++l_vertecisReadCounter;

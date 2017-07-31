@@ -1,0 +1,61 @@
+#version 330 core
+
+// needs to be set by the 
+struct LightSourcePoint
+{
+	vec3 lightPos;  
+	vec3 lightcolor;
+	vec3 camera;
+	vec3 ambientColor;
+};
+
+struct DirectonalLight
+{
+    vec3 direction;  
+    vec3 ambient;
+};
+
+
+struct Material
+{
+	vec3 diffuseColor;
+	vec3 specular;
+
+	sampler2D diffuseTexture;
+	sampler2D specularTexture;
+	float shininess;
+};
+
+out vec4 FragColor;
+
+in vec3 FragPos;  
+in vec3 Normal;  
+in vec2 TexCoord;
+
+uniform Material material;
+uniform LightSourcePoint lightsourcePoint[5];
+uniform int amountOfLightsourcePoint;
+
+vec3 CalcPointLight(LightSourcePoint light,)
+
+void main()
+{
+	vec3 objectColor = vec3(1.0f,1.0f,1.0f);
+    vec3 ambient = lightsourcePoint.ambientColor * texture(material.diffuseTexture, TexCoord).rgb;
+  	
+    // diffuse 
+    vec3 norm = normalize(Normal);
+    vec3 lightDir = normalize(lightsourcePoint.lightPos - FragPos);
+    float diff = max(dot(norm, lightDir), 0.0);
+    vec3 diffuse = material.diffuseColor * diff * texture(material.diffuseTexture, TexCoord).rgb;  
+	
+	/// specular
+	vec3 viewDir = normalize(lightsourcePoint.camera - FragPos);
+    vec3 reflectDir = reflect(-lightDir, norm);  
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
+    vec3 specular = material.specular * spec * texture(material.specularTexture, TexCoord).rgb;  
+      
+    vec3 result = (ambient + diffuse + specular ) * objectColor;
+    FragColor = vec4(result, 1.0);
+
+}

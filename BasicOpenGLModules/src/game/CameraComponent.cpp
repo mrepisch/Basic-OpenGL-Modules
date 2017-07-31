@@ -13,22 +13,12 @@ CameraComponent::CameraComponent( int p_screenWidth, int p_screenHeight, float p
 	m_depth = p_depth;
 	m_aspectRatio =(float) m_screenWidth / m_screenHeight;
 
-	m_rot[ 0 ] = 0.0f;
-	m_rot[ 1 ] = 0.0f;
-	m_rot[ 2 ] = 0.0f;
-
 	m_pos[ 0 ] = 0.0f;
-	m_pos[ 1 ] = 0.0f;
+	m_pos[ 1 ] = 1.0f;
 	m_pos[ 2 ] = 0.0f;
-
-	m_scl[ 0 ] = 1.0f;
-	m_scl[ 1 ] = 1.0f;
-	m_scl[ 2 ] = 1.0f;
 
 	m_cameraFront = glm::vec3( 0.0f, 0.0f, -1.0f );
 	m_cameraUp = glm::vec3( 0.0f, 1.0f, 0.0f );
-
-	
 }
 
 glm::mat4 CameraComponent::getViewMatrix( void )

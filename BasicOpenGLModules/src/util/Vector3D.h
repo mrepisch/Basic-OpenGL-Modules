@@ -1,5 +1,5 @@
 #pragma once
-
+#include <glm\glm.hpp>
 namespace util
 {
 
@@ -116,6 +116,12 @@ namespace util
 			r_result.m_y = m_y - t_rhv.m_y;
 			r_result.m_z = m_z - t_rhv.m_z;
 			return r_result;
+		}
+
+		glm::vec3 convertToGlmVec3()
+		{
+			glm::vec3 r_vec( m_x, m_y, m_z );
+			return r_vec;
 		}
 
 

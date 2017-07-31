@@ -12,7 +12,8 @@ namespace component
 		e_renderSystem,
 		e_cameraSystem,
 		e_translationSystem,
-		e_inputSystem
+		e_inputSystem,
+		e_lightningSystem
 	};
 
 	/**
@@ -32,7 +33,9 @@ namespace component
 		 * @author sascha blank
 		 * @param p_system, Enum entry of the system
 		 */
-		System(EnSystem p_system);
+		System(EnSystem p_system, EntityCollection* p_collection);
+
+
 
 		/**
 		 * Returns the SystemtType enum definition of the system
@@ -64,5 +67,8 @@ namespace component
 
 		// The Sytem type definition
 		EnSystem m_systemType;
+
+		EntityCollection* m_collection;
+
 	};
 }

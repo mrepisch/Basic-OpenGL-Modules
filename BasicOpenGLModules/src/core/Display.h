@@ -1,13 +1,11 @@
 #pragma once
 
 // External includes
+
 #include <string>
 #include <SDL2\SDL.h>
 
 // Internal includes
-#include "component\System.h"
-#include "component\Event.h"
-#include "component\Entity.h"
 
 class Display
 {
@@ -16,15 +14,13 @@ public:
 
 	virtual ~Display();
 
-	void update();
+	void clearScreen();
+
+	void swap();
 
 	bool getIsClosed();
 
 	void setFPS( int p_fps );
-
-	void addSystem( component::System* p_system);
-
-	void addEntity( component::Entity* p_entity );
 
 	void closeWindow();
 

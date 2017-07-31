@@ -1,6 +1,8 @@
 #include <iostream>
 #include <glew\GL\glew.h>
-#include "Display.h"
+
+
+#include "core/Display.h"
 #include "util\Vector3D.h"
 #include "render\RenderSystem.h"
 #include "render\RenderComponent.h"
@@ -8,60 +10,121 @@
 #include "util\PLYParser.h"
 #include "game\InputSystem.h"
 #include "game\CameraSystem.h"
-#include "BasicKeyInput.h"
+#include "core/BasicKeyInput.h"
 #include "game\CameraComponent.h"
-
+#include "component\TranslationSystem.h"
+#include "core\BasicComponentFactory.h"
+#include "core\BasicOpenGLCore.h"
+#include "core\ShaderManager.h"
+#include "render\LightSystem.h"
+#include "component\TranslationsEvent.h"
+#include "component\EventDispatcher.h"
+#include "util\BGLMeshLoader.h"
+#include "render\LightEvent.h"
 using namespace render;
 using namespace component;
 using namespace util;
 using namespace game;
+using namespace core;
 
 int main(int argc, char **argv)
 {
 	Display l_mainWindow(800, 600, "OpenGL Window");
 	l_mainWindow.setFPS( 30 );
-	
-	InputSystem* l_inputSystem = new InputSystem(&l_mainWindow);
-	l_mainWindow.addSystem( l_inputSystem );
+	ShaderManager l_shaderManager;
+	l_shaderManager.createShaderProgram( "basic" );
+	l_shaderManager.addShader( "vertex",
+		ShaderManager::e_vertex,
+		"basic_vertex.txt",
+		"basic" );
+	l_shaderManager.addShader( "fragment",
+		ShaderManager::e_fragment,
+		"fragment_shader.c",
+		"basic" );
 
+
+	l_shaderManager.createShaderProgram( "lightsource" );
+	l_shaderManager.addShader( "vertex",
+		ShaderManager::e_vertex,
+		"lightVertex.txt",
+		"lightsource" );
+
+	l_shaderManager.addShader( "fragment",
+		ShaderManager::e_fragment,
+		"lightFragment.txt",
+		"lightsource" );
+
+	l_shaderManager.compile();
+
+
+
+	BasicOpenGLCore l_core(&l_mainWindow,& l_shaderManager);
+	BasicComponentFactory l_factory(&l_shaderManager);
+
+	l_core.addComponentFactory("basic", &l_factory );
+	long l_camID = l_core.createNewEntity( "camera" );
+	l_core.addComponentToEntity( l_camID, "basic" ,"camera" );
+
+	std::vector<std::string>l_compData;
+	l_compData.push_back( "render" );
+	l_compData.push_back( "box.xml" );
+	l_compData.push_back( "basic" );
+
+	long l_groundID = l_core.createNewEntity( "ground" );
+	l_core.addComponentToEntity( l_groundID,"basic",l_compData );
+	l_core.addComponentToEntity( l_groundID, "basic", "translation" );
+	
+	TranslationsEvent* l_transEventforGround = new TranslationsEvent( l_groundID );
+	l_transEventforGround->m_positionsOffset.set( 0.0f, -2.0f, 0.0f );
+	l_transEventforGround->m_scaleToAdd.set( 5.0f, 0.0f, 5.0f );
+	EventDispatcher::Instance().addEvent( l_transEventforGround );
+
+	l_compData.clear();
+	l_compData.push_back( "render" );
+	l_compData.push_back( "sun.xml" );
+	l_compData.push_back( "lightsource" );
+
+	long l_sunID = l_core.createNewEntity( "sun" );
+	l_core.addComponentToEntity( l_sunID, "basic", l_compData );
+	l_compData.clear();
+	l_core.addComponentToEntity( l_sunID, "basic", "translation" );
+	l_compData.clear();
+	l_compData.push_back( "light" );
+	l_compData.push_back( "lightsource" );
+	l_compData.push_back( "0" );
+	l_core.addComponentToEntity( l_sunID, "basic", l_compData );
+
+	TranslationsEvent* l_transEvent = new TranslationsEvent(l_sunID);
+	l_transEvent->m_positionsOffset.set( 2.0f, 5.0f, -3.0f );
+	EventDispatcher::Instance().addEvent( l_transEvent );
+
+	LightEvent* l_lightevent = new LightEvent( l_sunID );
+	l_lightevent->m_newColor.set( 0.0f, 0.0f, 0.5f );
+	l_lightevent->m_newAmbient.set( 0.1f, 0.1f, 0.1f );
+	EventDispatcher::Instance().addEvent( l_lightevent );
+
+	InputSystem* l_inputSystem = new InputSystem( &l_mainWindow, &l_core.getEntityCollection() );
 	BasicKeyInput* l_keyInput = new BasicKeyInput();
 	l_inputSystem->addKeyEvent( l_keyInput );
 
-	Entity* l_camera = new Entity( "camera" );
-	CameraComponent* a_cameraComp = new CameraComponent( 800, 600, 1000.0f );
-	l_camera->addComponent( a_cameraComp );
-	l_mainWindow.addEntity( l_camera );
+	TranslationSystem* l_translationSystem = new TranslationSystem(&l_core.getEntityCollection() );
 
-	RenderSystem* l_renderSystem = new RenderSystem();
-	
+	RenderSystem* l_renderSystem = new RenderSystem( &l_core.getEntityCollection(), &l_shaderManager );
 
-		
-	CameraSystem* l_cameraSystem = new CameraSystem(l_renderSystem->getShaderProgramID());
-	
-	
-	l_mainWindow.addSystem( l_cameraSystem );
-	l_mainWindow.addSystem( l_renderSystem );
+	CameraSystem* l_cameraSystem = new CameraSystem( &l_core.getEntityCollection() );
+
+	Lightsystem* l_lightSystem = new Lightsystem( &l_core.getEntityCollection(), &l_shaderManager, l_core.getEntityCollection().getEntityByID(l_camID) );
 	
 
-	PLYParser a_parser;
-	Entity* l_entity = new Entity("testobject");
+	l_core.addSystem( l_inputSystem ); // first handle input
+	l_core.addSystem( l_translationSystem ); // then do the translation
+	l_core.addSystem( l_lightSystem ); // lightning befor rendering
+	l_core.addSystem( l_cameraSystem ); // Update camera
+	l_core.addSystem( l_renderSystem ); // render everything
 
-	Mesh* a_mesh = a_parser.readMeshFromFile( "C:\\Users\\episch\\Documents\\test.ply" );
-	//a_mesh->setTexture( new Texture( "C:\\Users\\episch\\Documents\\OpenGLProject\\test.bmp" ) );
-	a_mesh->generateBuffer();
-	RenderComponent* a_renderComponent = new RenderComponent(a_mesh);
-	TranslationComponent* a_translation = new TranslationComponent();
+	l_core.startMainLoop(); // Start the main loop
 
-	a_translation->m_position.set( 0.0f, 0.0f,-3.0f );
-	
-	a_translation->m_rotation.set( 0.0f, 0.0f, 0.0f );
-	
-	a_translation->m_scale.set( 0.5f, 0.5f, 0.5f );
-	
-	l_entity->addComponent( a_translation );
-	l_entity->addComponent( a_renderComponent );
-	l_mainWindow.addEntity( l_entity );
 
-	l_mainWindow.update();
+	
 	return 0;
 }

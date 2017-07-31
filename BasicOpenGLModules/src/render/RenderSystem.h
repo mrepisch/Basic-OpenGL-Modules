@@ -2,8 +2,8 @@
 
 // Internal includes
 #include "../component/System.h"
-#include "../component/Event.h"
-#include "../component/Entity.h"
+#include "../core/ShaderManager.h"
+
 
 namespace render
 {
@@ -14,7 +14,7 @@ namespace render
 		 * Constructor
 		 * @author sascha blank
 		 */
-		RenderSystem();
+		RenderSystem( component::EntityCollection* p_collection, core::ShaderManager* p_shaderManager );
 
 		/**
 		 * virtual destructor
@@ -33,15 +33,10 @@ namespace render
 		 */
 		void receiveEvent( component::Event* p_event );
 
-		GLuint getShaderProgramID();
-
 	private:
-		std::string m_vertexShader;
-		std::string m_fragmentShader;
-		GLuint m_vertexShaderID;
-		GLuint m_fragmentShaderID;
-		GLuint m_shaderProgramID;
+
 
 		component::Entity* m_camera;
+		core::ShaderManager* m_shaderManager;
 	};
 }

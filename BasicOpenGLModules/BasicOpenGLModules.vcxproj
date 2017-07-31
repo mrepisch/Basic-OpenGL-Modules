@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\BasicKeyInput.h" />
     <ClInclude Include="src\component\EntityCollection.h" />
     <ClInclude Include="src\component\Entity.h" />
     <ClInclude Include="src\component\Component.h" />
@@ -28,23 +27,32 @@
     <ClInclude Include="src\component\SystemCollection.h" />
     <ClInclude Include="src\component\TranslationComponent.h" />
     <ClInclude Include="src\component\System.h" />
+    <ClInclude Include="src\component\TranslationsEvent.h" />
     <ClInclude Include="src\component\TranslationSystem.h" />
-    <ClInclude Include="src\Display.h" />
+    <ClInclude Include="src\core\BasicComponentFactory.h" />
+    <ClInclude Include="src\core\BasicKeyInput.h" />
+    <ClInclude Include="src\core\BasicOpenGLCore.h" />
+    <ClInclude Include="src\core\Display.h" />
+    <ClInclude Include="src\core\IComponentFactory.h" />
+    <ClInclude Include="src\core\ShaderManager.h" />
     <ClInclude Include="src\game\CameraComponent.h" />
     <ClInclude Include="src\game\CameraEvent.h" />
     <ClInclude Include="src\game\CameraSystem.h" />
     <ClInclude Include="src\game\KeyInput.h" />
     <ClInclude Include="src\game\InputSystem.h" />
+    <ClInclude Include="src\render\LightEvent.h" />
+    <ClInclude Include="src\render\LightningComponent.h" />
+    <ClInclude Include="src\render\LightSystem.h" />
     <ClInclude Include="src\render\Mesh.h" />
     <ClInclude Include="src\render\RenderComponent.h" />
     <ClInclude Include="src\render\RenderSystem.h" />
     <ClInclude Include="src\render\Texture.h" />
+    <ClInclude Include="src\util\BGLMeshLoader.h" />
     <ClInclude Include="src\util\PLYParser.h" />
     <ClInclude Include="src\util\Util.h" />
     <ClInclude Include="src\util\Vector3D.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\BasicKeyInput.cpp" />
     <ClCompile Include="src\component\EntityCollection.cpp" />
     <ClCompile Include="src\component\Entity.cpp" />
     <ClCompile Include="src\component\Event.cpp" />
@@ -52,18 +60,27 @@
     <ClCompile Include="src\component\SystemCollection.cpp" />
     <ClCompile Include="src\component\TranslationComponent.cpp" />
     <ClCompile Include="src\component\System.cpp" />
+    <ClCompile Include="src\component\TranslationsEvent.cpp" />
     <ClCompile Include="src\component\TranslationSystem.cpp" />
-    <ClCompile Include="src\Display.cpp" />
+    <ClCompile Include="src\core\BasicComponentFactory.cpp" />
+    <ClCompile Include="src\core\BasicKeyInput.cpp" />
+    <ClCompile Include="src\core\BasicOpenGLCore.cpp" />
+    <ClCompile Include="src\core\Display.cpp" />
+    <ClCompile Include="src\core\ShaderManager.cpp" />
     <ClCompile Include="src\game\CameraComponent.cpp" />
     <ClCompile Include="src\game\CameraEvent.cpp" />
     <ClCompile Include="src\game\CameraSystem.cpp" />
     <ClCompile Include="src\game\KeyInput.cpp" />
     <ClCompile Include="src\game\InputSystem.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\render\LightEvent.cpp" />
+    <ClCompile Include="src\render\LightningComponent.cpp" />
+    <ClCompile Include="src\render\Lightsystem.cpp" />
     <ClCompile Include="src\render\Mesh.cpp" />
     <ClCompile Include="src\render\RenderComponent.cpp" />
     <ClCompile Include="src\render\RenderSystem.cpp" />
     <ClCompile Include="src\render\Texture.cpp" />
+    <ClCompile Include="src\util\BGLMeshLoader.cpp" />
     <ClCompile Include="src\util\PLYParser.cpp" />
     <ClCompile Include="src\util\Util.cpp" />
   </ItemGroup>

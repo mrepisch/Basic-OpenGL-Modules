@@ -7,7 +7,8 @@ namespace component
 		e_undefinedEvent = 0,
 		e_translationEvent,
 		e_renderEvent,
-		e_cameraEvent
+		e_cameraEvent,
+		e_lightEvent
 	};
 
 	/**

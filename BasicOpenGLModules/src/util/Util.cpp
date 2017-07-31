@@ -4,7 +4,7 @@
 #include <sstream>
 #include <fstream>
 #include <streambuf>
-
+#include <direct.h>
 
 // Internal includes
 #include "Util.h"
@@ -25,7 +25,7 @@ StringVec Util::SplitWithWiteSpace( std::string& t_toSplit)
 
 
 
-std::string Util::readShaderFile( const char* p_filename )
+std::string Util::readFile( const char* p_filename )
 {
 	string r_data;
 	std::ifstream file( p_filename );
@@ -36,4 +36,13 @@ std::string Util::readShaderFile( const char* p_filename )
 	}
 	file.close();
 	return r_data;
+}
+
+
+std::string Util::getBasePath( void )
+{
+	char *path = NULL;
+	path = getcwd( NULL, 0 ); // or _getcwd
+	std::string workingDir = path;
+	return workingDir;
 }

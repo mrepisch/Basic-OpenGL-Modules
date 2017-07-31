@@ -18,9 +18,9 @@ const float PITCH = 0.0f;
 using namespace component;
 using namespace game;
 
-CameraSystem::CameraSystem( GLuint p_shaderID ) : System( e_cameraSystem )
+CameraSystem::CameraSystem( EntityCollection* p_collection ) : System( e_cameraSystem, p_collection )
 {
-	m_shaderID = p_shaderID;
+	
 }
 
 
@@ -32,7 +32,7 @@ CameraSystem::~CameraSystem()
 
 void CameraSystem::update()
 {
-	std::vector<Entity*>l_cameras = EntityCollection::Instance().getEntityWithComponents( e_cameraComponent );
+	std::vector<Entity*>l_cameras = m_collection->getEntityWithComponents( e_cameraComponent );
 	if (l_cameras.size() > 0)
 	{
 		Entity* l_camera = l_cameras[ 0 ];
@@ -56,7 +56,7 @@ void CameraSystem::receiveEvent( Event* p_event )
 		CameraEvent* l_cameraEvent = ( CameraEvent* )( p_event );
 		if (l_cameraEvent != nullptr)
 		{
-			std::vector<Entity*>l_cameras = EntityCollection::Instance().getEntityWithComponents( e_cameraComponent );
+			std::vector<Entity*>l_cameras = m_collection->getEntityWithComponents( e_cameraComponent );
 			if (l_cameras.size() > 0)
 			{
 				Entity* l_camera = l_cameras[ 0 ];
@@ -79,15 +79,6 @@ void CameraSystem::receiveEvent( Event* p_event )
 
 void CameraSystem::updateCamera( CameraComponent* p_cameraComp )
 {
-	/*glm::vec3 front;
-	front.x = cos( glm::radians( Yaw ) ) * cos( glm::radians( Pitch ) );
-	front.y = sin( glm::radians( Pitch ) );
-	front.z = sin( glm::radians( Yaw ) ) * cos( glm::radians( Pitch ) );
-	Front = glm::normalize( front );
-	// Also re-calculate the Right and Up vector
-	Right = glm::normalize( glm::cross( Front, WorldUp ) );  // Normalize the vectors, because their length gets closer to 0 the more you look up or down which results in slower movement.
-	Up = glm::normalize( glm::cross( Right, Front ) );*/
-
 	glm::vec3 l_front;
 	l_front.x = cos( glm::radians( YAW ) ) * cos( glm::radians( PITCH ) );
 	l_front.y = sin( glm::radians( PITCH ) );

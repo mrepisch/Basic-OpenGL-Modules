@@ -2,17 +2,16 @@
 // External includes
 #include <iostream>
 #include <glew\GL\glew.h>
-
+#include <SDL2\SDL_image.h>
 // Internal includes
 #include "Display.h"
 #include "component\EventDispatcher.h"
-#include "component\SystemCollection.h"
 #include "component\EntityCollection.h"
 
 
 using namespace component;
 
-Display::Display(int p_with, int p_height, const std::string& p_title)
+Display::Display(int p_with, int p_height, const std::string& p_title )
 {
 	
 	m_height = p_height;
@@ -27,6 +26,15 @@ Display::Display(int p_with, int p_height, const std::string& p_title)
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	m_window = SDL_CreateWindow(m_windowTitle.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_width, m_height, SDL_WINDOW_OPENGL);
 	m_glContext = SDL_GL_CreateContext(m_window);
+
+	//Initialize PNG loading
+	int imgFlags = IMG_INIT_PNG;
+	if (!( IMG_Init( imgFlags ) & imgFlags ))
+	{
+		std::cout << "SDL_image could not initialize! SDL_image Error: %s\n" << IMG_GetError() << std::endl;
+		
+	}
+
 	glEnable(GL_TEXTURE_2D);
 	glShadeModel(GL_SMOOTH);
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -51,19 +59,16 @@ Display::~Display()
 }
 
 
-void Display::update()
+void Display::clearScreen()
 {
+	glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
+	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+}
 
-	while (!m_isClosed)
-	{
-		EventDispatcher::Instance().update();
-		glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
-		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
-		SystemCollection::Instance().update();
-
-		SDL_GL_SwapWindow( m_window );
-	}
+void Display::swap()
+{
+	SDL_GL_SwapWindow( m_window );
 }
 
 
@@ -78,24 +83,6 @@ bool Display::getIsClosed()
 	return m_isClosed;
 }
 
-
-void Display::addSystem( component::System* p_system)
-{
-	if (p_system != nullptr)
-	{
-		EventDispatcher::Instance().addSystem( p_system );
-		SystemCollection::Instance().addSystem( p_system );
-	}
-}
-
-
-void Display::addEntity( Entity* p_entity )
-{
-	if (p_entity != nullptr)
-	{
-		EntityCollection::Instance().addEntity( p_entity );
-	}
-}
 
 
 void Display::closeWindow()

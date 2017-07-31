@@ -37,11 +37,14 @@
     <Filter Include="Quelldateien\component">
       <UniqueIdentifier>{52d6e648-5067-4034-b611-c150a35c3103}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headerdateien\core">
+      <UniqueIdentifier>{1a051d9f-a482-4f1c-a07d-721b06273d0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\core">
+      <UniqueIdentifier>{06601fea-e9a9-4b7a-84e5-eb377f9459c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Display.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="src\util\Vector3D.h">
       <Filter>Headerdateien\util</Filter>
     </ClInclude>
@@ -102,17 +105,44 @@
     <ClInclude Include="src\game\KeyInput.h">
       <Filter>Headerdateien\game</Filter>
     </ClInclude>
-    <ClInclude Include="src\BasicKeyInput.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="src\game\CameraComponent.h">
       <Filter>Headerdateien\game</Filter>
     </ClInclude>
+    <ClInclude Include="src\core\BasicKeyInput.h">
+      <Filter>Headerdateien\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\BasicOpenGLCore.h">
+      <Filter>Headerdateien\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Display.h">
+      <Filter>Headerdateien\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\IComponentFactory.h">
+      <Filter>Headerdateien\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\BasicComponentFactory.h">
+      <Filter>Headerdateien\game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\ShaderManager.h">
+      <Filter>Headerdateien\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\render\LightSystem.h">
+      <Filter>Headerdateien\render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\render\LightningComponent.h">
+      <Filter>Headerdateien\render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\render\LightEvent.h">
+      <Filter>Headerdateien\render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\component\TranslationsEvent.h">
+      <Filter>Headerdateien\component</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\BGLMeshLoader.h">
+      <Filter>Headerdateien\util</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Display.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
@@ -170,11 +200,38 @@
     <ClCompile Include="src\game\KeyInput.cpp">
       <Filter>Quelldateien\game</Filter>
     </ClCompile>
-    <ClCompile Include="src\BasicKeyInput.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="src\game\CameraComponent.cpp">
       <Filter>Quelldateien\game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\BasicKeyInput.cpp">
+      <Filter>Quelldateien\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\BasicOpenGLCore.cpp">
+      <Filter>Quelldateien\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\Display.cpp">
+      <Filter>Quelldateien\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\BasicComponentFactory.cpp">
+      <Filter>Quelldateien\game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\ShaderManager.cpp">
+      <Filter>Quelldateien\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render\Lightsystem.cpp">
+      <Filter>Quelldateien\render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render\LightningComponent.cpp">
+      <Filter>Quelldateien\render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render\LightEvent.cpp">
+      <Filter>Quelldateien\render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\component\TranslationsEvent.cpp">
+      <Filter>Quelldateien\component</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\BGLMeshLoader.cpp">
+      <Filter>Quelldateien\util</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

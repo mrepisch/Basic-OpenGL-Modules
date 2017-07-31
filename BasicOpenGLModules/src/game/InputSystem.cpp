@@ -4,7 +4,7 @@
 
 // Internal includes
 #include "InputSystem.h"
-#include "../Display.h"
+#include "../core/Display.h"
 #include "CameraEvent.h"
 #include "../util/Vector3D.h"
 #include "../component/EventDispatcher.h"
@@ -14,7 +14,7 @@ using namespace game;
 using namespace component;
 using namespace util;
 
-InputSystem::InputSystem( Display* p_display ) : System( e_inputSystem )
+InputSystem::InputSystem( Display* p_display, EntityCollection* p_collection ) : System( e_inputSystem, p_collection )
 {
 	m_display = p_display;
 }

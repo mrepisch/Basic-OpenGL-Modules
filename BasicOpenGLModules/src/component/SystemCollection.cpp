@@ -3,13 +3,6 @@
 using namespace component;
 
 
-SystemCollection& SystemCollection::Instance()
-{
-	static SystemCollection r_instance;
-	return r_instance;
-}
-
-
 SystemCollection::~SystemCollection()
 {
 	m_systems.clear();

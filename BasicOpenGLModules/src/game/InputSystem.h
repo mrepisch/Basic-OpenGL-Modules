@@ -15,7 +15,7 @@ namespace game
 	class InputSystem : public component::System
 	{
 	public:
-		InputSystem( Display* p_display );
+		InputSystem( Display* p_display, component::EntityCollection* p_collection );
 		virtual ~InputSystem();
 
 		void update();
