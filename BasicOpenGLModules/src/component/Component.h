@@ -8,7 +8,8 @@ namespace component
 		e_renderComponent,
 		e_translationComponent,
 		e_cameraComponent,
-		e_lightningComponent
+		e_lightningComponent,
+		e_cubemapComponent
 	};
 
 	/**
@@ -19,11 +20,22 @@ namespace component
 	class Component
 	{
 	public:
+
+		/**
+		 * Constructor
+		 * @author sascha blank
+		 * @EnComponents component type enum
+		 */
 		Component(EnComponents p_component) { m_componentType = p_component; };
 
+		/**
+		 * Function to return the component type
+		 */
 		EnComponents getComponentType() { return m_componentType; }
 			
 	protected:
+
+		// Component type enum
 		EnComponents m_componentType;
 
 	};

@@ -48,13 +48,13 @@ void main()
 	    // properties
     vec3 norm = normalize(Normal);
     vec3 viewDir = normalize(viewPos - FragPos);
-    vec3 result;
+    vec3 result = vec3(0.0);
     for( int i = 0; i < amountOfLights; i++)
     {
 		Light light = lightsource[i];
 		if( light.type == 0)
 		{
-			result = CalcDirLight(light,norm, viewDir);
+			result += CalcDirLight(light,norm, viewDir);
 		}
 		else if( light.type == 1)
 		{
@@ -65,7 +65,7 @@ void main()
 			result += CalcSpotLight(light, norm, FragPos, viewDir);
 		}
 	}
-    FragColor = vec4(vec3(1.0), 1.0);
+    FragColor = vec4(result, 1.0);
 }
 
 // calculates the color when using a directional light.
@@ -78,8 +78,8 @@ vec3 CalcDirLight(Light light, vec3 normal, vec3 viewDir)
     vec3 reflectDir = reflect(-lightDir, normal);
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
     // combine results
-    vec3 ambient = light.ambient * vec3(texture(material.diffuseTexture, TexCoord));
-    vec3 diffuse = material.diffuse * diff * vec3(texture(material.diffuseTexture, TexCoord));
+    vec3 ambient  = light.ambient  * vec3(texture(material.diffuseTexture, TexCoord));
+    vec3 diffuse  = material.diffuse  * diff * vec3(texture(material.diffuseTexture, TexCoord));
     vec3 specular = material.specular * spec * vec3(texture(material.specularTexture, TexCoord));
     return (ambient + diffuse + specular);
 }

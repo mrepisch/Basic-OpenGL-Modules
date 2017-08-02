@@ -1,0 +1,170 @@
+<?xml version="1.0" ?>
+<mesh max_faces="20" max_vertices="20">
+	<materials/>
+	<vertices_group/>
+	<uv_layer>
+		<layer>
+			UVMap
+			<coord u="1.0" v="1.0"/>
+			<coord u="0.0" v="0.0"/>
+			<coord u="0.0" v="1.0"/>
+			<coord u="1.0" v="1.0"/>
+			<coord u="0.0" v="0.0"/>
+			<coord u="0.0" v="1.0"/>
+			<coord u="1.0" v="1.0"/>
+			<coord u="0.0" v="0.0"/>
+			<coord u="1.0" v="1.0"/>
+			<coord u="0.0" v="0.0"/>
+			<coord u="0.0" v="1.0"/>
+			<coord u="0.0" v="1.0"/>
+			<coord u="1.0" v="0.0"/>
+			<coord u="1.0" v="1.0"/>
+			<coord u="0.0" v="0.0"/>
+			<coord u="1.0" v="0.0"/>
+			<coord u="1.0" v="0.0"/>
+			<coord u="1.0" v="0.0"/>
+			<coord u="1.0" v="1.0"/>
+			<coord u="1.0" v="0.0"/>
+		</layer>
+	</uv_layer>
+	<vertices>
+		<vertex>
+			<position x="1.0" y="-1.0" z="-1.0"/>
+			<textcord layer="null" u="1.0" v="1.0"/>
+			<normal x="0.5773491859436035" y="-0.5773491859436035" z="-0.5773491859436035"/>
+		</vertex>
+		<vertex>
+			<position x="-0.9999996423721313" y="1.0000003576278687" z="-1.0"/>
+			<textcord layer="null" u="0.0" v="0.0"/>
+			<normal x="-0.5773491859436035" y="0.5773491859436035" z="-0.5773491859436035"/>
+		</vertex>
+		<vertex>
+			<position x="1.0" y="0.9999999403953552" z="-1.0"/>
+			<textcord layer="null" u="0.0" v="1.0"/>
+			<normal x="0.5773491859436035" y="0.5773491859436035" z="-0.5773491859436035"/>
+		</vertex>
+		<vertex>
+			<position x="-0.9999999403953552" y="1.0" z="1.0"/>
+			<textcord layer="null" u="1.0" v="1.0"/>
+			<normal x="-0.5773491859436035" y="0.5773491859436035" z="0.5773491859436035"/>
+		</vertex>
+		<vertex>
+			<position x="0.9999993443489075" y="-1.0000005960464478" z="1.0"/>
+			<textcord layer="null" u="0.0" v="0.0"/>
+			<normal x="0.5773491859436035" y="-0.5773491859436035" z="0.5773491859436035"/>
+		</vertex>
+		<vertex>
+			<position x="1.0000004768371582" y="0.999999463558197" z="1.0"/>
+			<textcord layer="null" u="0.0" v="1.0"/>
+			<normal x="0.5773491859436035" y="0.5773491859436035" z="0.5773491859436035"/>
+		</vertex>
+		<vertex>
+			<position x="1.0000004768371582" y="0.999999463558197" z="1.0"/>
+			<textcord layer="null" u="1.0" v="1.0"/>
+			<normal x="0.5773491859436035" y="0.5773491859436035" z="0.5773491859436035"/>
+		</vertex>
+		<vertex>
+			<position x="1.0" y="-1.0" z="-1.0"/>
+			<textcord layer="null" u="0.0" v="0.0"/>
+			<normal x="0.5773491859436035" y="-0.5773491859436035" z="-0.5773491859436035"/>
+		</vertex>
+		<vertex>
+			<position x="0.9999993443489075" y="-1.0000005960464478" z="1.0"/>
+			<textcord layer="null" u="1.0" v="1.0"/>
+			<normal x="0.5773491859436035" y="-0.5773491859436035" z="0.5773491859436035"/>
+		</vertex>
+		<vertex>
+			<position x="-1.0000001192092896" y="-0.9999998211860657" z="-1.0"/>
+			<textcord layer="null" u="0.0" v="0.0"/>
+			<normal x="-0.5773491859436035" y="-0.5773491859436035" z="-0.5773491859436035"/>
+		</vertex>
+		<vertex>
+			<position x="1.0" y="-1.0" z="-1.0"/>
+			<textcord layer="null" u="0.0" v="1.0"/>
+			<normal x="0.5773491859436035" y="-0.5773491859436035" z="-0.5773491859436035"/>
+		</vertex>
+		<vertex>
+			<position x="-1.0000001192092896" y="-0.9999998211860657" z="-1.0"/>
+			<textcord layer="null" u="0.0" v="1.0"/>
+			<normal x="-0.5773491859436035" y="-0.5773491859436035" z="-0.5773491859436035"/>
+		</vertex>
+		<vertex>
+			<position x="-0.9999999403953552" y="1.0" z="1.0"/>
+			<textcord layer="null" u="1.0" v="0.0"/>
+			<normal x="-0.5773491859436035" y="0.5773491859436035" z="0.5773491859436035"/>
+		</vertex>
+		<vertex>
+			<position x="1.0" y="0.9999999403953552" z="-1.0"/>
+			<textcord layer="null" u="1.0" v="1.0"/>
+			<normal x="0.5773491859436035" y="0.5773491859436035" z="-0.5773491859436035"/>
+		</vertex>
+		<vertex>
+			<position x="-0.9999999403953552" y="1.0" z="1.0"/>
+			<textcord layer="null" u="0.0" v="0.0"/>
+			<normal x="-0.5773491859436035" y="0.5773491859436035" z="0.5773491859436035"/>
+		</vertex>
+		<vertex>
+			<position x="-1.0000001192092896" y="-0.9999998211860657" z="-1.0"/>
+			<textcord layer="null" u="1.0" v="0.0"/>
+			<normal x="-0.5773491859436035" y="-0.5773491859436035" z="-0.5773491859436035"/>
+		</vertex>
+		<vertex>
+			<position x="-1.0000003576278687" y="-0.9999996423721313" z="1.0"/>
+			<textcord layer="null" u="1.0" v="0.0"/>
+			<normal x="-0.5773491859436035" y="-0.5773491859436035" z="0.5773491859436035"/>
+		</vertex>
+		<vertex>
+			<position x="0.9999993443489075" y="-1.0000005960464478" z="1.0"/>
+			<textcord layer="null" u="1.0" v="0.0"/>
+			<normal x="0.5773491859436035" y="-0.5773491859436035" z="0.5773491859436035"/>
+		</vertex>
+		<vertex>
+			<position x="-1.0000003576278687" y="-0.9999996423721313" z="1.0"/>
+			<textcord layer="null" u="1.0" v="1.0"/>
+			<normal x="-0.5773491859436035" y="-0.5773491859436035" z="0.5773491859436035"/>
+		</vertex>
+		<vertex>
+			<position x="-0.9999996423721313" y="1.0000003576278687" z="-1.0"/>
+			<textcord layer="null" u="1.0" v="0.0"/>
+			<normal x="-0.5773491859436035" y="0.5773491859436035" z="-0.5773491859436035"/>
+		</vertex>
+	</vertices>
+	<faces>
+		<face id="0" material="0" smooth="False" v1="0" v2="1" v3="2">
+			<normal x="-0.0" y="-0.0" z="-0.0"/>
+		</face>
+		<face id="1" material="0" smooth="False" v1="3" v2="4" v3="5">
+			<normal x="0.0" y="0.0" z="0.0"/>
+		</face>
+		<face id="2" material="0" smooth="False" v1="6" v2="7" v3="2">
+			<normal x="1.0" y="0.0" z="0.0"/>
+		</face>
+		<face id="3" material="0" smooth="False" v1="8" v2="9" v3="10">
+			<normal x="-8.940696716308594e-08" y="-1.0" z="-1.0"/>
+		</face>
+		<face id="4" material="0" smooth="False" v1="11" v2="12" v3="1">
+			<normal x="-1.0" y="2.384185791015625e-07" z="2.384185791015625e-07"/>
+		</face>
+		<face id="5" material="0" smooth="False" v1="13" v2="14" v3="5">
+			<normal x="2.6822084464583895e-07" y="1.0" z="1.0"/>
+		</face>
+		<face id="6" material="0" smooth="False" v1="0" v2="15" v3="1">
+			<normal x="0.0" y="-0.0" z="-0.0"/>
+		</face>
+		<face id="7" material="0" smooth="False" v1="3" v2="16" v3="4">
+			<normal x="0.0" y="-0.0" z="-0.0"/>
+		</face>
+		<face id="8" material="0" smooth="False" v1="6" v2="17" v3="7">
+			<normal x="1.0" y="-5.662441253662109e-07" z="-5.662441253662109e-07"/>
+		</face>
+		<face id="9" material="0" smooth="False" v1="8" v2="16" v3="9">
+			<normal x="-4.768372150465439e-07" y="-1.0" z="-1.0"/>
+		</face>
+		<face id="10" material="0" smooth="False" v1="11" v2="18" v3="12">
+			<normal x="-1.0" y="2.0861631355728605e-07" z="2.0861631355728605e-07"/>
+		</face>
+		<face id="11" material="0" smooth="False" v1="13" v2="19" v3="14">
+			<normal x="2.0861631355728605e-07" y="1.0" z="1.0"/>
+		</face>
+	</faces>
+</mesh>

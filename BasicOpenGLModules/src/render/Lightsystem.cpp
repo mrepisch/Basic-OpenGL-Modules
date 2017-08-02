@@ -45,7 +45,7 @@ void Lightsystem::update()
 					if (l_renderComp != nullptr && l_lightComp != nullptr)
 					{
 						m_shaderManager->useProgram( l_renderComp->m_mesh->getShaderProgramNameName() );
-						std::string l_uniformBase = "lightsource[" + l_lightIndex;
+						std::string l_uniformBase = "lightsource[" + std::to_string(l_lightIndex);
 						l_uniformBase += "]";
 
 						m_shaderManager->setInt( l_lightComp->m_type, l_uniformBase + ".type", l_renderComp->m_mesh->getShaderProgramNameName() );
@@ -91,8 +91,15 @@ void Lightsystem::receiveEvent( Event* p_event )
 			LightningComponent* a_comp =( LightningComponent*)( l_entity->getComponent( e_lightningComponent ) );
 			if (a_comp != nullptr)
 			{
-				a_comp->m_lightColor = l_event->m_newColor;
-				a_comp->m_ambient = l_event->m_newAmbient;
+				a_comp->m_lightColor = a_comp->m_lightColor + l_event->lightColorToAdd;
+				a_comp->m_ambient = a_comp->m_ambient + l_event->ambientToAdd;
+				a_comp->m_direction = a_comp->m_direction + l_event->newDirection;
+				a_comp->m_position = a_comp->m_direction + l_event->positionToAdd;
+				a_comp->m_constant = a_comp->m_constant + l_event->constantToAdd;
+				a_comp->m_linear = a_comp->m_linear + l_event->linearToAdd;
+				a_comp->m_quadratic = a_comp->m_quadratic + l_event->quadraticToAdd;
+				a_comp->m_outCutOff = a_comp->m_outCutOff = l_event->outCutOffToAdd;
+				a_comp->m_cutOff = a_comp->m_cutOff + l_event->cutOffToAdd;
 			}
 		}
 	}

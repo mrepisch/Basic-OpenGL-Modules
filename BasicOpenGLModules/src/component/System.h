@@ -35,8 +35,6 @@ namespace component
 		 */
 		System(EnSystem p_system, EntityCollection* p_collection);
 
-
-
 		/**
 		 * Returns the SystemtType enum definition of the system
 		 * @author sascha blank

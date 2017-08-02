@@ -12,6 +12,7 @@ BasicOpenGLCore::BasicOpenGLCore( Display* p_display, ShaderManager* p_shaderMan
 	m_isRunning = true;
 }
 
+
 BasicOpenGLCore::~BasicOpenGLCore()
 {
 	
@@ -26,11 +27,13 @@ void BasicOpenGLCore::addComponentFactory( const std::string& p_factoryName, ICo
 	}
 }
 
+
 void BasicOpenGLCore::startMainLoop()
 {
 	m_isRunning = true;
 	runMainLoop();
 }
+
 
 void BasicOpenGLCore::stopMainLoop()
 {
@@ -51,6 +54,7 @@ void BasicOpenGLCore::addComponentToEntity( long p_entityID, const std::string& 
 	}
 }
 
+
 void BasicOpenGLCore::addComponentToEntity( long p_entityID, const std::string& t_factoryName, const std::map<std::string, std::string>& p_data )
 {
 	if (m_factorys.find( t_factoryName ) != m_factorys.end())
@@ -63,6 +67,7 @@ void BasicOpenGLCore::addComponentToEntity( long p_entityID, const std::string& 
 		}
 	}
 }
+
 
 void BasicOpenGLCore::addComponentToEntity( long p_entityID, const std::string& t_factoryName, const std::string& p_data )
 {
@@ -86,7 +91,6 @@ void BasicOpenGLCore::addSystem( System* p_system )
 		EventDispatcher::Instance().addSystem( p_system );
 	}
 }
-
 
 
 void BasicOpenGLCore::runMainLoop()

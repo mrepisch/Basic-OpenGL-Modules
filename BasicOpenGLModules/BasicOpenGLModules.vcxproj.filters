@@ -141,6 +141,12 @@
     <ClInclude Include="src\util\BGLMeshLoader.h">
       <Filter>Headerdateien\util</Filter>
     </ClInclude>
+    <ClInclude Include="src\render\CubeMapComponent.h">
+      <Filter>Headerdateien\render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\render\CubeMapTexture.h">
+      <Filter>Headerdateien\render</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -232,6 +238,12 @@
     </ClCompile>
     <ClCompile Include="src\util\BGLMeshLoader.cpp">
       <Filter>Quelldateien\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render\CubeMapComponent.cpp">
+      <Filter>Quelldateien\render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render\CubeMapTexture.cpp">
+      <Filter>Quelldateien\render</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -53,8 +53,6 @@ namespace component
 		// List of all Entitys
 		std::list<Entity*>m_entitys;
 
-
-
 		// Private copy constructor
 		EntityCollection(const EntityCollection& t_other) {}
 	};

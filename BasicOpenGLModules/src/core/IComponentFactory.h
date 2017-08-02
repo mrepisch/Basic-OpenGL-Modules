@@ -8,6 +8,10 @@
 
 namespace core
 {
+	/**
+	 * This interface is used in the BasicOpenGLCore for generating components for Entitys.
+	 * 
+	 */
 	class IComponentFactory
 	{
 	public:

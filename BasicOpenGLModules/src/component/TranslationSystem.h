@@ -2,7 +2,6 @@
 
 // Internal includes
 #include "System.h"
-#include "System.h"
 
 namespace component
 {
@@ -33,6 +32,5 @@ namespace component
 		 * @param Event*, pointer on the event to process
 		 */
 		void receiveEvent( Event* p_event );
-	private:
 	};
 }

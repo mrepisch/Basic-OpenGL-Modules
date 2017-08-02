@@ -1,5 +1,5 @@
 #include <SDL2\SDL_image.h>
-
+#include <iostream>
 
 #include "Texture.h"
 
@@ -10,7 +10,7 @@ Texture::Texture(const char* p_filename)
 	m_texture = IMG_Load( p_filename );
 	if (m_texture == nullptr)
 	{
-		bool a_test = false;
+		std::cout << "Texturefile not foung" << std::endl;
 	}
 	glGenTextures(1, &m_textureID);
 	glBindTexture(GL_TEXTURE_2D, m_textureID);

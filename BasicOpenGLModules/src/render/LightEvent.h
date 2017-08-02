@@ -11,7 +11,17 @@ namespace render
 		~LightEvent() {};
 
 		long m_entityID;
-		util::VectorF m_newColor;
-		util::VectorF m_newAmbient;
+		util::VectorF lightColorToAdd;
+		util::VectorF ambientToAdd;
+		// used for e_directionalLift
+		util::VectorF newDirection;
+		util::VectorF positionToAdd;
+		// used for point light
+		float constantToAdd;
+		float linearToAdd;
+		float quadraticToAdd;
+		float outCutOffToAdd;
+		// used for flashlight
+		float cutOffToAdd;
 	};
 }

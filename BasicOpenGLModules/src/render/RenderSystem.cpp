@@ -12,7 +12,7 @@
 #include "RenderComponent.h"
 #include "../component/TranslationComponent.h"
 #include "../game/CameraComponent.h"
-
+#include "CubeMapComponent.h"
 using namespace render;
 using namespace component;
 using namespace game;
@@ -41,6 +41,9 @@ void RenderSystem::update()
 	{
 		l_projection = glm::perspective( glm::radians( 45.0f ), ( float )l_cameraComp->m_screenWidth / ( float )l_cameraComp->m_screenHeight, 0.1f, l_cameraComp->m_depth );
 	}
+
+	
+
 	std::vector<Entity*>l_entitys = m_collection->getEntityWithComponents( e_renderComponent );
 	for (int i = 0; i < l_entitys.size(); ++i)
 	{
@@ -91,6 +94,25 @@ void RenderSystem::update()
 			}
 			glBindVertexArray( l_renderComponent->m_mesh->getVAO_ID() );
 			glDrawElements( GL_TRIANGLES, (GLsizei)(l_renderComponent->m_mesh->getVertexCount()), GL_UNSIGNED_INT, 0 );
+		}
+	}
+	//Render the skybox
+
+	std::vector<Entity*>l_skybox = m_collection->getEntityWithComponents( e_cubemapComponent );
+	if (l_skybox.size() > 0)
+	{
+		CubeMapComponent* l_cubeMapComp = ( CubeMapComponent* )l_skybox[ 0 ]->getComponent( e_cubemapComponent );
+		if (l_cubeMapComp != nullptr)
+		{
+			glDepthMask( GL_FALSE );
+			m_shaderManager->useProgram( l_cubeMapComp->m_shaderID );
+			m_shaderManager->setMatrix( l_projection, "projection", l_cubeMapComp->m_shaderID );
+			m_shaderManager->setMatrix( l_cameraComp->getViewMatrix(), "view", l_cubeMapComp->m_shaderID );
+			m_shaderManager->setInt( 0, "skybox", l_cubeMapComp->m_shaderID );
+			glBindVertexArray( l_cubeMapComp->skyboxMesh->getVAO_ID() );
+			glBindTexture( GL_TEXTURE_CUBE_MAP, l_cubeMapComp->m_texture->getTextureID() );
+			glDrawElements( GL_TRIANGLES, ( GLsizei )( l_cubeMapComp->skyboxMesh->getVertexCount() ), GL_UNSIGNED_INT, 0 );
+			glDepthMask( GL_TRUE );
 		}
 	}
 }

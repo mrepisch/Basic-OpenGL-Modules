@@ -21,10 +21,10 @@ namespace component
 	public:
 		
 		/**
-		* Private constructor.
-		* SINGELTON PATTERN
-		* @author sascha blank
-		*/
+		 * Private constructor.
+		 * SINGELTON PATTERN
+		 * @author sascha blank
+		 */
 		SystemCollection() {}
 
 		/**
@@ -47,8 +47,6 @@ namespace component
 
 	private:
 
-
-
 		/**
 		 * Private copy constructor
 		 * @author sascha blank
@@ -57,7 +55,5 @@ namespace component
 
 		// Vector whith system
 		std::vector<System*>m_systems;
-
-		
 	};
 }

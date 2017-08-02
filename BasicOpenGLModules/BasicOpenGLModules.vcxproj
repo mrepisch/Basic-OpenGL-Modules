@@ -40,6 +40,8 @@
     <ClInclude Include="src\game\CameraSystem.h" />
     <ClInclude Include="src\game\KeyInput.h" />
     <ClInclude Include="src\game\InputSystem.h" />
+    <ClInclude Include="src\render\CubeMapComponent.h" />
+    <ClInclude Include="src\render\CubeMapTexture.h" />
     <ClInclude Include="src\render\LightEvent.h" />
     <ClInclude Include="src\render\LightningComponent.h" />
     <ClInclude Include="src\render\LightSystem.h" />
@@ -73,6 +75,8 @@
     <ClCompile Include="src\game\KeyInput.cpp" />
     <ClCompile Include="src\game\InputSystem.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\render\CubeMapComponent.cpp" />
+    <ClCompile Include="src\render\CubeMapTexture.cpp" />
     <ClCompile Include="src\render\LightEvent.cpp" />
     <ClCompile Include="src\render\LightningComponent.cpp" />
     <ClCompile Include="src\render\Lightsystem.cpp" />

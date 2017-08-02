@@ -54,6 +54,10 @@ int main(int argc, char **argv)
 		"lightFragment.txt",
 		"lightsource" );
 
+	l_shaderManager.createShaderProgram( "skybox" );
+	l_shaderManager.addShader( "vertex", ShaderManager::e_vertex, "cubemapVert.c", "skybox" );
+	l_shaderManager.addShader( "fragment", ShaderManager::e_fragment, "cubemapFrag.c", "skybox" );
+
 	l_shaderManager.compile();
 
 
@@ -66,7 +70,7 @@ int main(int argc, char **argv)
 	l_core.addComponentToEntity( l_camID, "basic" ,"camera" );
 
 	std::vector<std::string>l_compData;
-	l_compData.push_back( "render" );
+	/*l_compData.push_back( "render" );
 	l_compData.push_back( "box.xml" );
 	l_compData.push_back( "basic" );
 
@@ -84,24 +88,61 @@ int main(int argc, char **argv)
 	l_compData.push_back( "sun.xml" );
 	l_compData.push_back( "lightsource" );
 
-	long l_sunID = l_core.createNewEntity( "sun" );
-	l_core.addComponentToEntity( l_sunID, "basic", l_compData );
+	long l_pointLight = l_core.createNewEntity( "sun" );
+	l_core.addComponentToEntity( l_pointLight, "basic", l_compData );
 	l_compData.clear();
-	l_core.addComponentToEntity( l_sunID, "basic", "translation" );
+	l_core.addComponentToEntity( l_pointLight, "basic", "translation" );
+	l_compData.clear();
+	l_compData.push_back( "light" );
+	l_compData.push_back( "lightsource" );
+	l_compData.push_back( "1" );
+	l_core.addComponentToEntity( l_pointLight, "basic", l_compData );
+
+	TranslationsEvent* l_transEvent = new TranslationsEvent(l_pointLight);
+	l_transEvent->m_positionsOffset.set( 2.0f, 5.0f, -3.0f );
+	EventDispatcher::Instance().addEvent( l_transEvent );
+
+	LightEvent* l_lightevent = new LightEvent( l_pointLight );
+	l_lightevent->positionToAdd.set( 2.0f, 5.0f, -3.0f );
+	l_lightevent->ambientToAdd.set( 0.1f,0.1f,0.1f );
+	l_lightevent->newDirection.set( -0.2f, -1.0f, -0.3f );
+	EventDispatcher::Instance().addEvent( l_lightevent );
+
+
+	// Directional light
+	long a_dirLigt = l_core.createNewEntity( "dirlight" );
 	l_compData.clear();
 	l_compData.push_back( "light" );
 	l_compData.push_back( "lightsource" );
 	l_compData.push_back( "0" );
-	l_core.addComponentToEntity( l_sunID, "basic", l_compData );
+	l_core.addComponentToEntity( a_dirLigt, "basic", l_compData );
+	l_compData.clear();
 
-	TranslationsEvent* l_transEvent = new TranslationsEvent(l_sunID);
-	l_transEvent->m_positionsOffset.set( 2.0f, 5.0f, -3.0f );
-	EventDispatcher::Instance().addEvent( l_transEvent );
+	LightEvent* l_lightevent2 = new LightEvent( a_dirLigt );
+	l_lightevent2->positionToAdd.set( 2.0f, 5.0f, -3.0f );
+	l_lightevent2->newDirection.set( -0.2f, -1.0f, -0.3f );
+	l_lightevent2->ambientToAdd.set( 0.1f, 0.1f, 0.1f );
+	EventDispatcher::Instance().addEvent( l_lightevent2 );*/
 
-	LightEvent* l_lightevent = new LightEvent( l_sunID );
-	l_lightevent->m_newColor.set( 0.0f, 0.0f, 0.5f );
-	l_lightevent->m_newAmbient.set( 0.1f, 0.1f, 0.1f );
-	EventDispatcher::Instance().addEvent( l_lightevent );
+	//skybox
+	l_compData.clear();
+	l_compData.push_back( "cubemap" );
+	l_compData.push_back( "skybox.xml" );
+	l_compData.push_back( "skybox" );
+	l_compData.push_back( "C:\\Users\\episch\\Documents\\OpenGLProject\\BasicOpenGLModules\\BasicOpenGLModules\\textures\\cubemap\\rightside.png" );
+	l_compData.push_back( "C:\\Users\\episch\\Documents\\OpenGLProject\\BasicOpenGLModules\\BasicOpenGLModules\\textures\\cubemap\\leftside.png" );
+	l_compData.push_back( "C:\\Users\\episch\\Documents\\OpenGLProject\\BasicOpenGLModules\\BasicOpenGLModules\\textures\\cubemap\\topside.png" );
+	l_compData.push_back( "C:\\Users\\episch\\Documents\\OpenGLProject\\BasicOpenGLModules\\BasicOpenGLModules\\textures\\cubemap\\topside.png" );
+	l_compData.push_back( "C:\\Users\\episch\\Documents\\OpenGLProject\\BasicOpenGLModules\\BasicOpenGLModules\\textures\\cubemap\\backside.png" );
+	l_compData.push_back( "C:\\Users\\episch\\Documents\\OpenGLProject\\BasicOpenGLModules\\BasicOpenGLModules\\textures\\cubemap\\frontside.png" );
+	long skyboxID = l_core.createNewEntity( "skybox" );
+	l_core.addComponentToEntity( skyboxID, "basic", l_compData );
+	l_core.addComponentToEntity( skyboxID, "basic", "translation" );
+
+
+
+
+
 
 	InputSystem* l_inputSystem = new InputSystem( &l_mainWindow, &l_core.getEntityCollection() );
 	BasicKeyInput* l_keyInput = new BasicKeyInput();
