@@ -2,7 +2,7 @@
 
 This is a small libary with diffrent modules for building games and other media application using OpenGL.
 
-All libarys in the libary folder are 64Bit if you want to use the Basic-OpenGL-Modules you have to replace them with the 32 Bit ones.
+All libarys in the libary folder are 64Bit if you want to use the Basic-OpenGL-Modules in 32Bit, you have to replace them with the 32 Bit ones.
 The following libarys will be found in the libary folder.
 
 * SDL2 for OpenGL initalisation and inputhandling
@@ -51,10 +51,13 @@ But i will provide the dlls son
 * PLY Parser ( PLY format can be exported by blender)
 * Shaders
 * Png Loading
+* Lightningsystem
+* BGL Mesh Format + Export Script for blender
 
 ## In Progress
-
-* Lightning
+* Sound
 * Partikel
 * Highmap Terrain generation
+* Animations
+* Multitexturing
 
