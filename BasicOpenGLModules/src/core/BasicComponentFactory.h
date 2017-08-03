@@ -10,11 +10,11 @@ namespace core
 
 		BasicComponentFactory( ShaderManager* p_shaderManager );
 
-		virtual component::Component* generateComponentFromVector( const std::vector<std::string>& p_data );
+		component::Component* generateComponentFromVector( const std::vector<std::string>& p_data );
 
-		virtual component::Component* generateComponentFromMap( const std::map<std::string, std::string>& p_data );
+		component::Component* generateComponentFromMap( const std::map<std::string, std::string>& p_data );
 
-		virtual component::Component* generateComponentFromString( const std::string& t_data );
+		component::Component* generateComponentFromString( const std::string& t_data );
 
 	private:
 		ShaderManager* m_shaderManager;

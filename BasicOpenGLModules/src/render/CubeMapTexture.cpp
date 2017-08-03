@@ -20,7 +20,7 @@ CubeMapTexture::CubeMapTexture( const std::vector<std::string>& p_paths)
 		{
 			glTexImage2D(
 				GL_TEXTURE_CUBE_MAP_POSITIVE_X + i,
-				0, GL_RGB, l_texture->w, l_texture->h, 0, GL_RGBA, GL_UNSIGNED_BYTE, l_texture->pixels);
+				0, GL_RGB, l_texture->w, l_texture->h, 0, GL_RGB, GL_UNSIGNED_BYTE, l_texture->pixels);
 			SDL_FreeSurface( l_texture );
 		}
 		else

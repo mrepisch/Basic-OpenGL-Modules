@@ -31,6 +31,7 @@ int main(int argc, char **argv)
 {
 	Display l_mainWindow(800, 600, "OpenGL Window");
 	l_mainWindow.setFPS( 30 );
+
 	ShaderManager l_shaderManager;
 	l_shaderManager.createShaderProgram( "basic" );
 	l_shaderManager.addShader( "vertex",
@@ -70,7 +71,7 @@ int main(int argc, char **argv)
 	l_core.addComponentToEntity( l_camID, "basic" ,"camera" );
 
 	std::vector<std::string>l_compData;
-	/*l_compData.push_back( "render" );
+	l_compData.push_back( "render" );
 	l_compData.push_back( "box.xml" );
 	l_compData.push_back( "basic" );
 
@@ -122,26 +123,21 @@ int main(int argc, char **argv)
 	l_lightevent2->positionToAdd.set( 2.0f, 5.0f, -3.0f );
 	l_lightevent2->newDirection.set( -0.2f, -1.0f, -0.3f );
 	l_lightevent2->ambientToAdd.set( 0.1f, 0.1f, 0.1f );
-	EventDispatcher::Instance().addEvent( l_lightevent2 );*/
+	EventDispatcher::Instance().addEvent( l_lightevent2 );
 
 	//skybox
 	l_compData.clear();
 	l_compData.push_back( "cubemap" );
-	l_compData.push_back( "skybox.xml" );
 	l_compData.push_back( "skybox" );
-	l_compData.push_back( "C:\\Users\\episch\\Documents\\OpenGLProject\\BasicOpenGLModules\\BasicOpenGLModules\\textures\\cubemap\\rightside.png" );
-	l_compData.push_back( "C:\\Users\\episch\\Documents\\OpenGLProject\\BasicOpenGLModules\\BasicOpenGLModules\\textures\\cubemap\\leftside.png" );
-	l_compData.push_back( "C:\\Users\\episch\\Documents\\OpenGLProject\\BasicOpenGLModules\\BasicOpenGLModules\\textures\\cubemap\\topside.png" );
-	l_compData.push_back( "C:\\Users\\episch\\Documents\\OpenGLProject\\BasicOpenGLModules\\BasicOpenGLModules\\textures\\cubemap\\topside.png" );
-	l_compData.push_back( "C:\\Users\\episch\\Documents\\OpenGLProject\\BasicOpenGLModules\\BasicOpenGLModules\\textures\\cubemap\\backside.png" );
-	l_compData.push_back( "C:\\Users\\episch\\Documents\\OpenGLProject\\BasicOpenGLModules\\BasicOpenGLModules\\textures\\cubemap\\frontside.png" );
+	l_compData.push_back( "C:\\Users\\episch\\Documents\\OpenGLProject\\BasicOpenGLModules\\BasicOpenGLModules\\textures\\cubemap\\left.png" );
+	l_compData.push_back( "C:\\Users\\episch\\Documents\\OpenGLProject\\BasicOpenGLModules\\BasicOpenGLModules\\textures\\cubemap\\right.png" );
+	l_compData.push_back( "C:\\Users\\episch\\Documents\\OpenGLProject\\BasicOpenGLModules\\BasicOpenGLModules\\textures\\cubemap\\top.png" );
+	l_compData.push_back( "C:\\Users\\episch\\Documents\\OpenGLProject\\BasicOpenGLModules\\BasicOpenGLModules\\textures\\cubemap\\bottom.png" );
+	l_compData.push_back( "C:\\Users\\episch\\Documents\\OpenGLProject\\BasicOpenGLModules\\BasicOpenGLModules\\textures\\cubemap\\back.png" );
+	l_compData.push_back( "C:\\Users\\episch\\Documents\\OpenGLProject\\BasicOpenGLModules\\BasicOpenGLModules\\textures\\cubemap\\front.png" );
 	long skyboxID = l_core.createNewEntity( "skybox" );
 	l_core.addComponentToEntity( skyboxID, "basic", l_compData );
 	l_core.addComponentToEntity( skyboxID, "basic", "translation" );
-
-
-
-
 
 
 	InputSystem* l_inputSystem = new InputSystem( &l_mainWindow, &l_core.getEntityCollection() );

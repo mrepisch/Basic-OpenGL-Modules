@@ -11,7 +11,10 @@ namespace render
 	{
 	public:
 		CubeMapComponent();
-		Mesh* skyboxMesh;
+
+
+		GLuint skyboxVAO;
+		GLuint skyboxVBO;
 		CubeMapTexture* m_texture;
 		GLuint m_shaderID;
 	};

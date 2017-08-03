@@ -40,17 +40,14 @@ Component* BasicComponentFactory::generateComponentFromVector( const std::vector
 	{
 		CubeMapComponent* a_comp = new CubeMapComponent();
 		util::BGLMeshLoader l_parser;
-		a_comp->skyboxMesh = l_parser.loadMesh( p_data[ 1 ] );
-		a_comp->skyboxMesh->setShaderProgramName( p_data[ 2 ] );
-		a_comp->skyboxMesh->generateBuffer();
-		a_comp->m_shaderID = m_shaderManager->getShaderProgramID( p_data[ 2 ] );
+		a_comp->m_shaderID = m_shaderManager->getShaderProgramID( p_data[ 1 ] );
 		std::vector<std::string>l_textures;
+		l_textures.push_back( p_data[ 2 ] );
 		l_textures.push_back( p_data[ 3 ] );
 		l_textures.push_back( p_data[ 4 ] );
 		l_textures.push_back( p_data[ 5 ] );
 		l_textures.push_back( p_data[ 6 ] );
 		l_textures.push_back( p_data[ 7 ] );
-		l_textures.push_back( p_data[ 8 ] );
 
 		a_comp->m_texture = new CubeMapTexture( l_textures );
 		return a_comp;
