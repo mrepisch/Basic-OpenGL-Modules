@@ -13,7 +13,7 @@ The following libarys will be found in the libary folder.
 The libary also provides base classes for the 
 [Entity-Component Pattern](http://gameprogrammingpatterns.com/component.html)
 
-You have to compile the libary yourself there is no CMakefile atm
+You have to compile the libary yourself there is no CMakefile at the moment
 This is because the libary isen't finished yet and i provide some example code (main.cpp).
 But i will provide the dlls son
 
