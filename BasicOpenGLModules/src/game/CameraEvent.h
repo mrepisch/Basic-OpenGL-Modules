@@ -15,6 +15,16 @@ namespace game
 	{
 	public:
 
+		enum EnCamera_Movement
+		{
+			e_forward = 0,
+			e_backward,
+			e_left,
+			e_right,
+			e_none
+		};
+
+
 		/**
 		 * Default constructor
 		 * @author sascha blank
@@ -27,25 +37,12 @@ namespace game
 		virtual ~CameraEvent( void );
 
 		/**
-		 * Returns the offset to the current camera position
-		 * @author sascha blank
-		 * @return const VectorF& with the offset
-		 */
-		const util::VectorF& getOffset() const;
-
-		/**
 		 * Function to return the rotation offset to the current camera rotation
 		 * @author sascha blank
 		 * @return const VectorF& with the rotation offset
 		 */
 		const util::VectorF& getRotation() const;
 
-		/**
-		 * Sets the offset to the current camera position
-		 * @author sascha blank
-		 * @param const VectorF&, the camera offset
-		 */
-		void setOffset( const util::VectorF& p_offset );
 
 		/**
 		 * Sets the rotation offset to the current camera rotation
@@ -54,12 +51,15 @@ namespace game
 		 */
 		void setRotation( const util::VectorF& p_rotation );
 
-	private	:
+		float velocity;
 
-		// The offset to the current camera position
-		util::VectorF m_offset;
+		EnCamera_Movement direction;
+
+	private	:
 
 		// the rotation offset to the current camera rotation
 		util::VectorF m_rotation;
+
+
 	};
 }

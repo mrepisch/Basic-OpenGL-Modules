@@ -1,5 +1,8 @@
 #pragma once
 
+//External includes
+#include <string>
+
 // Internal includes
 #include "Component.h"
 #include "util\Vector3D.h"
@@ -30,6 +33,13 @@ namespace component
 
 		// Scale vector
 		util::VectorF m_scale;
+		
+		/**
+		 * Function to serialize the TranslationComponent to xml
+		 * @author sascha blank
+		 * @param rapidxml::xml_node<>* the rootNode
+		 */
+		void serialize( rapidxml::xml_node<>* p_rootNode );
 
 	private:
 

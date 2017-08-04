@@ -25,5 +25,7 @@ namespace render
 
 		// The mesh to render
 		render::Mesh* m_mesh;
+
+		void serialize( rapidxml::xml_node<>* p_rootNode ){}
 	};
 }

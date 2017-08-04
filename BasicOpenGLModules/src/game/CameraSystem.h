@@ -8,11 +8,19 @@
 #include "../component/Event.h"
 #include "CameraComponent.h"
 
+
+
 namespace game
 {
+	// Prototypes
+	class CameraEvent;
+
 	/**
-	 * System to manage the Camera. 
-	 * This system processes the CameraEvent
+	 * This System manages CameraComponents. At the moment there is just a ego perspectiv Camera impelementet.
+	 * The positions and rotation of the camera is given by the CameraEvents.
+	 * ! There is usualy just one CameraComponent at the time active. !
+	 * Expect strange behavhior if you have 2 or more CameraComponents active.
+	 * But you coid switch between Entitys which holds a CameraComponent in order to place multiple Cameras in the szene.
 	 * @author sascha blank
 	 */
 	class CameraSystem : public component::System
@@ -45,9 +53,23 @@ namespace game
 		 */
 		void receiveEvent( component::Event* p_event );
 
-		
-
 	private:
+
+		/**
+		 * Function to calculate the new Camera position depending on de input direction and velocity
+		 * @author sascha blank
+		 * @param CamaeraComponent* the camera compontent
+		 * @param CameraEvent* the event which was incoming from the dispatcher
+		 */
+		void newPositionFromEvent( CameraComponent* p_cameraComp, CameraEvent* p_event );
+
+		/**
+		 * Function to calculate the cameras new rotation depending on the input offset
+		 * @author sascha blank
+		 * @param CameraComponent* camera component pointer
+		 * @param CameraEvent* the event which was incoming from the dispatcher
+		 */
+		void addRotationFromEvent( CameraComponent* p_cameraComp, CameraEvent* p_event );
 
 		/**
 		 * After the CameraEvent is processed the camera needs to be updated.

@@ -16,6 +16,9 @@ namespace render
 		// used for e_directionalLift
 		util::VectorF newDirection;
 		util::VectorF positionToAdd;
+
+		util::VectorF specular;
+		util::VectorF diffuse;
 		// used for point light
 		float constantToAdd;
 		float linearToAdd;

@@ -17,5 +17,7 @@ namespace render
 		GLuint skyboxVBO;
 		CubeMapTexture* m_texture;
 		GLuint m_shaderID;
+
+		void serialize( rapidxml::xml_node<>* p_rootNode ) {}
 	};
 }

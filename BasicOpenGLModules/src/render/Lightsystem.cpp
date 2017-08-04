@@ -58,7 +58,11 @@ void Lightsystem::update()
 							l_renderComp->m_mesh->getShaderProgramNameName() );
 						m_shaderManager->setVector( l_lightComp->m_position.convertToGlmVec3(), l_uniformBase + ".position",
 							l_renderComp->m_mesh->getShaderProgramNameName() );
-						
+						m_shaderManager->setVector( l_lightComp->m_diffuse.convertToGlmVec3(), l_uniformBase + ".diffuse",
+							l_renderComp->m_mesh->getShaderProgramNameName() );
+						m_shaderManager->setVector( l_lightComp->m_specular.convertToGlmVec3(), l_uniformBase + ".specular",
+							l_renderComp->m_mesh->getShaderProgramNameName() );
+
 						m_shaderManager->setFloat( l_lightComp->m_constant, l_uniformBase + ".constant", l_renderComp->m_mesh->getShaderProgramNameName() );
 						m_shaderManager->setFloat( l_lightComp->m_linear, l_uniformBase + ".linear", l_renderComp->m_mesh->getShaderProgramNameName() );
 						m_shaderManager->setFloat( l_lightComp->m_quadratic, l_uniformBase + ".quadratic", l_renderComp->m_mesh->getShaderProgramNameName() );
@@ -100,6 +104,8 @@ void Lightsystem::receiveEvent( Event* p_event )
 				a_comp->m_quadratic = a_comp->m_quadratic + l_event->quadraticToAdd;
 				a_comp->m_outCutOff = a_comp->m_outCutOff = l_event->outCutOffToAdd;
 				a_comp->m_cutOff = a_comp->m_cutOff + l_event->cutOffToAdd;
+				a_comp->m_diffuse = a_comp->m_diffuse + l_event->diffuse;
+				a_comp->m_specular = a_comp->m_specular + l_event->specular;
 			}
 		}
 	}

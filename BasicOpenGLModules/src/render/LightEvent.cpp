@@ -10,6 +10,8 @@ LightEvent::LightEvent( long p_entityID ) :Event( e_lightEvent )
 	ambientToAdd.set( 0.0f, 0.0f, 0.0f );
 	positionToAdd.set( 0.0f, 0.0f, 0.0f );
 	newDirection.set( 0.0f, 0.0f, 0.0f );
+	specular.set( 0.0f, 0.0f, 0.0f );
+	diffuse.set( 0.0f, 0.0f, 0.0f );
 	constantToAdd = 0;
 	linearToAdd = 0;
 	quadraticToAdd = 0;

@@ -32,6 +32,8 @@ namespace render
 		// used for e_directionalLift
 		util::VectorF m_direction;
 		util::VectorF m_position;
+		util::VectorF m_specular;
+		util::VectorF m_diffuse;
 		// used for point light
 		float m_constant;
 		float m_linear;
@@ -39,6 +41,8 @@ namespace render
 		float m_outCutOff;
 		// used for flashlight
 		float m_cutOff;
+
+		void serialize( rapidxml::xml_node<>* p_rootNode ) {}
 
 	};
 }

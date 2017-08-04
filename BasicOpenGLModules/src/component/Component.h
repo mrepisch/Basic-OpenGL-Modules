@@ -1,4 +1,5 @@
 #pragma once
+#include <rapidXml\rapidxml.hpp>
 
 namespace component
 {
@@ -30,8 +31,15 @@ namespace component
 
 		/**
 		 * Function to return the component type
+		 * @author sascha blank
 		 */
 		EnComponents getComponentType() { return m_componentType; }
+
+		/**
+		 * Abstract function to serialize the component.
+		 * It uses a xml format.
+		 */
+		virtual void serialize( rapidxml::xml_node<>* p_rootNode ) = 0;
 			
 	protected:
 

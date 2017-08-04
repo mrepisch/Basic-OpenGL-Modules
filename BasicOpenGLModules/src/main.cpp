@@ -72,7 +72,7 @@ int main(int argc, char **argv)
 
 	std::vector<std::string>l_compData;
 	l_compData.push_back( "render" );
-	l_compData.push_back( "box.xml" );
+	l_compData.push_back( "terain1.xml" );
 	l_compData.push_back( "basic" );
 
 	long l_groundID = l_core.createNewEntity( "ground" );
@@ -81,7 +81,7 @@ int main(int argc, char **argv)
 	
 	TranslationsEvent* l_transEventforGround = new TranslationsEvent( l_groundID );
 	l_transEventforGround->m_positionsOffset.set( 0.0f, -2.0f, 0.0f );
-	l_transEventforGround->m_scaleToAdd.set( 5.0f, 0.0f, 5.0f );
+	//l_transEventforGround->m_scaleToAdd.set( 5.0f, 0.0f, 5.0f );
 	EventDispatcher::Instance().addEvent( l_transEventforGround );
 
 	l_compData.clear();
@@ -100,15 +100,32 @@ int main(int argc, char **argv)
 	l_core.addComponentToEntity( l_pointLight, "basic", l_compData );
 
 	TranslationsEvent* l_transEvent = new TranslationsEvent(l_pointLight);
-	l_transEvent->m_positionsOffset.set( 2.0f, 5.0f, -3.0f );
+	l_transEvent->m_positionsOffset.set( 0.0f, 0.5f, -1.0f );
 	EventDispatcher::Instance().addEvent( l_transEvent );
 
 	LightEvent* l_lightevent = new LightEvent( l_pointLight );
-	l_lightevent->positionToAdd.set( 2.0f, 5.0f, -3.0f );
+	l_lightevent->positionToAdd.set( 2.0f, 1.0f, -1.0f );
+	
 	l_lightevent->ambientToAdd.set( 0.1f,0.1f,0.1f );
-	l_lightevent->newDirection.set( -0.2f, -1.0f, -0.3f );
+	l_lightevent->newDirection.set( -0.0f, -1.0f, -0.0f );
+	l_lightevent->diffuse.set( 0.5f, 0.5f, 0.5f );
+	l_lightevent->specular.set( 0.5f, 0.5f, 0.5f );
 	EventDispatcher::Instance().addEvent( l_lightevent );
 
+
+	/*long grassID = l_core.createNewEntity( "grass" );
+	l_compData.clear();
+	l_compData.push_back( "render" );
+	l_compData.push_back( "gras.xml" );
+	l_compData.push_back( "basic" );
+	l_core.addComponentToEntity( grassID, "basic", l_compData );
+	l_compData.clear();
+	l_core.addComponentToEntity( grassID, "basic", "translation" );
+
+	TranslationsEvent* l_transEventGrass = new TranslationsEvent( grassID );
+	l_transEventGrass->m_positionsOffset.set( 0.0f,0.0f,0.0f );
+	l_transEventGrass->m_rotationOffset.setX( -90.0f );
+	EventDispatcher::Instance().addEvent( l_transEventGrass );*/
 
 	// Directional light
 	long a_dirLigt = l_core.createNewEntity( "dirlight" );
@@ -123,6 +140,8 @@ int main(int argc, char **argv)
 	l_lightevent2->positionToAdd.set( 2.0f, 5.0f, -3.0f );
 	l_lightevent2->newDirection.set( -0.2f, -1.0f, -0.3f );
 	l_lightevent2->ambientToAdd.set( 0.1f, 0.1f, 0.1f );
+	l_lightevent2->diffuse.set( 0.75f, 0.75f, 0.75f );
+	l_lightevent2->specular.set( 0.75f, 0.75f, 0.75f );
 	EventDispatcher::Instance().addEvent( l_lightevent2 );
 
 	//skybox
