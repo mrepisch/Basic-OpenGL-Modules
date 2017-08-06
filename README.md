@@ -9,6 +9,7 @@ The following libarys will be found in the libary folder.
 * SDL_mixer for sounds
 * SDL_image for advanced texture formats like png.
 * glm for the advanced support.
+* rapidxml for xml parsing
 
 The libary also provides base classes for the 
 [Entity-Component Pattern](http://gameprogrammingpatterns.com/component.html)
@@ -53,6 +54,7 @@ But i will provide the dlls son
 * Png Loading
 * Lightningsystem
 * BGL Mesh Format + Export Script for blender
+* Xml serialization
 
 ## In Progress
 * Sound
@@ -60,4 +62,5 @@ But i will provide the dlls son
 * Highmap Terrain generation
 * Animations
 * Multitexturing
+* Better shadersystem
 
