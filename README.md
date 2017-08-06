@@ -52,7 +52,7 @@ But i will provide the dlls son
 * PLY Parser ( PLY format can be exported by blender)
 * Shaders
 * Png Loading
-* Lightningsystem
+* Lightningsystem ( Diffuse and specular)
 * BGL Mesh Format + Export Script for blender
 * Xml serialization
 
