@@ -38,8 +38,17 @@ namespace component
 		/**
 		 * Abstract function to serialize the component.
 		 * It uses a xml format.
+		 * @author sascha blank
+		 * @param rapidxml::xml_node<>* the node to append the component node
 		 */
 		virtual void serialize( rapidxml::xml_node<>* p_rootNode ) = 0;
+
+		/**
+		 * Function to read the component data from a xml node
+		 * @author sascha blank
+		 * @param rapidxml::xml_node<>* the component node
+		 */
+		virtual void deserialize( rapidxml::xml_node<>* p_componentNode ) = 0;
 			
 	protected:
 

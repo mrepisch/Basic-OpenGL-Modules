@@ -3,7 +3,7 @@
 // External includes
 #include <string>
 #include <list>
-
+#include <rapidXml\rapidxml.hpp>
 // Internal includes
 #include "Component.h"
  
@@ -89,6 +89,8 @@ namespace component
 		 * @author sascha blank
 		 */
 		static void ResetEntityCounter( void );
+
+		void serialize( rapidxml::xml_node<>* p_rootNode );
 
 	private:
 

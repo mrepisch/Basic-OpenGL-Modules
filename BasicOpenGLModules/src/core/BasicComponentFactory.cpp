@@ -29,7 +29,9 @@ Component* BasicComponentFactory::generateComponentFromVector( const std::vector
 		Mesh* l_mesh = l_parser.loadMesh( p_data[ 1 ] );
 		l_mesh->setShaderProgramName( p_data[ 2 ] );
 		l_mesh->generateBuffer();
-		return new RenderComponent( l_mesh );
+		RenderComponent* l_comp = new RenderComponent( l_mesh );
+		l_comp->m_meshFileName = p_data[ 1 ];
+		return l_comp;
 	}
 	else if (p_data[ 0 ] == "light")
 	{
@@ -40,7 +42,7 @@ Component* BasicComponentFactory::generateComponentFromVector( const std::vector
 	{
 		CubeMapComponent* a_comp = new CubeMapComponent();
 		util::BGLMeshLoader l_parser;
-		a_comp->m_shaderID = m_shaderManager->getShaderProgramID( p_data[ 1 ] );
+		a_comp->m_shaderName =  p_data[ 1 ] ;
 		std::vector<std::string>l_textures;
 		l_textures.push_back( p_data[ 2 ] );
 		l_textures.push_back( p_data[ 3 ] );
@@ -67,7 +69,7 @@ Component* BasicComponentFactory::generateComponentFromString( const std::string
 	Component* r_comp = nullptr;
 	if (t_data == "camera")
 	{
-		r_comp = new CameraComponent(800,600,1000.0f);
+		r_comp = new CameraComponent(800,600,1000.0f,true);
 	}
 	else if (t_data == "translation")
 	{
@@ -75,4 +77,36 @@ Component* BasicComponentFactory::generateComponentFromString( const std::string
 	}
 
 	return r_comp;
+}
+
+
+Component* BasicComponentFactory::generateComponentFromXmlNode( rapidxml::xml_node<>* p_node )
+{
+
+	std::string l_test = p_node->name();
+	if(std::string( p_node->name() ) == "cameraComponent")
+	{
+		CameraComponent* r_comp = new CameraComponent( 800, 600, 1000.0f );
+		r_comp->deserialize( p_node );
+		return r_comp;
+	}
+	else if (std::string( p_node->name() ) == "renderComponent")
+	{
+		RenderComponent* r_comp = new RenderComponent();
+		r_comp->deserialize( p_node );
+		return r_comp;
+	}
+	else if (std::string( p_node->name()) == "translationComponent" )
+	{
+		TranslationComponent* r_comp = new TranslationComponent();
+		r_comp->deserialize( p_node );
+		return r_comp;
+	}
+	else if (std::string( p_node->name() ) == "cubemapComponent")
+	{
+		CubeMapComponent* r_comp = new CubeMapComponent();
+		r_comp->deserialize( p_node );
+		return r_comp;
+	}
+	return nullptr;
 }

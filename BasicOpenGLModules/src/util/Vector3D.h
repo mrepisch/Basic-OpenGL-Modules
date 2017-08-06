@@ -1,5 +1,8 @@
 #pragma once
 #include <glm\glm.hpp>
+#include <rapidXml\rapidxml.hpp>
+
+
 namespace util
 {
 

@@ -14,10 +14,12 @@ namespace render
 
 		GLuint getTextureID();
 
+		const std::vector<std::string>& getTexturePaths( void );
 
 	private:
 		
 		GLuint m_textureID;
+		std::vector < std::string>m_paths;
 
 	};
 }

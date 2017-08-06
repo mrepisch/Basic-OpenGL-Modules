@@ -1,9 +1,19 @@
+// External inludes
+#include <rapidXml\rapidxml.hpp>
+#include <rapidXml\rapidxml_print.hpp>
+#include <fstream>
+#include <sstream>
+#include <iostream>
+
+// Internal includes
 #include "BasicOpenGLCore.h"
 #include "Display.h"
 #include "../component/EventDispatcher.h"
 
 using namespace core;
 using namespace component;
+using namespace rapidxml;
+
 
 BasicOpenGLCore::BasicOpenGLCore( Display* p_display, ShaderManager* p_shaderManager )
 {
@@ -123,3 +133,67 @@ long BasicOpenGLCore::createNewEntity( const char* t_objectName )
 	m_entiyCollection.addEntity( l_entity );
 	return r_entityID;
 }
+
+
+void BasicOpenGLCore::saveSzene( const std::string& p_path )
+{
+	std::list<Entity*>l_entitys = m_entiyCollection.getAllEntitys();
+	xml_document<> l_doc; 
+	xml_node<>* l_szeneRootNode = l_doc.allocate_node( node_element, "szene" );
+	xml_node<>* l_entitysNode = l_doc.allocate_node( node_element, "entitys" );
+	l_doc.append_node( l_szeneRootNode );
+	l_szeneRootNode->append_node( l_entitysNode );
+
+	for (auto l_it = l_entitys.begin(); l_it != l_entitys.end(); l_it++)
+	{
+		( *l_it )->serialize( l_entitysNode );
+	}
+	std::string xml_as_string;
+	print( std::back_inserter( xml_as_string ), l_doc );
+	std::ofstream file_stored( p_path.c_str());
+	file_stored << l_doc;
+	file_stored.close();
+	l_doc.clear();
+}
+
+
+void BasicOpenGLCore::loadSzene( const std::string& p_path, const std::string& p_factoryName )
+{
+	std::string buffer;
+	std::string line;
+	std::ifstream xml_file( p_path );
+	if (xml_file.is_open())
+	{
+		while (xml_file.good())
+		{
+			getline( xml_file, line );
+			buffer += line;
+		}
+		xml_file.close();
+	}
+	else
+	{
+		std::cout << "ERROR: xml file not found " << p_path << std::endl;
+	}
+
+	//Create a char buffer
+	char *pbuffer = new char[ buffer.length() + 1 ];
+	strcpy_s( pbuffer, sizeof( char )*buffer.length() + 1, buffer.c_str() );
+	pbuffer[ buffer.length() ] = '\0';
+	xml_document<> doc;
+	doc.parse<0>( pbuffer );
+	xml_node<>* l_rootNode = doc.first_node( );
+	xml_node<>*l_entitysNode = l_rootNode->first_node( "entitys" );
+	IComponentFactory* l_factory = m_factorys[ p_factoryName ];
+	for (xml_node<>* l_entityNode = l_entitysNode->first_node( "entity" ); l_entityNode; l_entityNode = l_entityNode->next_sibling())
+	{
+		Entity* l_entity = new Entity( l_entityNode->first_attribute( "name" )->value() );
+		for (xml_node<>* l_componentNode = l_entityNode->first_node(); l_componentNode; l_componentNode = l_componentNode->next_sibling())
+		{
+			l_entity->addComponent( l_factory->generateComponentFromXmlNode( l_componentNode ) );
+		}
+		m_entiyCollection.addEntity( l_entity );
+	}
+	doc.clear();
+}
+

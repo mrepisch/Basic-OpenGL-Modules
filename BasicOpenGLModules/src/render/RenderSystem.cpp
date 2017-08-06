@@ -79,6 +79,7 @@ void RenderSystem::update()
 			m_shaderManager->setVector( l_renderComponent->m_mesh->getMaterial()->specularColor.convertToGlmVec3(),
 				"material.specular",
 				l_renderComponent->m_mesh->getShaderProgramNameName() );
+			m_shaderManager->setVector( l_cameraComp->m_pos, "cameraPos", l_renderComponent->m_mesh->getShaderProgramNameName() );
 
 			if (l_renderComponent->m_mesh->getMaterial()->diffuseTexture != nullptr)
 			{
@@ -106,12 +107,12 @@ void RenderSystem::update()
 		{
 			glDepthFunc( GL_LEQUAL );
 
-			m_shaderManager->useProgram( l_cubeMapComp->m_shaderID );
-			m_shaderManager->setInt( 0, "skybox", l_cubeMapComp->m_shaderID );
+			m_shaderManager->useProgram( l_cubeMapComp->m_shaderName );
+			m_shaderManager->setInt( 0, "skybox", l_cubeMapComp->m_shaderName );
 
-			m_shaderManager->setMatrix( l_projection, "projection", l_cubeMapComp->m_shaderID );
+			m_shaderManager->setMatrix( l_projection, "projection", l_cubeMapComp->m_shaderName );
 			glm::mat4 view = glm::mat4( glm::mat3( l_cameraComp->getViewMatrix()) );
-			m_shaderManager->setMatrix( view, "view", l_cubeMapComp->m_shaderID );
+			m_shaderManager->setMatrix( view, "view", l_cubeMapComp->m_shaderName );
 			glBindVertexArray( l_cubeMapComp->skyboxVAO );
 			glActiveTexture( GL_TEXTURE0 );
 			glBindTexture( GL_TEXTURE_CUBE_MAP, l_cubeMapComp->m_texture->getTextureID() );

@@ -41,6 +41,13 @@ namespace component
 		 */
 		void serialize( rapidxml::xml_node<>* p_rootNode );
 
+		/**
+		 * Function to read the component data from a xml node
+		 * @author sascha blank
+		 * @param rapidxml::xml_node<>* the component node
+		 */
+		void deserialize( rapidxml::xml_node<>* p_componentNode );
+
 	private:
 
 		/**

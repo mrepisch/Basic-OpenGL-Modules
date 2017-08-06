@@ -63,7 +63,7 @@ void BasicKeyInput::processEvent( const SDL_Event& t_event )
 	case SDLK_a:
 	{
 		CameraEvent* l_cameraEvent = new CameraEvent();
-		l_cameraEvent->direction = CameraEvent::e_forward;
+		l_cameraEvent->direction = CameraEvent::e_left;
 		EventDispatcher::Instance().addEvent( l_cameraEvent );
 		break;
 	}

@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <rapidXml\rapidxml.hpp>
 
 // Internal includes
 #include "../component/Component.h"
@@ -39,5 +40,7 @@ namespace core
 		 * @author sascha blank
 		 */
 		virtual component::Component* generateComponentFromString( const std::string& t_data ) = 0;
+
+		virtual component::Component* generateComponentFromXmlNode( rapidxml::xml_node<>* p_node ) = 0;
 	};
 }

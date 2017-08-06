@@ -4,6 +4,7 @@
 #include <map>
 #include <string>
 
+
 // Internal includes
 #include "component\EntityCollection.h"
 #include "component\SystemCollection.h"
@@ -112,6 +113,10 @@ namespace core
 		 * @return EntityCollection the collection which holds all the Entitys in it
 		 */
 		component::EntityCollection& getEntityCollection( void );
+
+		void saveSzene( const std::string& p_path );
+
+		void loadSzene( const std::string& p_path, const std::string& p_factoryName );
 
 	private:
 

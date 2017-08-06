@@ -4,6 +4,8 @@
 
 
 using namespace component;
+using namespace rapidxml;
+
 
 long Entity::S_ENTITYCOUNTER = 0;
 
@@ -81,4 +83,17 @@ Component* Entity::getComponent(EnComponents p_component)
 void Entity::ResetEntityCounter()
 {
 	S_ENTITYCOUNTER = 0;
+}
+
+
+void Entity::serialize( xml_node<>* p_rootNode )
+{
+	xml_document<>* l_doc = p_rootNode->document();
+	xml_node<>*l_entityNode = l_doc->allocate_node( node_element, "entity" );
+	l_entityNode->append_attribute( l_doc->allocate_attribute( "name", m_name.c_str() ) );
+	p_rootNode->append_node( l_entityNode );
+	for (auto l_iter = m_components.begin(); l_iter != m_components.end(); l_iter++)
+	{
+		( *l_iter )->serialize( l_entityNode );
+	}
 }

@@ -36,8 +36,8 @@ Texture::Texture(const char* p_filename)
 
 Texture::~Texture()
 {
-	//SDL_FreeSurface(m_texture);
 	delete m_texture;
+	glDeleteTextures( 1, &m_textureID );
 }
 
 

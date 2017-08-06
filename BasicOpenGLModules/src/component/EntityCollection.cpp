@@ -55,3 +55,9 @@ Entity* EntityCollection::getEntityByID(long p_id)
 	return r_entity;
 }
 
+
+
+const std::list<Entity*>& EntityCollection::getAllEntitys()
+{
+	return m_entitys;
+}

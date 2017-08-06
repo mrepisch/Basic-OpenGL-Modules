@@ -48,6 +48,13 @@ namespace component
 		 */
 		void addEntity(Entity* p_entity);
 
+		/**
+		 * Function to return all Entitys as std::list<Entity*>
+		 * @author sascha blank
+		 * @return std::list<Entity*> with all Entitys
+		 */
+		const std::list<Entity*>& getAllEntitys();
+
 	private:
 
 		// List of all Entitys

@@ -1,7 +1,7 @@
 
 //Internal includes
 #include "TranslationComponent.h"
-
+#include "../util/Util.h"
 
 using namespace component;
 using namespace rapidxml;
@@ -19,26 +19,18 @@ void TranslationComponent::serialize( rapidxml::xml_node<>* p_rootNode )
 {
 	
 	xml_document<> *l_doc = p_rootNode->document();
-
-	
 	xml_node<>* l_componentNode = l_doc->allocate_node( node_element, "translationComponent" );
-	xml_node<>* l_translationNode = l_doc->allocate_node( node_element, "position" );
-	l_translationNode->append_attribute( l_doc->allocate_attribute( "x", std::to_string( ( double )m_position.getX() ).c_str() ) );
-	l_translationNode->append_attribute( l_doc->allocate_attribute( "y", std::to_string( ( double )m_position.getY() ).c_str() ) );
-	l_translationNode->append_attribute( l_doc->allocate_attribute( "z", std::to_string( ( double )m_position.getZ() ).c_str() ) );
-	l_componentNode->append_node( l_translationNode );
-	xml_node<>* l_rotationNode = l_doc->allocate_node( node_element, "rotation" );
-	l_rotationNode->append_attribute( l_doc->allocate_attribute( "x", std::to_string( ( double )m_rotation.getX() ).c_str() ) );
-	l_rotationNode->append_attribute( l_doc->allocate_attribute( "y", std::to_string( ( double )m_rotation.getY() ).c_str() ) );
-	l_rotationNode->append_attribute( l_doc->allocate_attribute( "z", std::to_string( ( double )m_rotation.getZ() ).c_str() ) );
-	l_componentNode->append_node( l_rotationNode );
-
-	xml_node<>* l_scaleNode = l_doc->allocate_node( node_element, "scale" );
-	l_scaleNode->append_attribute( l_doc->allocate_attribute( "x", std::to_string( ( double )m_scale.getX() ).c_str() ) );
-	l_scaleNode->append_attribute( l_doc->allocate_attribute( "y", std::to_string( ( double )m_scale.getY() ).c_str() ) );
-	l_scaleNode->append_attribute( l_doc->allocate_attribute( "z", std::to_string( ( double )m_scale.getZ() ).c_str() ) );
-	l_componentNode->append_node( l_scaleNode );
-
 	p_rootNode->append_node( l_componentNode );
 
+	util::Util::writeVectorToXmlNode( m_position, "position", l_componentNode );
+	util::Util::writeVectorToXmlNode( m_scale, "scale", l_componentNode );
+	util::Util::writeVectorToXmlNode( m_rotation, "rotation", l_componentNode );
+}
+
+
+void TranslationComponent::deserialize( rapidxml::xml_node<>* p_componentNode )
+{
+	m_position = util::Util::readVectorFromXmlNode( p_componentNode->first_node( "position" ) );
+	m_scale = util::Util::readVectorFromXmlNode( p_componentNode->first_node( "scale" ) );
+	m_rotation = util::Util::readVectorFromXmlNode( p_componentNode->first_node( "rotation" ) );
 }

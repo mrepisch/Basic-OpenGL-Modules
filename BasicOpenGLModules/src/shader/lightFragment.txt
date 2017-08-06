@@ -1,7 +1,36 @@
 #version 330 core
 out vec4 FragColor;
 
-void main()
+
+struct Material
 {
-    FragColor = vec4(1.0f,0.75f,0.0f,0.5f); // set alle 4 vector values to 1.0
+	sampler2D diffuseTexture;
+	sampler2D specularTexture;
+	vec3 diffuseColor;
+	vec3 specular;
+	float shininess;
+	
+};
+
+in vec2 TexCoord;
+in vec3 FragPos;  
+in vec3 Normal;  
+
+
+uniform vec3 cameraPos;
+uniform Material material;
+
+void main()
+{// diffuse 
+    vec3 norm = normalize(Normal);
+
+    vec3 diffuse =  texture(material.diffuseTexture, TexCoord).rgb;  
+	
+	/// specular
+	vec3 viewDir = normalize(FragPos);
+    vec3 reflectDir = reflect(-cameraPos, normalize(Normal));  
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32.0f);
+    vec3 specular =  spec * texture(material.specularTexture, TexCoord).rgb;
+	vec3 total = (diffuse + specular);
+    FragColor = vec4( total,1.0f); // set alle 4 vector values to 1.0
 }
