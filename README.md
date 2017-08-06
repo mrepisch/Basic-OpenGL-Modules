@@ -8,7 +8,7 @@ The following libarys will be found in the libary folder.
 * SDL2 for OpenGL initalisation and inputhandling
 * SDL_mixer for sounds
 * SDL_image for advanced texture formats like png.
-* glm for the advanced support.
+* glm for advanced math support.
 * rapidxml for xml parsing
 
 The libary also provides base classes for the 
