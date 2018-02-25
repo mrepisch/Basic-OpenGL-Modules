@@ -43,6 +43,12 @@
     <Filter Include="Quelldateien\core">
       <UniqueIdentifier>{06601fea-e9a9-4b7a-84e5-eb377f9459c0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Quelldateien\shaders">
+      <UniqueIdentifier>{c10cceac-51eb-4a22-8d08-ee5b4e4bc963}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\shaders">
+      <UniqueIdentifier>{c47f1e9c-8b85-4ae9-b74a-2d194813e1b1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\util\Vector3D.h">
@@ -123,9 +129,6 @@
     <ClInclude Include="src\core\BasicComponentFactory.h">
       <Filter>Headerdateien\game</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\ShaderManager.h">
-      <Filter>Headerdateien\core</Filter>
-    </ClInclude>
     <ClInclude Include="src\render\LightSystem.h">
       <Filter>Headerdateien\render</Filter>
     </ClInclude>
@@ -146,6 +149,18 @@
     </ClInclude>
     <ClInclude Include="src\render\CubeMapTexture.h">
       <Filter>Headerdateien\render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\render\ParticelComponent.h">
+      <Filter>Headerdateien\render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\render\ParticleSystem.h">
+      <Filter>Headerdateien\render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\shader\ShaderManager.h">
+      <Filter>Headerdateien\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\shader\Shader.h">
+      <Filter>Headerdateien\shaders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -221,9 +236,6 @@
     <ClCompile Include="src\core\BasicComponentFactory.cpp">
       <Filter>Quelldateien\game</Filter>
     </ClCompile>
-    <ClCompile Include="src\core\ShaderManager.cpp">
-      <Filter>Quelldateien\core</Filter>
-    </ClCompile>
     <ClCompile Include="src\render\Lightsystem.cpp">
       <Filter>Quelldateien\render</Filter>
     </ClCompile>
@@ -244,6 +256,18 @@
     </ClCompile>
     <ClCompile Include="src\render\CubeMapTexture.cpp">
       <Filter>Quelldateien\render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render\ParticelComponent.cpp">
+      <Filter>Quelldateien\render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render\ParticleSystem.cpp">
+      <Filter>Quelldateien\render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\shader\ShaderManager.cpp">
+      <Filter>Quelldateien\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\shader\Shader.cpp">
+      <Filter>Quelldateien\shaders</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

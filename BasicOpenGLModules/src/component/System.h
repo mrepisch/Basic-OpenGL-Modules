@@ -13,7 +13,8 @@ namespace component
 		e_cameraSystem,
 		e_translationSystem,
 		e_inputSystem,
-		e_lightningSystem
+		e_lightningSystem,
+		e_partikelSystem
 	};
 
 	/**
@@ -66,6 +67,7 @@ namespace component
 		// The Sytem type definition
 		EnSystem m_systemType;
 
+		// Entity collection pointer
 		EntityCollection* m_collection;
 
 	};

@@ -114,8 +114,19 @@ namespace core
 		 */
 		component::EntityCollection& getEntityCollection( void );
 
+		/**
+		 * Function to save the szene as xml file
+		 * @author sascha blank
+		 * @param const std::string& the path for the file
+		 */
 		void saveSzene( const std::string& p_path );
 
+		/**
+		 * Function to load a szene from a xml file
+		 * @author sascha blank
+		 * @param const std::string& the path to the xml file
+		 * @param const std::string& the factory to use
+		 */
 		void loadSzene( const std::string& p_path, const std::string& p_factoryName );
 
 	private:

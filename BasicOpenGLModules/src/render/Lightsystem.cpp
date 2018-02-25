@@ -12,18 +12,27 @@ using namespace component;
 using namespace game;
 using namespace core;
 
-Lightsystem::Lightsystem( EntityCollection* p_collection, ShaderManager* p_shaderManager, Entity* p_camera ) : System( e_lightningSystem, p_collection )
+Lightsystem::Lightsystem( EntityCollection* p_collection, ShaderManager* p_shaderManager) : System( e_lightningSystem, p_collection )
 {
 	m_shaderManager = p_shaderManager;
-	m_camera = p_camera;
+	std::vector<Entity*>l_entitys = m_collection->getEntityWithComponents( e_cameraComponent );
+	for (int i = 0; i < l_entitys.size(); ++i)
+	{
+		CameraComponent* a_cameraComp = (CameraComponent*) l_entitys[ i ]->getComponent( e_cameraComponent );
+		if (a_cameraComp != nullptr)
+		{
+			if (a_cameraComp->m_isActiveCamera)
+			{
+				m_camera = l_entitys[ i ];
+			}
+		}
+	}
 }
 
 Lightsystem::~Lightsystem()
 {
 
 }
-
-
 
 
 void Lightsystem::update()

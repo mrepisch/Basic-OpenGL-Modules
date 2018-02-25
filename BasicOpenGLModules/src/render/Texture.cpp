@@ -7,10 +7,11 @@ using namespace render;
 
 Texture::Texture(const char* p_filename)
 {
+	m_texturePath = p_filename;
 	m_texture = IMG_Load( p_filename );
 	if (m_texture == nullptr)
 	{
-		std::cout << "Texturefile not foung" << std::endl;
+		std::cout << "Texturefile not found" << p_filename<<std::endl;
 	}
 	glGenTextures(1, &m_textureID);
 	glBindTexture(GL_TEXTURE_2D, m_textureID);
@@ -44,4 +45,10 @@ Texture::~Texture()
 GLuint Texture::getTextureID(void)
 {
 	return m_textureID;
+}
+
+
+const char* Texture::getTexturePath()
+{
+	return m_texturePath;
 }

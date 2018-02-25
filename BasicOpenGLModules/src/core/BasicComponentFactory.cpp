@@ -7,7 +7,7 @@
 #include "../render/LightningComponent.h"
 #include "../util/BGLMeshLoader.h"
 #include "../render/CubeMapComponent.h"
-
+#include "../render/ParticelComponent.h"
 using namespace core;
 using namespace component;
 using namespace game;
@@ -74,6 +74,15 @@ Component* BasicComponentFactory::generateComponentFromString( const std::string
 	else if (t_data == "translation")
 	{
 		r_comp = new TranslationComponent();
+	}
+	else if (t_data == "particle")
+	{
+		ParticelComponent* a_comp = new ParticelComponent();
+		a_comp->m_shape = EnParticleShape::e_quad;
+		a_comp->particleCount = 10;
+		a_comp->m_listOfTexturesPaths.push_back( "C:\\Users\\episch\\Documents\\OpenGLProject\\BasicOpenGLModules\\BasicOpenGLModules\\textures\\fireparticle.png" );
+		a_comp->m_needInit;
+		return a_comp;
 	}
 
 	return r_comp;

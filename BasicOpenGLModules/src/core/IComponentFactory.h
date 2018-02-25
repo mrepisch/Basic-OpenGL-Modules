@@ -41,6 +41,11 @@ namespace core
 		 */
 		virtual component::Component* generateComponentFromString( const std::string& t_data ) = 0;
 
+		/**
+		 * Function to load components from xml nodes
+		 * @author sascha blank
+		 * @param rapidxml::xml_node<>* the node to read from
+		 */
 		virtual component::Component* generateComponentFromXmlNode( rapidxml::xml_node<>* p_node ) = 0;
 	};
 }

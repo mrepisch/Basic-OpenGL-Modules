@@ -10,7 +10,7 @@ namespace render
 
 	public:
 
-		Lightsystem( component::EntityCollection* p_collection, core::ShaderManager* p_shaderManager, component::Entity* p_camera );
+		Lightsystem( component::EntityCollection* p_collection, core::ShaderManager* p_shaderManager);
 		virtual ~Lightsystem();
 
 		void setCamera( component::Entity* p_entity );

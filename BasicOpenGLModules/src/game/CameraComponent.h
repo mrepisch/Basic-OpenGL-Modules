@@ -52,9 +52,6 @@ namespace game
 		 * @param rapidxml::xml_node<>* the component node
 		 */
 		void deserialize( rapidxml::xml_node<>* p_node );
-
-
-
 	private:
 		glm::mat4 m_view;
 	};

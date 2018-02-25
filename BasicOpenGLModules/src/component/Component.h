@@ -10,7 +10,8 @@ namespace component
 		e_translationComponent,
 		e_cameraComponent,
 		e_lightningComponent,
-		e_cubemapComponent
+		e_cubemapComponent,
+		e_particelComponent
 	};
 
 	/**

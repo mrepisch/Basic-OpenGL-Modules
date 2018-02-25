@@ -21,6 +21,9 @@
 #include "component\EventDispatcher.h"
 #include "util\BGLMeshLoader.h"
 #include "render\LightEvent.h"
+#include "render\ParticleSystem.h"
+
+
 using namespace render;
 using namespace component;
 using namespace util;
@@ -55,19 +58,29 @@ int main(int argc, char **argv)
 		"lightFragment.txt",
 		"lightsource" );
 
+	l_shaderManager.createShaderProgram( "particle" );
+	l_shaderManager.addShader( "vertex",
+		ShaderManager::e_vertex,
+		"particel_vertex.c",
+		"particle" );
+	l_shaderManager.addShader( "fragment",
+		ShaderManager::e_fragment,
+		"particle_fragment.c",
+		"particle" );
+
 	l_shaderManager.createShaderProgram( "skybox" );
 	l_shaderManager.addShader( "vertex", ShaderManager::e_vertex, "cubemapVert.c", "skybox" );
 	l_shaderManager.addShader( "fragment", ShaderManager::e_fragment, "cubemapFrag.c", "skybox" );
 
 	l_shaderManager.compile();
 
-
-
 	BasicOpenGLCore l_core(&l_mainWindow,& l_shaderManager);
 	BasicComponentFactory l_factory(&l_shaderManager);
 	l_core.addComponentFactory( "basic", &l_factory );
 
-	l_core.loadSzene( "C:\\Users\\episch\\Documents\\testSzene.xml", "basic" );
+	l_core.loadSzene( "testSzene.xml", "basic" );
+	long particelID = l_core.createNewEntity( "p" );
+	l_core.addComponentToEntity( particelID, "basic", "particle" );
 
 	InputSystem* l_inputSystem = new InputSystem( &l_mainWindow, &l_core.getEntityCollection() );
 	BasicKeyInput* l_keyInput = new BasicKeyInput();
@@ -79,20 +92,19 @@ int main(int argc, char **argv)
 
 	CameraSystem* l_cameraSystem = new CameraSystem( &l_core.getEntityCollection() );
 
-	//Lightsystem* l_lightSystem = new Lightsystem( &l_core.getEntityCollection(), &l_shaderManager, l_core.getEntityCollection().getEntityByID(l_camID) );
+	Lightsystem* l_lightSystem = new Lightsystem( &l_core.getEntityCollection(), &l_shaderManager );
 	
+	//ParticleSystem* l_particleSystem = new ParticleSystem( &l_shaderManager , &l_core.getEntityCollection() );
 
 	l_core.addSystem( l_inputSystem ); // first handle input
 	l_core.addSystem( l_translationSystem ); // then do the translation
-	//l_core.addSystem( l_lightSystem ); // lightning befor rendering
+
+	l_core.addSystem( l_lightSystem ); // lightning befor rendering
 	l_core.addSystem( l_cameraSystem ); // Update camera
 	l_core.addSystem( l_renderSystem ); // render everything
-
-	//l_core.saveSzene( "C:\\Users\\episch\\Documents\\testSzene.xml" );
+	//l_core.addSystem( l_particleSystem );
+	//l_core.saveSzene( "testSzene.xml" );
 
 	l_core.startMainLoop(); // Start the main loop
-
-
-	
 	return 0;
 }

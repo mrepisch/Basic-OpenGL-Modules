@@ -9,11 +9,13 @@
 #include "BasicOpenGLCore.h"
 #include "Display.h"
 #include "../component/EventDispatcher.h"
-
+#include "../util/Util.h"
 using namespace core;
 using namespace component;
 using namespace rapidxml;
 
+
+const std::string S_BASEPATH_TO_FILES = util::Util::getBasePath() + "/files/";
 
 BasicOpenGLCore::BasicOpenGLCore( Display* p_display, ShaderManager* p_shaderManager )
 {
@@ -150,7 +152,7 @@ void BasicOpenGLCore::saveSzene( const std::string& p_path )
 	}
 	std::string xml_as_string;
 	print( std::back_inserter( xml_as_string ), l_doc );
-	std::ofstream file_stored( p_path.c_str());
+	std::ofstream file_stored( (S_BASEPATH_TO_FILES + p_path).c_str());
 	file_stored << l_doc;
 	file_stored.close();
 	l_doc.clear();
@@ -161,7 +163,7 @@ void BasicOpenGLCore::loadSzene( const std::string& p_path, const std::string& p
 {
 	std::string buffer;
 	std::string line;
-	std::ifstream xml_file( p_path );
+	std::ifstream xml_file( S_BASEPATH_TO_FILES + p_path );
 	if (xml_file.is_open())
 	{
 		while (xml_file.good())

@@ -51,15 +51,15 @@ namespace game
 		 */
 		void setRotation( const util::VectorF& p_rotation );
 
+		// velocity of the camera
 		float velocity;
 
+		// Movement direction of the camera
 		EnCamera_Movement direction;
 
 	private	:
 
 		// the rotation offset to the current camera rotation
 		util::VectorF m_rotation;
-
-
 	};
 }

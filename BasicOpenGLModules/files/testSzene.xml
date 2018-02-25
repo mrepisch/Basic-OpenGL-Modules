@@ -1,0 +1,43 @@
+<szene>
+	<entitys>
+		<entity name="camera">
+			<cameraComponent>
+				<position x="0.000000" y="1.000000" z="0.000000"/>
+				<front x="0.000000" y="0.000000" z="-1.000000"/>
+				<up x="0.000000" y="1.000000" z="0.000000"/>
+				<worldup x="0.000000" y="1.000000" z="0.000000"/>
+				<pitch float="0.000000"/>
+				<yaw float="-90.000000"/>
+				<isActive bool="true"/>
+			</cameraComponent>
+		</entity>
+		<entity name="planet1">
+			<renderComponent>
+				<meshFile path="sunSphere.xml"/>
+				<shaderName string="lightsource"/>
+			</renderComponent>
+			<translationComponent>
+				<position x="0.000000" y="10.000000" z="-10.000000"/>
+				<scale x="1.000000" y="1.000000" z="1.000000"/>
+				<rotation x="0.000000" y="0.000000" z="0.000000"/>
+			</translationComponent>
+		</entity>
+		<!--<entity name="skybox">
+			<cubemapComponent>
+				<texture path="C:\Users\episch\Documents\OpenGLProject\BasicOpenGLModules\BasicOpenGLModules\textures\cubemap\starbg.png"/>
+				<texture path="C:\Users\episch\Documents\OpenGLProject\BasicOpenGLModules\BasicOpenGLModules\textures\cubemap\starbg.png"/>
+				<texture path="C:\Users\episch\Documents\OpenGLProject\BasicOpenGLModules\BasicOpenGLModules\textures\cubemap\starbg.png"/>
+				<texture path="C:\Users\episch\Documents\OpenGLProject\BasicOpenGLModules\BasicOpenGLModules\textures\cubemap\starbg.png"/>
+				<texture path="C:\Users\episch\Documents\OpenGLProject\BasicOpenGLModules\BasicOpenGLModules\textures\cubemap\starbg.png"/>
+				<texture path="C:\Users\episch\Documents\OpenGLProject\BasicOpenGLModules\BasicOpenGLModules\textures\cubemap\starbg.png"/>
+				<shaderName string="skybox"/>
+			</cubemapComponent>
+			<translationComponent>
+				<position x="0.000000" y="0.000000" z="0.000000"/>
+				<scale x="1.000000" y="1.000000" z="1.000000"/>
+				<rotation x="0.000000" y="0.000000" z="0.000000"/>
+			</translationComponent>
+		</entity>-->
+	</entitys>
+</szene>
+

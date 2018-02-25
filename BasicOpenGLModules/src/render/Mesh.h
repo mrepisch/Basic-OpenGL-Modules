@@ -207,6 +207,8 @@ namespace render {
 		 */
 		Material* getMaterial( void );
 
+		GLuint generateInstaciatetBuffer( int p_amount, glm::mat4* modelMatrices );
+
 	private:
 
 		Material* m_material;

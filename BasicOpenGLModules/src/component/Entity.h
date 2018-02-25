@@ -90,6 +90,11 @@ namespace component
 		 */
 		static void ResetEntityCounter( void );
 
+		/**
+		 * Function write the Entity as xml_node<>* 
+		 * @author sascha blank
+		 * @param rapidxml::xml_node<>* the node to add the Entity node to.
+		 */
 		void serialize( rapidxml::xml_node<>* p_rootNode );
 
 	private:

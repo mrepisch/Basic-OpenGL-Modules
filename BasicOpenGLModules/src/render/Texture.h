@@ -37,6 +37,8 @@ namespace render
 		 */
 		GLuint getTextureID(void);
 
+		const char* getTexturePath();
+
 	private:
 
 		// Surface Pointer which is the texture
@@ -44,5 +46,7 @@ namespace render
 
 		// The texture id 
 		GLuint m_textureID;
+
+		const char* m_texturePath;
 	};
 }

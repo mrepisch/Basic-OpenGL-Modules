@@ -34,7 +34,6 @@
     <ClInclude Include="src\core\BasicOpenGLCore.h" />
     <ClInclude Include="src\core\Display.h" />
     <ClInclude Include="src\core\IComponentFactory.h" />
-    <ClInclude Include="src\core\ShaderManager.h" />
     <ClInclude Include="src\game\CameraComponent.h" />
     <ClInclude Include="src\game\CameraEvent.h" />
     <ClInclude Include="src\game\CameraSystem.h" />
@@ -46,9 +45,13 @@
     <ClInclude Include="src\render\LightningComponent.h" />
     <ClInclude Include="src\render\LightSystem.h" />
     <ClInclude Include="src\render\Mesh.h" />
+    <ClInclude Include="src\render\ParticleSystem.h" />
+    <ClInclude Include="src\render\ParticelComponent.h" />
     <ClInclude Include="src\render\RenderComponent.h" />
     <ClInclude Include="src\render\RenderSystem.h" />
     <ClInclude Include="src\render\Texture.h" />
+    <ClInclude Include="src\shader\Shader.h" />
+    <ClInclude Include="src\shader\ShaderManager.h" />
     <ClInclude Include="src\util\BGLMeshLoader.h" />
     <ClInclude Include="src\util\PLYParser.h" />
     <ClInclude Include="src\util\Util.h" />
@@ -68,7 +71,6 @@
     <ClCompile Include="src\core\BasicKeyInput.cpp" />
     <ClCompile Include="src\core\BasicOpenGLCore.cpp" />
     <ClCompile Include="src\core\Display.cpp" />
-    <ClCompile Include="src\core\ShaderManager.cpp" />
     <ClCompile Include="src\game\CameraComponent.cpp" />
     <ClCompile Include="src\game\CameraEvent.cpp" />
     <ClCompile Include="src\game\CameraSystem.cpp" />
@@ -81,9 +83,13 @@
     <ClCompile Include="src\render\LightningComponent.cpp" />
     <ClCompile Include="src\render\Lightsystem.cpp" />
     <ClCompile Include="src\render\Mesh.cpp" />
+    <ClCompile Include="src\render\ParticelComponent.cpp" />
+    <ClCompile Include="src\render\ParticleSystem.cpp" />
     <ClCompile Include="src\render\RenderComponent.cpp" />
     <ClCompile Include="src\render\RenderSystem.cpp" />
     <ClCompile Include="src\render\Texture.cpp" />
+    <ClCompile Include="src\shader\Shader.cpp" />
+    <ClCompile Include="src\shader\ShaderManager.cpp" />
     <ClCompile Include="src\util\BGLMeshLoader.cpp" />
     <ClCompile Include="src\util\PLYParser.cpp" />
     <ClCompile Include="src\util\Util.cpp" />
